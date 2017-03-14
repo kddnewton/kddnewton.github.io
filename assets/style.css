@@ -94,6 +94,8 @@ ul {
 .lang.lang-ruby { background-color: #701516; }
 .lang.lang-elixir { background-color: #6e4a7e; }
 .lang.lang-js { background-color: #f1e05a; }
+.lang.lang-python { background-color: #3572a5; }
+.lang.lang-c { background-color: #555555; }
 
 .small {
   font-size: 0.85em;
