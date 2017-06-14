@@ -101,6 +101,20 @@ ul {
   font-size: 0.85em;
 }
 
+.iframe-container {
+  height: 300px;
+  position: relative;
+}
+
+.iframe-container iframe {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
 @media (min-width: 750px) {
   .container {
     margin: 0 10%;
