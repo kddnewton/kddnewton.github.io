@@ -11,60 +11,51 @@
     <link rel="icon" type="image/png" href="assets/favicon.png" />
   </head>
   <body>
-    <div class="container">
-      <div class="container-inner">
+    <header class="clearfix">
+      <div class="headshot"></div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#blog-posts">Blog Posts</a>
+        <a href="#speaking">Speaking</a>
+      </nav>
+      <summary>
+        <h1>Kevin Deisz</h1>
+        <h2>
+          Senior Software Engineer at
+          <a href="https://www.localytics.com/">Localytics</a>
+        </h2>
 
-<div class="headshot"></div>
-
-<h1>Kevin Deisz</h1>
-<h2>
-  Senior Software Engineer at
-  <a href="https://www.localytics.com/">Localytics</a>
-</h2>
-
+        <a href="https://twitter.com/kddeisz" title="Twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="https://github.com/kddeisz" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/kevin-deisz" title="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+        <a href="https://speakerdeck.com/" title="Speaker Deck"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+      </summary>
+    </header>
+    <article class="clearfix">
+      <section id="speaking">
 <ul>
   <li>
-    <i class="fa fa-twitter-square" aria-hidden="true"></i>
-    <a href="https://twitter.com/kddeisz">@kddeisz</a>
+    <a href="http://rubykaigi.org/2017/presentations/kddeisz.html">Compiling Ruby</a>
+    <a href="https://github.com/kddeisz/compiling-ruby" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
+    <a href="https://speakerdeck.com/kddeisz/compiling-ruby" title="Speaker Deck"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+    <br />RubyKaigi 2017
+    <div class="video-container">
+      <img src="assets/play.png" />
+    </div>
   </li>
   <li>
-    <i class="fa fa-github" aria-hidden="true"></i>
-    <a href="https://github.com/kddeisz">github.com/kddeisz</a>
-  </li>
-  <li>
-    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-    <a href="https://www.linkedin.com/in/kevin-deisz">
-      linkedin.com/in/kevin-deisz</a>
-  </li>
-</ul>
-
-<br />
-
-<hr />
-<h3>Speaking</h3>
-
-<ul class="content-list">
-  <li>
-    <p>
-      <a href="http://rubykaigi.org/2017/presentations/kddeisz.html">Compiling Ruby</a><br />
-      RubyKaigi 2017
-    </p>
-  </li>
-  <li>
-    <p>
-      <a href="https://speakerdeck.com/kddeisz/practical-debugging">Practical Debugging</a><br />
-      RailsConf 2017
-    </p>
-    <div class="iframe-container">
+    <a href="https://railsconf.com/program#session-140">Practical Debugging</a>
+    <a href="https://github.com/kddeisz/practical-debugging" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
+    <a href="https://speakerdeck.com/kddeisz/practical-debugging" title="Speaker Deck"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+    <br />RailsConf 2017
+    <div class="video-container">
       <iframe src="https://www.youtube.com/embed/oi4h30chCz8" frameborder="0" allowfullscreen></iframe>
     </div>
   </li>
 </ul>
-
-<hr />
-<h3>Blog posts</h3>
-
-<ul class="content-list">
+      </section>
+      <section id="blog-posts">
+<ul>
   <li>
     <a href="http://eng.localytics.com/infrastructure-as-code-with-humidifier-reservoir/">
       Infrastructure as Code with humidifier-reservoir</a><br />
@@ -106,11 +97,9 @@
     March 08, 2016
   </li>
 </ul>
-
-<hr />
-<h3>Projects</h3>
-
-<ul class="content-list">
+      </section>
+      <section id="projects">
+<ul>
   <li>
     <a href="https://github.com/drugdev/attribute_extras">
       drugdev/attribute_extras</a>
@@ -201,6 +190,13 @@
     ActiveRecord adapter for ODBC
   </li>
   <li>
+    <a href="https://kddeisz.github.io/pokerpg-builder/">
+      pokerpg-builder</a>
+    <em class="lang lang-js"></em>
+    <span class="small">JavaScript</span><br />
+    Webapp for building pokemon in PokeRPG
+  </li>
+  <li>
     <a href="https://github.com/kddeisz/pro-publica">
       kddeisz/pro-publica</a>
     <em class="lang lang-elixir"></em>
@@ -242,45 +238,49 @@
     <span class="small">Ruby</span><br />
     Adds callbacks to Thor commands
   </li>
+  <li>
+    <a href="https://github.com/kddeisz/tuby">
+      kddeisz/tuby</a>
+    <em class="lang lang-c"></em>
+    <span class="small">C</span><br />
+    A small language that compiles down to YARV
+  </li>
+  <li>
+    <a href="https://github.com/kddeisz/vernacular">
+      kddeisz/vernacular</a>
+    <em class="lang lang-ruby"></em>
+    <span class="small">Ruby</span><br />
+    Allows extending ruby's syntax and compilation process
+  </li>
+  <li>
+    <a href="https://www.wm-memories.com/">
+      wm-memories</a>
+    <em class="lang lang-ruby"></em>
+    <span class="small">Ruby</span><br />
+    An app for storing memories from W&amp;M
+  </li>
 </ul>
+    </article>
+    <script>
+      let active = document.querySelector("a[href='" + window.location.hash + "']");
+      if (active) {
+        active.className = "active";
+        document.querySelector(window.location.hash).className = "active";
+      } else {
+        document.querySelector("a[href='#speaking']").className = "active";
+        document.querySelector("section#speaking").className = "active";
+      }
 
-<hr />
-<h3>Applica&shy;tions</h3>
+      document.querySelectorAll("nav a").forEach(function (element) {
+        element.addEventListener("click", function (event) {
+          let previous = document.querySelector("nav a.active");
+          previous.className = "";
+          document.querySelector(previous.getAttribute("href")).className = "";
 
-<ul class="content-list">
-  <!-- <li><a href="https://kddeisz.github.io/pogo-boston-filter/">
-    pogo-boston-filter</a></li> -->
-  <!-- <li><a href="https://kddeisz.github.io/pdl-intelligent/">
-    pdl-intelligent</a></li> -->
-  <li><a href="https://kddeisz.github.io/pokerpg-builder/">
-    pokerpg-builder</a></li>
-  <li><a href="http://www.wm-memories.com/">
-    wm-memories</a></li>
-</ul>
-
-<!-- <hr />
-<h3>Contribu&shy;tions</h3>
-
-<ul class="content-list">
-  <li><a href="https://github.com/aws/aws-sdk-ruby">
-    aws/aws-sdk-ruby</a></li>
-  <li><a href="https://github.com/azkaban/azkaban">
-    azkaban/azkaban</a></li>
-  <li><a href="https://github.com/Shopify/azkaban-scheduler-ruby">
-    Shopify/azkaban-scheduler-ruby</a></li>
-  <li><a href="https://github.com/wsargent/circuit_breaker">
-    wsargent/circuit_breaker</a></li>
-  <li><a href="https://github.com/codetriage/docs_doctor">
-    codetriage/docs_doctor</a></li>
-  <li><a href="https://github.com/jmespath/jmespath.rb">
-    jmespath/jmespath.rb</a></li>
-  <li><a href="https://github.com/rails/rails">
-    rails/rails</a></li>
-  <li><a href="https://github.com/bbatsov/rubocop">
-    bbatsov/rubocop</a></li>
-</ul> -->
-
-      </div>
-    </div>
+          element.className = "active";
+          document.querySelector(element.getAttribute("href")).className = "active";
+        });
+      });
+    </script>
   </body>
 </html>
