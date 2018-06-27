@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bundle exec kramdown src/index.md --template src/template.html > index.html

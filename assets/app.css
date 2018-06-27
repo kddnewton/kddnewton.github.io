@@ -1,0 +1,21 @@
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.headshot img {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  float: left;
+  margin: 0 50px 20px 0;
+}
+
+iframe {
+  float: left;
+  margin: 0 50px 20px 0;
+}
+
+h2, h3 {
+  clear: both;
+}

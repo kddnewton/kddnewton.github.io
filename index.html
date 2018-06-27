@@ -4,282 +4,118 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Kevin Deisz</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-    <link rel="stylesheet" href="assets/style.css" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="assets/app.css" />
   </head>
   <body>
-    <header class="clearfix">
-      <div class="headshot"></div>
-      <nav>
-        <a href="#projects">Projects</a>
-        <a href="#blog-posts">Blog Posts</a>
-        <a href="#speaking">Speaking</a>
-      </nav>
-      <summary>
-        <h1>Kevin Deisz</h1>
-        <h2>
-          CTO at <a href="http://www.culturehq.net/">CultureHQ</a>
-        </h2>
+    <div class="container">
+      <h1 id="kevin-deisz">Kevin Deisz</h1>
 
-        <a href="https://twitter.com/kddeisz" title="Twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-        <a href="https://github.com/kddeisz" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/in/kevin-deisz" title="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-        <a href="https://speakerdeck.com/" title="Speaker Deck"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-      </summary>
-    </header>
-    <article class="clearfix">
-      <section id="speaking">
+<p>CTO at <a href="https://culturehq.com">CultureHQ</a></p>
+
+<p class="headshot"><img src="assets/headshot.png" alt="Headshot" /></p>
+
 <ul>
-  <li>
-    <a href="http://rubykaigi.org/2017/presentations/kddeisz.html">Compiling Ruby</a>
-    <a href="https://github.com/kddeisz/compiling-ruby" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
-    <a href="https://speakerdeck.com/kddeisz/compiling-ruby" title="Speaker Deck"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-    <br />RubyKaigi 2017
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/B3Uf-aHZwmw" frameborder="0" allowfullscreen></iframe>
+  <li><a href="https://twitter.com/kddeisz">Twitter</a></li>
+  <li><a href="https://github.com/kddeisz">GitHub</a></li>
+  <li><a href="https://www.linkedin.com/in/kevin-deisz">LinkedIn</a></li>
+  <li><a href="https://speakerdeck.com/">Speaker Deck</a></li>
+</ul>
+
+<h2 id="projects">Projects</h2>
+
+<h3 id="ruby">Ruby</h3>
+
+<ul>
+  <li><a href="https://github.com/CultureHQ/adequate_serialization">CultureHQ/adequate_serialization</a> - Serializes objects adequately</li>
+  <li><a href="https://github.com/drugdev/attribute_extras">drugdev/attribute_extras</a> - Rails model macros for auto attribute manipulation</li>
+  <li><a href="https://github.com/kddeisz/bundler-console">kddeisz/bundler-console</a> - A bundler plugin for the console command</li>
+  <li><a href="https://github.com/kddeisz/fast_underscore">kddeisz/fast_underscore</a> - A fast native implementation of the String#underscore method</li>
+  <li><a href="https://github.com/localytics/hollaback">localytics/hollaback</a> - Generic callback chain creation</li>
+  <li><a href="https://github.com/kddeisz/iseq-rails-tools">kddeisz/iseq-rails-tools</a> - Use AOT compilation within Rails</li>
+  <li><a href="https://github.com/kddeisz/ldap-playground">kddeisz/ldap-playground</a> - A small repository for testing out LDAP integrations</li>
+  <li><a href="https://github.com/kddeisz/minitest-keyword">kddeisz/minitest-keyword</a> - Use Minitest assertions with keyword arguments</li>
+  <li><a href="https://github.com/kddeisz/mtg_api">kddeisz/mtg_api</a> - An API wrapper for the MTG API</li>
+  <li><a href="https://github.com/kddeisz/musicxml">kddeisz/musicxml</a> - Parse music XML with Ruby</li>
+  <li><a href="https://github.com/localytics/odbc_adapter">localytics/odbc_adapter</a> - ActiveRecord adapter for ODBC</li>
+  <li><a href="https://github.com/CultureHQ/paperweight">CultureHQ/paperweight</a> - Paperclip attachments in the background</li>
+  <li><a href="https://github.com/kddeisz/snip_snip">kddeisz/snip_snip</a> - Monitors unused selected columns in Rails</li>
+  <li><a href="https://github.com/localytics/thor-hollaback">localytics/thor-hollaback</a> - Adds callbacks to Thor commands</li>
+  <li><a href="https://github.com/kddeisz/tiny_struct">kddeisz/tiny_struct</a> - A simpler struct for clear usage</li>
+  <li><a href="https://github.com/kddeisz/tuby">kddeisz/tuby</a> - A small language that compiles down to YARV</li>
+  <li><a href="https://github.com/kddeisz/vernacular">kddeisz/vernacular</a> - Allows extending Ruby’s syntax and compilation process</li>
+  <li><a href="https://github.com/kddeisz/vernacular-ast">kddeisz/vernacular-ast</a> - Extend and recompile Ruby’s AST on the fly</li>
+</ul>
+
+<h3 id="infrastructure">Infrastructure</h3>
+
+<ul>
+  <li><a href="https://github.com/localytics/cogito-py">localytics/cogito-py</a> - A python package that wraps libcogito</li>
+  <li><a href="https://github.com/localytics/cogito-rb">localytics/cogito-rb</a> - A ruby library that wraps libcogito</li>
+  <li><a href="https://github.com/localytics/cogito-resource">localytics/cogito-resource</a> - Cogito CloudFormation custom resource lambda handler</li>
+  <li><a href="https://github.com/localytics/cogito.tmbundle">localytics/cogito.tmbundle</a> - Cogito language definition bundle</li>
+  <li><a href="https://github.com/localytics/humidifier">localytics/humidifier</a> - AWS CloudFormation Ruby bindings</li>
+  <li><a href="https://github.com/localytics/humidifier-reservoir">localytics/humidifier-reservoir</a> - Specify humidifier resources in YAML</li>
+  <li><a href="https://github.com/localytics/lambda-slack-router">localytics/lambda-slack-router</a> - Node package for creating slackbot AWS lambda functions</li>
+  <li><a href="https://github.com/localytics/libcogito">localytics/libcogito</a> - Simple format for defining AWS IAM policies</li>
+  <li><a href="https://github.com/localytics/serverless-slackbot-scaffold">localytics/serverless-slackbot-scaffold</a> - A khaos scaffold for an AWS slackbot</li>
+  <li><a href="https://github.com/localytics/stack_path">localytics/stack_path</a> - A Ruby client for the StackPath CDN API</li>
+</ul>
+
+<h3 id="other">Other</h3>
+
+<ul>
+  <li><a href="https://github.com/kddeisz/pokerpg-builder">kddeisz/pokerpg-builder</a> - Webapp for building pokemon in PokeRPG</li>
+  <li><a href="https://github.com/kddeisz/prettier-ruby">kddeisz/prettier-ruby</a> - A prettier plugin for the Ruby language</li>
+  <li><a href="https://github.com/kddeisz/pro-publica">kddeisz/pro-publica</a> - An Elixir wrapper around the ProPublica Congress API</li>
+  <li><a href="https://github.com/kddeisz/react-state-mutations">CultureHQ/react-state-mutations</a> - Mutate react state without race conditions</li>
+  <li><a href="https://github.com/kddeisz/ripperjs">kddeisz/ripperjs</a> - A node wrapper for Ruby’s Ripper library</li>
+  <li><a href="https://github.com/localytics/travis.ex">localytics/travis.ex</a> - Simple Elixir wrapper around the Travis CI API</li>
+  <li><a href="https://github.com/kddeisz/wm-memories">kddeisz/wm-memories</a> - An app for storing memories from W&amp;M</li>
+</ul>
+
+<h2 id="speaking">Speaking</h2>
+
+<h3 id="compiling-ruby">Compiling Ruby</h3>
+
+<iframe src="https://www.youtube.com/embed/B3Uf-aHZwmw" frameborder="0" allowfullscreen=""></iframe>
+
+<p><a href="https://github.com/kddeisz/compiling-ruby">Code</a>
+<a href="https://speakerdeck.com/kddeisz/compiling-ruby">Slides</a></p>
+
+<ul>
+  <li><a href="http://rubykaigi.org/2017/presentations/kddeisz.html">Ruby Kaigi 2017</a></li>
+  <li><a href="http://confreaks.tv/videos/rubyconf2017-compiling-ruby">RubyConf 2017</a></li>
+  <li><a href="https://rubyonice.com/2018/speakers/kevin_deisz">Ruby On Ice 2018</a></li>
+</ul>
+
+<h3 id="practical-debugging">Practical Debugging</h3>
+
+<iframe src="https://www.youtube.com/embed/oi4h30chCz8" frameborder="0" allowfullscreen=""></iframe>
+
+<p><a href="https://github.com/kddeisz/practical-debugging">Code</a>
+<a href="https://speakerdeck.com/kddeisz/practical-debugging">Slides</a></p>
+
+<ul>
+  <li><a href="http://railsconf.com/2017/program.html#session-140">RailsConf 2017</a></li>
+</ul>
+
+<h2 id="blog-posts">Blog posts</h2>
+
+<ul>
+  <li><a href="http://eng.localytics.com/infrastructure-as-code-with-humidifier-reservoir/">Infrastructure as Code with humidifier-reservoir</a> - August 23, 2017</li>
+  <li><a href="http://eng.localytics.com/connecting-to-snowflake-with-ruby-on-rails/">Connecting to Snowflake with Ruby on Rails</a> - June 09, 2017</li>
+  <li><a href="http://eng.localytics.com/cogito/">Cogito - Adding “I think” to “IAM”</a> - June 07, 2017</li>
+  <li><a href="http://eng.localytics.com/odbc-and-writing-your-own-activerecord-adapter/">ODBC and writing your own ActiveRecord adapter</a> - March 7, 2017</li>
+  <li><a href="http://eng.localytics.com/best-practices-and-common-mistakes-with-travis-ci/">Best Practices and Common Mistakes with Travis CI</a> - January 10, 2017</li>
+  <li><a href="http://eng.localytics.com/exploring-cli-best-practices/">Exploring CLI Best Practices</a> - October 11, 2016</li>
+  <li><a href="http://eng.localytics.com/humidifier-cloudformation-made-easier/">Humidifier - CloudFormation made easier</a> - June 20, 2016</li>
+  <li><a href="http://eng.localytics.com/serverless-slackbots-powered-by-aws/">Serverless Slackbots Powered by AWS</a> - March 08, 2016</li>
+</ul>
+
     </div>
-  </li>
-  <li>
-    <a href="https://railsconf.com/program#session-140">Practical Debugging</a>
-    <a href="https://github.com/kddeisz/practical-debugging" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
-    <a href="https://speakerdeck.com/kddeisz/practical-debugging" title="Speaker Deck"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-    <br />RailsConf 2017
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/oi4h30chCz8" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </li>
-</ul>
-      </section>
-      <section id="blog-posts">
-<ul>
-  <li>
-    <a href="http://eng.localytics.com/infrastructure-as-code-with-humidifier-reservoir/">
-      Infrastructure as Code with humidifier-reservoir</a><br />
-    August 23, 2017
-  </li>
-  <li>
-    <a href="http://eng.localytics.com/connecting-to-snowflake-with-ruby-on-rails/">
-      Connecting to Snowflake with Ruby on Rails</a><br />
-    June 09, 2017
-  </li>
-  <li>
-    <a href="http://eng.localytics.com/cogito/">
-      Cogito - Adding "I think" to "IAM"</a><br />
-    June 07, 2017
-  </li>
-  <li>
-    <a href="http://eng.localytics.com/odbc-and-writing-your-own-activerecord-adapter/">
-      ODBC and writing your own ActiveRecord adapter</a><br />
-    March 7, 2017
-  </li>
-  <li>
-    <a href="http://eng.localytics.com/best-practices-and-common-mistakes-with-travis-ci/">
-      Best Practices and Common Mistakes with Travis CI</a><br />
-    January 10, 2017
-  </li>
-  <li>
-    <a href="http://eng.localytics.com/exploring-cli-best-practices/">
-      Exploring CLI Best Practices</a><br />
-    October 11, 2016
-  </li>
-  <li>
-    <a href="http://eng.localytics.com/humidifier-cloudformation-made-easier/">
-      Humidifier - CloudFormation made easier</a><br />
-    June 20, 2016
-  </li>
-  <li>
-    <a href="http://eng.localytics.com/serverless-slackbots-powered-by-aws/">
-      Serverless Slackbots Powered by AWS</a><br />
-    March 08, 2016
-  </li>
-</ul>
-      </section>
-      <section id="projects">
-<ul>
-  <li>
-    <a href="https://github.com/drugdev/attribute_extras">
-      drugdev/attribute_extras</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    Rails model macros for auto attribute manipulation
-  </li>
-  <li>
-    <a href="https://github.com/localytics/cogito.tmbundle">
-      localytics/cogito.tmbundle</a><br />
-    Cogito language definition bundle
-  </li>
-  <li>
-    <a href="https://github.com/localytics/cogito-py">
-      localytics/cogito-py</a>
-    <em class="lang lang-python"></em>
-    <span class="small">Python</span><br />
-    A python package that wraps libcogito
-  </li>
-  <li>
-    <a href="https://github.com/localytics/cogito-rb">
-      localytics/cogito-rb</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    A ruby library that wraps libcogito
-  </li>
-  <li>
-    <a href="https://github.com/localytics/cogito-resource">
-      localytics/cogito-resource</a>
-    <em class="lang lang-python"></em>
-    <span class="small">Python</span><br />
-    Cogito CloudFormation custom resource lambda handler
-  </li>
-  <li>
-    <a href="https://github.com/localytics/hollaback">
-      localytics/hollaback</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    Callback chain creation
-  </li>
-  <li>
-    <a href="https://github.com/localytics/humidifier">
-      localytics/humidifier</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    AWS CloudFormation Ruby bindings
-  </li>
-  <li>
-    <a href="https://github.com/localytics/humidifier-reservoir">
-      localytics/humidifier-reservoir</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    Specify humidifier resources in YAML
-  </li>
-  <li>
-    <a href="https://github.com/kddeisz/iseq-rails-tools">
-      kddeisz/iseq-rails-tools</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    Use AOT compilation within Rails
-  </li>
-  <li>
-    <a href="https://github.com/localytics/lambda-slack-router">
-      localytics/lambda-slack-router</a>
-    <em class="lang lang-js"></em>
-    <span class="small">JavaScript</span><br />
-    Node.js package for creating slackbot AWS lambda functions
-  </li>
-  <li>
-    <a href="https://github.com/localytics/libcogito">
-      localytics/libcogito</a>
-    <em class="lang lang-c"></em>
-    <span class="small">C</span><br />
-    Simple format for defining AWS IAM policies
-  </li>
-  <li>
-    <a href="https://github.com/kddeisz/minitest-keyword">
-      kddeisz/minitest-keyword</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    Use Minitest assertions with keyword arguments
-  </li>
-  <li>
-    <a href="https://github.com/localytics/odbc_adapter">
-      localytics/odbc_adapter</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    ActiveRecord adapter for ODBC
-  </li>
-  <li>
-    <a href="https://kddeisz.github.io/pokerpg-builder/">
-      pokerpg-builder</a>
-    <em class="lang lang-js"></em>
-    <span class="small">JavaScript</span><br />
-    Webapp for building pokemon in PokeRPG
-  </li>
-  <li>
-    <a href="https://github.com/kddeisz/pro-publica">
-      kddeisz/pro-publica</a>
-    <em class="lang lang-elixir"></em>
-    <span class="small">Elixir</span><br />
-    An Elixir wrapper around the ProPublica Congress API
-  </li>
-  <li>
-    <a href="https://github.com/localytics/serverless-slackbot-scaffold">
-      localytics/serverless-slackbot-scaffold</a>
-    <em class="lang lang-js"></em>
-    <span class="small">JavaScript</span><br />
-    A khaos scaffold for an AWS slackbot
-  </li>
-  <li>
-    <a href="https://github.com/kddeisz/snip_snip">
-      kddeisz/snip_snip</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    Monitors unused selected columns in Rails
-  </li>
-  <li>
-    <a href="https://github.com/localytics/stack_path">
-      localytics/stack_path</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    A Ruby client for the StackPath CDN API
-  </li>
-  <li>
-    <a href="https://github.com/localytics/travis.ex">
-      localytics/travis.ex</a>
-    <em class="lang lang-elixir"></em>
-    <span class="small">Elixir</span><br />
-    Simple Elixir wrapper around the Travis CI API
-  </li>
-  <li>
-    <a href="https://github.com/localytics/thor-hollaback">
-      localytics/thor-hollaback</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    Adds callbacks to Thor commands
-  </li>
-  <li>
-    <a href="https://github.com/kddeisz/tuby">
-      kddeisz/tuby</a>
-    <em class="lang lang-c"></em>
-    <span class="small">C</span><br />
-    A small language that compiles down to YARV
-  </li>
-  <li>
-    <a href="https://github.com/kddeisz/vernacular">
-      kddeisz/vernacular</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    Allows extending ruby's syntax and compilation process
-  </li>
-  <li>
-    <a href="https://www.wm-memories.com/">
-      wm-memories</a>
-    <em class="lang lang-ruby"></em>
-    <span class="small">Ruby</span><br />
-    An app for storing memories from W&amp;M
-  </li>
-</ul>
-    </article>
-    <script>
-      let active = document.querySelector("a[href='" + window.location.hash + "']");
-      if (active) {
-        active.className = "active";
-        document.querySelector(window.location.hash).className = "active";
-      } else {
-        document.querySelector("a[href='#speaking']").className = "active";
-        document.querySelector("section#speaking").className = "active";
-      }
-
-      document.querySelectorAll("nav a").forEach(function (element) {
-        element.addEventListener("click", function (event) {
-          let previous = document.querySelector("nav a.active");
-          previous.className = "";
-          document.querySelector(previous.getAttribute("href")).className = "";
-
-          element.className = "active";
-          document.querySelector(element.getAttribute("href")).className = "active";
-        });
-      });
-    </script>
   </body>
 </html>
