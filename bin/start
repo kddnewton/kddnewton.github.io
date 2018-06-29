@@ -1,11 +1,9 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'webrick'
 
 server = WEBrick::HTTPServer.new(DocumentRoot: File.expand_path('..', __dir__))
-
-trap 'INT' do
-  server.shutdown
-end
+trap('INT') { server.shutdown }
 
 server.start
