@@ -1,14 +1,20 @@
-.container {
-  margin: 0 auto;
-  max-width: 800px;
+html {
+  background-color: #f7f7f7;
+  font-family: sans-serif;
 }
 
-.headshot img {
-  width: 150px;
-  height: 150px;
-  border-radius: 150px;
-  float: left;
-  margin: 0 50px 20px 0;
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: white;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
 }
 
 iframe {
@@ -18,4 +24,45 @@ iframe {
 
 h2, h3 {
   clear: both;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.headshot {
+  width: 150px;
+  height: 150px;
+  float: left;
+  margin-right: 20px;
+}
+
+.links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.links li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.links svg {
+  width: 30px;
+  height: 30px;
+}
+
+.links svg:hover path {
+  fill: #aaa;
+}
+
+.links path {
+  fill: #777;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }

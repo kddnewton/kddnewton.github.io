@@ -1,15 +1,3 @@
-# Kevin Deisz
-
-CTO at [CultureHQ](https://culturehq.com)
-
-![Headshot](assets/headshot.png)
-{: .headshot}
-
-* [Twitter](https://twitter.com/kddeisz)
-* [GitHub](https://github.com/kddeisz)
-* [LinkedIn](https://www.linkedin.com/in/kevin-deisz)
-* [Speaker Deck](https://speakerdeck.com/)
-
 ## Projects
 
 ### Ruby
