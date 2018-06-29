@@ -48,7 +48,7 @@
 
 ### Compiling Ruby
 
-<iframe src="https://www.youtube.com/embed/B3Uf-aHZwmw" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/B3Uf-aHZwmw" title="Compiling Ruby" frameborder="0" allowfullscreen></iframe>
 
 [Code](https://github.com/kddeisz/compiling-ruby)
 [Slides](https://speakerdeck.com/kddeisz/compiling-ruby)
@@ -59,7 +59,7 @@
 
 ### Practical Debugging
 
-<iframe src="https://www.youtube.com/embed/oi4h30chCz8" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/oi4h30chCz8" title="Practical Debugging" frameborder="0" allowfullscreen></iframe>
 
 [Code](https://github.com/kddeisz/practical-debugging)
 [Slides](https://speakerdeck.com/kddeisz/practical-debugging)

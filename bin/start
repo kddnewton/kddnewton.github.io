@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'webrick'
+
+server = WEBrick::HTTPServer.new(DocumentRoot: File.expand_path('..', __dir__))
+
+trap 'INT' do
+  server.shutdown
+end
+
+server.start
