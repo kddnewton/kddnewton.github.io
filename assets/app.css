@@ -24,6 +24,12 @@ small {
   margin-left: 5px;
 }
 
+@media (max-width: 500px) {
+  small {
+    display: block;
+  }
+}
+
 h2, h3 {
   clear: both;
 }
