@@ -3,7 +3,8 @@
 
 require 'webrick'
 
-server = WEBrick::HTTPServer.new(DocumentRoot: File.expand_path('..', __dir__))
-trap('INT') { server.shutdown }
+root = File.expand_path(File.join('..', 'build'), __dir__)
+server = WEBrick::HTTPServer.new(DocumentRoot: root)
 
+trap('INT') { server.shutdown }
 server.start

@@ -21,7 +21,7 @@ guard :shell do
     filename = match[1]
 
     source = File.join(asset_dir, filename)
-    dest = File.join(build_dir, filename)
+    dest = File.join(build_dir, 'assets', filename)
 
     if filename.end_with?('.css')
       compressor = YUI::CssCompressor.new
