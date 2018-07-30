@@ -6,9 +6,9 @@ require 'kramdown'
 require 'yui/compressor'
 
 guard :shell do
-  asset_dir = File.expand_path(File.join('assets'), __dir__)
-  build_dir = File.expand_path(File.join('build'), __dir__)
-  src_dir = File.expand_path(File.join('src'), __dir__)
+  asset_dir = File.expand_path('assets', __dir__)
+  build_dir = File.expand_path('build', __dir__)
+  src_dir = File.expand_path('src', __dir__)
 
   watch(/\Asrc/) do
     body = Kramdown::Document.new(File.read(File.join(src_dir, 'index.md'))).to_html
