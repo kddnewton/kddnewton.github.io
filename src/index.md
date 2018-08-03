@@ -24,6 +24,7 @@
 
 ### JavaScript
 
+* [CultureHQ/client](https://github.com/CultureHQ/client) - A JavaScript client that wraps the CultureHQ API
 * [CultureHQ/components](https://github.com/CultureHQ/components) - CultureHQ's component library
 * [CultureHQ/polyfill-lambda](https://github.com/CultureHQ/polyfill-lambda) - Generates polyfills based on user agent strings
 * [CultureHQ/react-state-mutations](https://github.com/CultureHQ/react-state-mutations) - Mutate react state without race conditions
