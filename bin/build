@@ -6,17 +6,23 @@ require 'fileutils'
 require 'kramdown'
 require 'yui/compressor'
 
-asset_dir = File.expand_path(File.join('..', 'assets'), __dir__)
-build_dir = File.expand_path(File.join('..', 'build'), __dir__)
-src_dir = File.expand_path(File.join('..', 'src'), __dir__)
+ASSET_DIR = File.expand_path(File.join('..', 'assets'), __dir__)
+BUILD_DIR = File.expand_path(File.join('..', 'build'), __dir__)
+SRC_DIR = File.expand_path(File.join('..', 'src'), __dir__)
 
-body = Kramdown::Document.new(File.read(File.join(src_dir, 'index.md'))).to_html
-result = ERB.new(File.read(File.join(src_dir, 'template.html'))).result(binding)
+def read_md(name)
+  Kramdown::Document.new(File.read(File.join(SRC_DIR, "#{name}.md"))).to_html
+end
 
-File.write(File.join(build_dir, 'index.html'), result)
+projects = read_md('projects')
+speaking = read_md('speaking')
+posts = read_md('posts')
+result = ERB.new(File.read(File.join(SRC_DIR, 'template.html'))).result(binding)
 
-Dir[File.join(asset_dir, '*')].each do |source|
-  dest = File.join(build_dir, 'assets', File.basename(source))
+File.write(File.join(BUILD_DIR, 'index.html'), result)
+
+Dir[File.join(ASSET_DIR, '*')].each do |source|
+  dest = File.join(BUILD_DIR, 'assets', File.basename(source))
 
   if source.end_with?('.css')
     compressor = YUI::CssCompressor.new
