@@ -1,7 +1,7 @@
 /* color scheme: http://paletton.com/#uid=52Z0u0krAqLhaxZm1s+txlnzWgr */
 
 html {
-  background: #f7f7f7 url("background.webp") no-repeat;
+  background: #f7f7f7 url("background.png") no-repeat;
   background-size: 100% auto;
   font-family: sans-serif;
 }
@@ -121,6 +121,10 @@ section {
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
   padding: 25px 50px;
 }
+
+@media (max-width: 1400px) { header, section { padding: 25px 50px; } }
+@media (max-width: 1000px) { header, section { padding: 15px 30px; } }
+@media (max-width: 600px) { header, section { padding: 10px 20px; } }
 
 section {
   background-color: white;
