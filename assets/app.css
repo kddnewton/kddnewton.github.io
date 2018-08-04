@@ -76,7 +76,8 @@ header a:hover {
   width: 90px;
 }
 
-.icon {
+.icon,
+.icon:hover {
   text-decoration: none;
 }
 
@@ -94,10 +95,15 @@ header a:hover {
 
 .icon svg {
   background-color: white;
+  border: #15984f solid 1px;
   border-radius: 25px;
-  height: 25px;
   padding: 1px;
+  height: 25px;
   width: 25px;
+}
+
+.icon:hover svg {
+  border-color: white;
 }
 
 .icon path {
