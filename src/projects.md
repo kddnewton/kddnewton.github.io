@@ -49,5 +49,4 @@
 ### Other
 
 * [kddeisz/pokerpg-builder](https://github.com/kddeisz/pokerpg-builder) - Webapp for building pokemon in PokeRPG
-* [kddeisz/pro-publica](https://github.com/kddeisz/pro-publica) - An Elixir wrapper around the ProPublica Congress API
 * [kddeisz/wm-memories](https://github.com/kddeisz/wm-memories) - An app for storing memories from W&amp;M
