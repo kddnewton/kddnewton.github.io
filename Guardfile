@@ -5,23 +5,29 @@ require 'fileutils'
 require 'kramdown'
 require 'yui/compressor'
 
+ASSET_DIR = File.expand_path('assets', __dir__)
+BUILD_DIR = File.expand_path('build', __dir__)
+SRC_DIR = File.expand_path('src', __dir__)
+
+def read_md(name)
+  Kramdown::Document.new(File.read(File.join(SRC_DIR, "#{name}.md"))).to_html
+end
+
 guard :shell do
-  asset_dir = File.expand_path('assets', __dir__)
-  build_dir = File.expand_path('build', __dir__)
-  src_dir = File.expand_path('src', __dir__)
-
   watch(/\Asrc/) do
-    body = Kramdown::Document.new(File.read(File.join(src_dir, 'index.md'))).to_html
-    result = ERB.new(File.read(File.join(src_dir, 'template.html'))).result(binding)
+    projects = read_md('projects')
+    speaking = read_md('speaking')
+    posts = read_md('posts')
+    result = ERB.new(File.read(File.join(SRC_DIR, 'template.html'))).result(binding)
 
-    File.write('index.html', result)
+    File.write(File.join(BUILD_DIR, 'index.html'), result)
   end
 
   watch(%r{\Aassets/(.+)}) do |match|
     filename = match[1]
 
-    source = File.join(asset_dir, filename)
-    dest = File.join(build_dir, 'assets', filename)
+    source = File.join(ASSET_DIR, filename)
+    dest = File.join(BUILD_DIR, 'assets', filename)
 
     if filename.end_with?('.css')
       compressor = YUI::CssCompressor.new
