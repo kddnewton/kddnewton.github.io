@@ -6,7 +6,7 @@ Oftentimes we trade away code style for the sake of pushing new features. This o
 [[Code](https://github.com/kddeisz/bonsai)]
 [[Slides](https://speakerdeck.com/kddeisz/grow-a-bonsai-not-a-shrub)]
 
-<iframe src="https://www.youtube.com/watch?v=wyDe_segUs0&amp=&t=1s" title="Gorw a bonsai, not a shrub" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/wyDe_segUs0" title="Gorw a bonsai, not a shrub" frameborder="0" allowfullscreen></iframe>
 
 * [Boston Ruby Group Oct 2018](https://bostonrb.org/)
 
