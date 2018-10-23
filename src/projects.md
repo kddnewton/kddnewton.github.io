@@ -29,6 +29,7 @@
 * [CultureHQ/polyfill-lambda](https://github.com/CultureHQ/polyfill-lambda) - Generates polyfills based on user agent strings
 * [CultureHQ/react-state-mutations](https://github.com/CultureHQ/react-state-mutations) - Mutate react state without race conditions
 * [CultureHQ/react-tenor](https://github.com/CultureHQ/react-tenor) - A React component for selected GIFs from Tenor
+* [CultureHQ/react-tiny-router](https://github.com/CultureHQ/react-tiny-router) - A tiny router for React.js using babel-macros.
 
 ### Dev Tools
 
