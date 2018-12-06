@@ -24,6 +24,8 @@
 
 ### JavaScript
 
+* [CultureHQ/add-to-calendar](https://github.com/CultureHQ/add-to-calendar) - A small package for adding an event to a calendar.
+* [CultureHQ/charts](https://github.com/CultureHQ/charts) - An SVG React charting library
 * [CultureHQ/client](https://github.com/CultureHQ/client) - A JavaScript client that wraps the CultureHQ API
 * [CultureHQ/components](https://github.com/CultureHQ/components) - CultureHQ's component library
 * [CultureHQ/polyfill-lambda](https://github.com/CultureHQ/polyfill-lambda) - Generates polyfills based on user agent strings
