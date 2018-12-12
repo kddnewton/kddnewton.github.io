@@ -1,5 +1,6 @@
 ## Posts
 
+* [Skipping preflight checks](https://engineering.culturehq.com/posts/2018-12-11-skipping-preflight-checks) - December 11, 2018
 * [Faster Rails Tests](https://gist.github.com/kddeisz/66f2e7749535f30f868d36021056fd15) - January 5, 2018
 * [Infrastructure as Code with humidifier-reservoir](http://eng.localytics.com/infrastructure-as-code-with-humidifier-reservoir/) - August 23, 2017
 * [Connecting to Snowflake with Ruby on Rails](http://eng.localytics.com/connecting-to-snowflake-with-ruby-on-rails/) - June 09, 2017
