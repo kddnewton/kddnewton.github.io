@@ -36,6 +36,7 @@
 
 ### Dev Tools
 
+* [CultureHQ/actions-yarn](https://github.com/CultureHQ/actions-yarn) - GitHub actions wrapper for the yarn CLI
 * [localytics/cogito-py](https://github.com/localytics/cogito-py) - A python package that wraps libcogito
 * [localytics/cogito-rb](https://github.com/localytics/cogito-rb) - A ruby library that wraps libcogito
 * [localytics/cogito-resource](https://github.com/localytics/cogito-resource) - Cogito CloudFormation custom resource lambda handler
@@ -52,7 +53,6 @@
 
 ### Other
 
-* [CultureHQ/actions-yarn](https://github.com/CultureHQ/actions-yarn) - GitHub actions wrapper for the yarn CLI
 * [kddeisz/kevindeisz.com](https://github.com/kddeisz/kevindeisz.com) - The source code for this website
 * [kddeisz/pokerpg-builder](https://github.com/kddeisz/pokerpg-builder) - Webapp for building pokemon in PokeRPG
 * [kddeisz/wm-memories](https://github.com/kddeisz/wm-memories) - An app for storing memories from W&amp;M
