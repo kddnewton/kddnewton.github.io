@@ -24,13 +24,14 @@
 
 ### JavaScript
 
-* [CultureHQ/add-to-calendar](https://github.com/CultureHQ/add-to-calendar) - A small package for adding an event to a calendar.
-* [CultureHQ/charts](https://github.com/CultureHQ/charts) - An SVG React charting library
+* [CultureHQ/add-to-calendar](https://engineering.culturehq.com/add-to-calendar) - A small package for adding an event to a calendar.
+* [CultureHQ/charts](https://engineering.culturehq.com/charts) - An SVG React charting library
 * [CultureHQ/client](https://github.com/CultureHQ/client) - A JavaScript client that wraps the CultureHQ API
-* [CultureHQ/components](https://github.com/CultureHQ/components) - CultureHQ's component library
+* [CultureHQ/components](https://engineering.culturehq.com/components) - CultureHQ's component library
+* [CultureHQ/eslint-config](https://github.com/CultureHQ/eslint-config) - CultureHQ's eslint configuration
 * [CultureHQ/polyfill-lambda](https://github.com/CultureHQ/polyfill-lambda) - Generates polyfills based on user agent strings
 * [CultureHQ/react-state-mutations](https://github.com/CultureHQ/react-state-mutations) - Mutate react state without race conditions
-* [CultureHQ/react-tenor](https://github.com/CultureHQ/react-tenor) - A React component for selected GIFs from Tenor
+* [CultureHQ/react-tenor](https://engineering.culturehq.com/react-tenor) - A React component for selected GIFs from Tenor
 * [CultureHQ/react-tiny-router](https://github.com/CultureHQ/react-tiny-router) - A tiny router for React.js using babel-macros.
 
 ### Dev Tools
@@ -51,6 +52,7 @@
 
 ### Other
 
+* [CultureHQ/actions-yarn](https://github.com/CultureHQ/actions-yarn) - GitHub actions wrapper for the yarn CLI
 * [kddeisz/kevindeisz.com](https://github.com/kddeisz/kevindeisz.com) - The source code for this website
 * [kddeisz/pokerpg-builder](https://github.com/kddeisz/pokerpg-builder) - Webapp for building pokemon in PokeRPG
 * [kddeisz/wm-memories](https://github.com/kddeisz/wm-memories) - An app for storing memories from W&amp;M
