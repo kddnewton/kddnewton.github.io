@@ -36,6 +36,7 @@
 
 ### Dev Tools
 
+* [CultureHQ/actions-bundler](https://github.com/CultureHQ/actions-bundler) - GitHub actions wrapper for the bundler CLI
 * [CultureHQ/actions-yarn](https://github.com/CultureHQ/actions-yarn) - GitHub actions wrapper for the yarn CLI
 * [localytics/cogito-py](https://github.com/localytics/cogito-py) - A python package that wraps libcogito
 * [localytics/cogito-rb](https://github.com/localytics/cogito-rb) - A ruby library that wraps libcogito
