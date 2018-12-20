@@ -42,6 +42,7 @@
 * [localytics/cogito-rb](https://github.com/localytics/cogito-rb) - A ruby library that wraps libcogito
 * [localytics/cogito-resource](https://github.com/localytics/cogito-resource) - Cogito CloudFormation custom resource lambda handler
 * [localytics/cogito.tmbundle](https://github.com/localytics/cogito.tmbundle) - Cogito language definition bundle
+* [CultureHQ/github-actions-badge](https://github.com/CultureHQ/github-actions-badge) - a GitHub Actions README badge
 * [localytics/humidifier](https://github.com/localytics/humidifier) - AWS CloudFormation Ruby bindings
 * [localytics/humidifier-reservoir](https://github.com/localytics/humidifier-reservoir) - Specify humidifier resources in YAML
 * [localytics/lambda-slack-router](https://github.com/localytics/lambda-slack-router) - Node package for creating slackbot AWS lambda functions
