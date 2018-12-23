@@ -5,6 +5,7 @@
 * [attribute_extras](https://github.com/kddeisz/attribute_extras) - Rails model macros for auto attribute manipulation
 * [bundler-console](https://github.com/kddeisz/bundler-console) - A bundler plugin for the console command
 * [fast_underscore](https://github.com/kddeisz/fast_underscore) - A fast native implementation of the String#underscore method
+* [kevindeisz](https://github.com/kddeisz/kevindeisz) - npx kevindeisz
 * [kevindeisz.com](https://github.com/kddeisz/kevindeisz.com) - The source code for this website
 * [ldap-playground](https://github.com/kddeisz/ldap-playground) - A small repository for testing out LDAP integrations
 * [minitest-keyword](https://github.com/kddeisz/minitest-keyword) - Use Minitest assertions with keyword arguments
