@@ -11,7 +11,7 @@
 * [minitest-keyword](https://github.com/kddeisz/minitest-keyword) - Use Minitest assertions with keyword arguments
 * [musicxml](https://github.com/kddeisz/musicxml) - Parse music XML with Ruby
 * [pokerpg-builder](https://github.com/kddeisz/pokerpg-builder) - Webapp for building pokemon in PokeRPG
-* [prettier-ruby](https://github.com/kddeisz/prettier-ruby) - A prettier plugin for the Ruby language
+* [prettier-ruby](https://github.com/prettier/plugin-ruby) - A prettier plugin for the Ruby language
 * [ripperjs](https://github.com/kddeisz/ripperjs) - A node wrapper for Ruby's Ripper library
 * [snip_snip](https://github.com/kddeisz/snip_snip) - Monitors unused selected columns in Rails
 * [tiny_struct](https://github.com/kddeisz/tiny_struct) - A simpler struct for clear usage
