@@ -1,5 +1,7 @@
 ## Posts
 
+* [react-state-mutations](https://engineering.culturehq.com/posts/2019-02-22-react-state-mutations) - February 22 - 2019
+* [Weird Ruby](https://engineering.culturehq.com/posts/2019-02-14-weird-ruby) - February 14, 2019
 * [Dynamic ActiveRecord columns](https://engineering.culturehq.com/posts/2019-01-18-dynamic-activerecord-columns) - January 18, 2018
 * [Delegating ActiveRecord scopes](https://engineering.culturehq.com/posts/2019-01-11-delegating-activerecord-scopes) - January 11, 2018
 * [Skipping preflight checks](https://engineering.culturehq.com/posts/2018-12-11-skipping-preflight-checks) - December 11, 2018
