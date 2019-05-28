@@ -1,12 +1,22 @@
 ## Speaking
 
+### Pre-evaluation in Ruby
+
+Ruby is historically difficult to optimize due to features that improve flexibility and productivity at the cost of performance. Techniques like Ruby's new JIT compiler and deoptimization code help, but still are limited by techniques like monkey-patching and binding inspection. Pre-evaluation is another optimization technique that works based on user-defined contracts and assumptions. Users can opt in to optimizations by limiting their use of Ruby's features and thereby allowing further compiler work. [[Code](https://github.com/kddeisz/preval)]
+[[Slides](https://speakerdeck.com/kddeisz/pre-evaluation-in-ruby)]
+
+<iframe src="https://www.youtube.com/embed/7GqhHmfjemY" title="Pre-evaluation in Ruby" frameborder="0" allowfullscreen></iframe>
+
+* [Ruby Kaigi 2019](https://rubykaigi.org/2019/presentations/kddeisz.html)
+* [RailsConf 2019](https://www.railsconf.com/program/sessions#session-748)
+
 ### Grow a bonsai, not a shrub
 
 Oftentimes we trade away code style for the sake of pushing new features. This often results in a tangled web of code that few understand and fewer can maintain. This talk explores Ruby’s tools and how to wield them to trim your application’s code into the shape it should eventually take.
 [[Code](https://github.com/kddeisz/bonsai)]
 [[Slides](https://speakerdeck.com/kddeisz/grow-a-bonsai-not-a-shrub)]
 
-<iframe src="https://www.youtube.com/embed/wyDe_segUs0" title="Gorw a bonsai, not a shrub" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/wyDe_segUs0" title="Grow a bonsai, not a shrub" frameborder="0" allowfullscreen></iframe>
 
 * [Boston Ruby Group Oct 2018](https://bostonrb.org/)
 
