@@ -1,29 +1,38 @@
 ## Projects
 
-### Developer experience
+I like to program - mostly in Ruby, JavaScript, and C but occasionally in other languages as well (Python, C++, Rust, and Elixir). Most everything I do is open-sourced on GitHub.
+
+### Current
+
+Projects that I'm currently working on and developing.
 
 * [prettier-ruby](https://github.com/prettier/plugin-ruby) - A prettier plugin for the Ruby language
 * [preval](https://github.com/kddeisz/preval) - Automatically optimizes your Ruby code
 * [rbcheck](https://github.com/kddeisz/rbcheck) - A symbolic executor for the Ruby programming language
-* [tuby](https://github.com/kddeisz/tuby) - A small language that compiles down to YARV
+
+### Maintenance
+
+Projects that I've built in the past and continue to maintain and update periodically.
+
+#### Developer experience
+
 * [vernacular](https://github.com/kddeisz/vernacular) - Allows extending Ruby's syntax and compilation process
 * [vernacular-ast](https://github.com/kddeisz/vernacular-ast) - Extend and recompile Ruby's AST on the fly
 
-### Backend
+#### Backend
 
 * [adequate_serialization](https://github.com/CultureHQ/adequate_serialization) - Serializes objects adequately
 * [attribute_extras](https://github.com/kddeisz/attribute_extras) - Rails model macros for auto attribute manipulation
 * [fast_underscore](https://github.com/kddeisz/fast_underscore) - A fast native implementation of the String#underscore method
 * [hollaback](https://github.com/localytics/hollaback) - Generic callback chain creation
 * [minitest-keyword](https://github.com/kddeisz/minitest-keyword) - Use Minitest assertions with keyword arguments
-* [musicxml](https://github.com/kddeisz/musicxml) - Parse music XML with Ruby
 * [odbc_adapter](https://github.com/localytics/odbc_adapter) - ActiveRecord adapter for ODBC
 * [paperweight](https://github.com/CultureHQ/paperweight) - Paperclip attachments in the background
 * [rack-queries](https://github.com/CultureHQ/rack-queries) - A page in your rack-based application that allows quick execution of pre-built queries
 * [snip_snip](https://github.com/kddeisz/snip_snip) - Monitors unused selected columns in Rails
 * [tiny_struct](https://github.com/kddeisz/tiny_struct) - A simpler struct for clear usage
 
-### Frontend
+#### Frontend
 
 * [add-to-calendar](https://engineering.culturehq.com/add-to-calendar) - A small package for adding an event to a calendar.
 * [charts](https://engineering.culturehq.com/charts) - An SVG React charting library
@@ -34,32 +43,40 @@
 * [react-state-mutations](https://github.com/CultureHQ/react-state-mutations) - Mutate react state without race conditions
 * [react-tenor](https://engineering.culturehq.com/react-tenor) - A React component for selected GIFs from Tenor
 * [react-tiny-router](https://github.com/CultureHQ/react-tiny-router) - A tiny router for React.js using babel-macros.
-* [ripperjs](https://github.com/kddeisz/ripperjs) - A node wrapper for Ruby's Ripper library
 * [scripts](https://github.com/CultureHQ/scripts) - A collection of scripts for JavaScript development
-* [stack_path](https://github.com/localytics/stack_path) - A Ruby client for the StackPath CDN API
 
-### DevOps
+#### DevOps
 
 * [actions-bundler](https://github.com/CultureHQ/actions-bundler) - GitHub actions wrapper for the bundler CLI
 * [actions-yarn](https://github.com/CultureHQ/actions-yarn) - GitHub actions wrapper for the yarn CLI
-* [bundler-console](https://github.com/kddeisz/bundler-console) - A bundler plugin for the console command
 * [cogito-py](https://github.com/kddeisz/cogito-py) - A python package that wraps libcogito
 * [cogito-rb](https://github.com/kddeisz/cogito-rb) - A ruby library that wraps libcogito
 * [cogito-resource](https://github.com/kddeisz/cogito-resource) - Cogito CloudFormation custom resource lambda handler
 * [cogito.tmbundle](https://github.com/kddeisz/cogito.tmbundle) - Cogito language definition bundle
 * [github-actions-badge](https://github.com/CultureHQ/github-actions-badge) - a GitHub Actions README badge
 * [humidifier](https://github.com/kddeisz/humidifier) - AWS CloudFormation Ruby bindings
-* [humidifier-reservoir](https://github.com/kddeisz/humidifier-reservoir) - Specify humidifier resources in YAML
-* [lambda-slack-router](https://github.com/localytics/lambda-slack-router) - Node package for creating slackbot AWS lambda functions
-* [ldap-playground](https://github.com/kddeisz/ldap-playground) - A small repository for testing out LDAP integrations
 * [libcogito](https://github.com/kddeisz/libcogito) - Simple format for defining AWS IAM policies
-* [serverless-slackbot-scaffold](https://github.com/localytics/serverless-slackbot-scaffold) - A khaos scaffold for an AWS slackbot
-* [travis.ex](https://github.com/kddeisz/travis.ex) - Simple Elixir wrapper around the Travis CI API
 * [thor-hollaback](https://github.com/kddeisz/thor-hollaback) - Adds callbacks to Thor commands
 
-### Apps
+#### Apps
 
 * [kevindeisz](https://github.com/kddeisz/kevindeisz) - npx kevindeisz
 * [kevindeisz.com](https://github.com/kddeisz/kevindeisz.com) - The source code for this website
-* [pokerpg-builder](https://github.com/kddeisz/pokerpg-builder) - Webapp for building pokemon in PokeRPG
 * [wm-memories](https://github.com/kddeisz/wm-memories) - An app for storing memories from W&amp;M
+
+### Past
+
+Projects that I've built in the past that I'm no longer updating.
+
+* [bundler-console](https://github.com/kddeisz/bundler-console) - A bundler plugin for the console command
+* [humidifier-reservoir](https://github.com/kddeisz/humidifier-reservoir) - Specify humidifier resources in YAML
+* [lambda-slack-router](https://github.com/localytics/lambda-slack-router) - Node package for creating slackbot AWS lambda functions
+* [ldap-playground](https://github.com/kddeisz/ldap-playground) - A small repository for testing out LDAP integrations
+* [musicxml](https://github.com/kddeisz/musicxml) - Parse music XML with Ruby
+* [pokerpg-builder](https://github.com/kddeisz/pokerpg-builder) - Webapp for building pokemon in PokeRPG
+* [ripperjs](https://github.com/kddeisz/ripperjs) - A node wrapper for Ruby's Ripper library
+* [serverless-slackbot-scaffold](https://github.com/localytics/serverless-slackbot-scaffold) - A khaos scaffold for an AWS slackbot
+* [stack_path](https://github.com/localytics/stack_path) - A Ruby client for the StackPath CDN API
+* [travis.ex](https://github.com/kddeisz/travis.ex) - Simple Elixir wrapper around the Travis CI API
+* [tree](https://github.com/kddeisz/tree) - Implementations of the unix tree command
+* [tuby](https://github.com/kddeisz/tuby) - A small language that compiles down to YARV
