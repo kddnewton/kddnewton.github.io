@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require 'date'
 require 'erb'
 require 'fileutils'
 require 'kramdown'
@@ -31,3 +32,15 @@ Dir[File.join(ASSET_DIR, '*')].each do |source|
     FileUtils.cp(source, dest)
   end
 end
+
+File.write(File.join(BUILD_DIR, 'sitemap.xml'), <<~SITEMAP)
+  <?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+     <url>
+        <loc>https://kevindeisz.com/</loc>
+        <lastmod>#{Date.today}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1</priority>
+     </url>
+  </urlset>
+SITEMAP
