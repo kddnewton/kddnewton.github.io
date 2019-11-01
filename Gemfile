@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'guard', '~> 2.15'
+gem 'guard', '~> 2.16'
 gem 'guard-shell', '~> 0.7'
 gem 'kramdown', '~> 2.1'
 gem 'yui-compressor', '~> 0.12'
