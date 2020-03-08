@@ -5,42 +5,33 @@ require 'date'
 require 'erb'
 require 'fileutils'
 require 'kramdown'
-require 'yui/compressor'
 
-ASSET_DIR = File.expand_path(File.join('..', 'assets'), __dir__)
-BUILD_DIR = File.expand_path(File.join('..', 'docs'), __dir__)
-SRC_DIR = File.expand_path(File.join('..', 'src'), __dir__)
-
-def read_md(name)
-  Kramdown::Document.new(File.read(File.join(SRC_DIR, "#{name}.md"))).to_html
+def read(name)
+  path = File.join('src', "#{name}.md")
+  Kramdown::Document.new(File.read(path)).to_html
 end
 
-projects = read_md('projects')
-speaking = read_md('speaking')
-posts = read_md('posts')
-result = ERB.new(File.read(File.join(SRC_DIR, 'template.html'))).result(binding)
+Dir.chdir(File.expand_path('..', __dir__)) do
+  template = File.read(File.join('src', 'template.html'))
 
-File.write(File.join(BUILD_DIR, 'index.html'), result)
+  File.write(
+    'index.html',
+    ERB.new(template).result_with_hash(
+      projects: read('projects'),
+      speaking: read('speaking'),
+      posts: read('posts')
+    )
+  )
 
-Dir[File.join(ASSET_DIR, '*')].each do |source|
-  dest = File.join(BUILD_DIR, 'assets', File.basename(source))
-
-  if source.end_with?('.css')
-    compressor = YUI::CssCompressor.new
-    File.write(dest, compressor.compress(File.read(source)))
-  else
-    FileUtils.cp(source, dest)
-  end
+  File.write('sitemap.xml', <<~SITEMAP)
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+       <url>
+          <loc>https://kevindeisz.com/</loc>
+          <lastmod>#{Date.today}</lastmod>
+          <changefreq>monthly</changefreq>
+          <priority>1</priority>
+       </url>
+    </urlset>
+  SITEMAP
 end
-
-File.write(File.join(BUILD_DIR, 'sitemap.xml'), <<~SITEMAP)
-  <?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     <url>
-        <loc>https://kevindeisz.com/</loc>
-        <lastmod>#{Date.today}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1</priority>
-     </url>
-  </urlset>
-SITEMAP
