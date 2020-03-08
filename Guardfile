@@ -6,7 +6,7 @@ require 'kramdown'
 require 'yui/compressor'
 
 ASSET_DIR = File.expand_path('assets', __dir__)
-BUILD_DIR = File.expand_path('build', __dir__)
+BUILD_DIR = File.expand_path('docs', __dir__)
 SRC_DIR = File.expand_path('src', __dir__)
 
 def read_md(name)

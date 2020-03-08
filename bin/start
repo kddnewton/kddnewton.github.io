@@ -4,7 +4,7 @@
 require 'guard'
 require 'webrick'
 
-root = File.expand_path(File.join('..', 'build'), __dir__)
+root = File.expand_path(File.join('..', 'docs'), __dir__)
 server = WEBrick::HTTPServer.new(Port: 8080, DocumentRoot: root)
 
 trap('INT') { server.shutdown }
