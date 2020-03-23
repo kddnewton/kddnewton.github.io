@@ -1,6 +1,6 @@
 ## Projects
 
-I like to program - these days mostly in Ruby, JavaScript, and C, occasionally in Python and Rust. Most everything I do is open-sourced on GitHub. Below are the projects I'm most proud of/that I'm thinking about the most these days.
+I like to program - these days mostly in Ruby, TypeScript, and C. Most everything I do is open-sourced on GitHub. Below are the projects I'm most proud of/that I'm thinking about the most these days.
 
 * [cogito-lang/libcogito](https://github.com/cogito-lang/libcogito) - A simple language for defining AWS IAM policies
 * [CultureHQ/components](https://github.com/CultureHQ/components) - CultureHQ's component library
