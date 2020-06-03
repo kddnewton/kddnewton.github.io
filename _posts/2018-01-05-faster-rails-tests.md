@@ -112,7 +112,7 @@ end
 
 ## Disable garbage collection
 
-WARNING: This may or may not speed up your tests, depending on the verison of Ruby that you're running, the content of your tests, the nature of your application, and the nature of your test suite. This could potentially have very negative consequences, as in if your entire test suite were testing CSV deserialization (read: lots of memory usage). For SOME test suites however, you can reap major speed wins by taking GC out of the equation entirely.
+WARNING: This may or may not speed up your tests, depending on the version of Ruby that you're running, the content of your tests, the nature of your application, and the nature of your test suite. This could potentially have very negative consequences, as in if your entire test suite were testing CSV deserialization (read: lots of memory usage). For SOME test suites however, you can reap major speed wins by taking GC out of the equation entirely.
 
 In `test/test_helper.rb`:
 
