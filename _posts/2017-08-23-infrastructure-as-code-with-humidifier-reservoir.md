@@ -3,15 +3,15 @@ layout: post
 title: Infrastructure as code with humidifier-reservoir
 ---
 
-A little more than a year ago we made the [first commit](https://github.com/localytics/humidifier/commit/f051578) to the gem that eventually became [humidifier](https://github.com/localytics/humidifier). It’s [evolved quite a bit](https://github.com/localytics/humidifier/releases) in the last year, including integrating AWS’ [resource specification](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html) which had the side-effect of greatly stabilizing the API. Here at Localytics, we’ve been using `humidifier` in myriad ways, including managing our AWS infrastructure, launching and configuring new servers, and aiding in refactoring our network ACLs for better security (to name a few).
+A little more than a year ago we made the [first commit](https://github.com/localytics/humidifier/commit/f051578) to the gem that eventually became [humidifier](https://github.com/localytics/humidifier). It's [evolved quite a bit](https://github.com/localytics/humidifier/releases) in the last year, including integrating AWS' [resource specification](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html) which had the side-effect of greatly stabilizing the API. Here at Localytics, we've been using `humidifier` in myriad ways, including managing our AWS infrastructure, launching and configuring new servers, and aiding in refactoring our network ACLs for better security (to name a few).
 
-Today we are open-sourcing [humidifier-reservoir](https://github.com/localytics/humidifier-reservoir), a tool for building AWS infrastructure using `humidifier` and simple configuration files. This tool has evolved out of our continued effort to streamline our infrastructure while maintaining the configurability that we’ve worked hard to build into `humidifier`. Below are descriptions and examples on why we built `humidifier-reservoir` and how you can integrate it into your workflow.
+Today we are open-sourcing [humidifier-reservoir](https://github.com/localytics/humidifier-reservoir), a tool for building AWS infrastructure using `humidifier` and simple configuration files. This tool has evolved out of our continued effort to streamline our infrastructure while maintaining the configurability that we've worked hard to build into `humidifier`. Below are descriptions and examples on why we built `humidifier-reservoir` and how you can integrate it into your workflow.
 
 ## Flexibility
 
 First and foremost, we originally built `humidifier` with [flexibility in mind](http://eng.localytics.com/humidifier-cloudformation-made-easier/). Previously we had evaluated other excellent tools like [Terraform](https://www.terraform.io/), [Ansible](https://www.ansible.com/), and [SparkleFormation](http://www.sparkleformation.io/). All of these tools work well and are well-supported by the community; however, we wanted something that was both more tightly integrated with [AWS CloudFormation](https://aws.amazon.com/cloudformation/) and that also allowed us more configuration options that were specific to AWS.
 
-When working with humidifier, we found that it was great for dynamic infrastructure - or, infrastructure that changed regularly (e.g., auto-scaling groups for new application versions and their associated target groups). The weakness, however, came from static infrastructure. When we used `humidifier` to create AWS components that weren’t changing regularly, we ended up duplicating a lot of the functionality in infrastructure configuration tools, with even more boilerplate.
+When working with humidifier, we found that it was great for dynamic infrastructure - or, infrastructure that changed regularly (e.g., auto-scaling groups for new application versions and their associated target groups). The weakness, however, came from static infrastructure. When we used `humidifier` to create AWS components that weren't changing regularly, we ended up duplicating a lot of the functionality in infrastructure configuration tools, with even more boilerplate.
 
 In order words, the flexibility of `humidifier` was outweighed by the burden of having to write everything in code. We ended up determining that the best way forward was to take the best of both worlds - the flexibility of `humidifier` with the simplicity of non-code configuration files. That resulted in the birth of `humidifier-reservoir`.
 
@@ -101,8 +101,7 @@ Humidifier::Reservoir::CLI.start(ARGV)
 ```yaml
 S3DefaultPolicy:  
   description: Grants S3 permissions
-  policy: >
-    ALLOW s3:ListBucket ON *;
+  policy: ALLOW s3:ListBucket ON *;
 ```
 
 Then by running the `./reservoir` CLI, you will have a valid CloudFormation document that you can deploy immediately.
