@@ -40,7 +40,7 @@ In test mode we were using PostgreSQL as a suitable proxy because of the ability
 
 In order to support multiple backend DBMSs, we defined a subclass of `ODBCAdapter` for each one, overriding the necessary behavior. When a connection is first requested, the `::odbc_connection` function queries the connected DBMS for the name and then instantiates the associated `ODBCAdapter` subclass. If none is found, it creates a null connection. Below is a diagram describing this hierarchy:
 
-
+![Diagram showing the class heirarchy for the ODBC adapter](/assets/2017-03-07-1.png)
 
 The null connection actually works in most cases for non schema-related queries for databases that mostly reflect the SQL standard. ARel does a pretty good job of assuming the correct quoting and everything tends to work out. This means that for our own purposes, we didn't need to create a full-blown Vertica adapter, we only needed to override the methods that we were using.
 
