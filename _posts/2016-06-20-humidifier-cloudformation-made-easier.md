@@ -3,21 +3,21 @@ layout: post
 title: Humidifier - CloudFormation made easier
 ---
 
-Today we are open-sourcing [Humidifier](https://github.com/localytics/humidifier/) - one of the tools that we use internally to manage infrastructure on Amazon Web Services (AWS) at Localytics. This Ruby gem allows you to programmatically generate domain objects that represent the AWS CloudFormation (CFN) resources you want, handling the details of JSON manipulation under the covers. We’ve found that Humidifier not only increases development speed, but also results in easy-to-understand, maintainable code that allows you to focus on building resources instead of programming in JSON.
+Today we are open-sourcing [Humidifier](https://github.com/localytics/humidifier/) - one of the tools that we use internally to manage infrastructure on Amazon Web Services (AWS) at Localytics. This Ruby gem allows you to programmatically generate domain objects that represent the AWS CloudFormation (CFN) resources you want, handling the details of JSON manipulation under the covers. We've found that Humidifier not only increases development speed, but also results in easy-to-understand, maintainable code that allows you to focus on building resources instead of programming in JSON.
 
 ## Motivation
 
-As our infrastructure at Localytics continues to scale on AWS, we’ve become more and more reliant on CFN. Being able to create multiple interrelated resources in a fast and reproducible way is a must for a fast-moving technology team, especially when living in a microservice environment. CFN’s key strength lies in its ability to manage large amounts of infrastructure. Its JSON structure, however, can be inflexible, difficult to manage at times, and challenging for newcomers to CFN. Things as simple as referencing another resource in the same stack or concatenating strings requires complex objects that invariably decrease development speed.
+As our infrastructure at Localytics continues to scale on AWS, we've become more and more reliant on CFN. Being able to create multiple interrelated resources in a fast and reproducible way is a must for a fast-moving technology team, especially when living in a microservice environment. CFN's key strength lies in its ability to manage large amounts of infrastructure. Its JSON structure, however, can be inflexible, difficult to manage at times, and challenging for newcomers to CFN. Things as simple as referencing another resource in the same stack or concatenating strings requires complex objects that invariably decrease development speed.
 
 ## Existing Tools
 
-Many tools currently exist in the industry that solve the problem of provisioning and maintaining AWS resources, such as Terraform and SparkleFormation. While we admire these tools, we found ourselves wanting something a little different. We found that SparkleFormation’s DSL was too complex for our use cases, and we missed having our resources provisioned as part of CFN stacks (which you give up with Terraform). We wanted to write the code ourselves but retain the ability to leverage CFN’s strengths.
+Many tools currently exist in the industry that solve the problem of provisioning and maintaining AWS resources, such as Terraform and SparkleFormation. While we admire these tools, we found ourselves wanting something a little different. We found that SparkleFormation's DSL was too complex for our use cases, and we missed having our resources provisioned as part of CFN stacks (which you give up with Terraform). We wanted to write the code ourselves but retain the ability to leverage CFN's strengths.
 
 ## Building Humidifier
 
 Fortunately, the CFN docs are in pretty good shape. [This page](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) in particular became the inspiration for Humidifier, as it lists every possible resource that CFN supports. Each link from that list contains the specifications for all of the attributes on each CFN resource. With those specs in hand we built Humidifier to scrape the docs, build Ruby classes for each resource, and provide accessors for every attribute available. Through these same utilities, Humidifier is able to stay current by checking and updating the specifications on a regular basis. The result is a Ruby gem that provides complete programmatic access to CFN resources, including the ability to quickly and easily deploy CFN stacks and change sets.
 
-Using Humidifier you can drastically reduce the amount of lines that you need to write to describe your infrastructure. The following is an example of a simple stack with a load balancer and auto-scaling group built with CFN’s JSON structure.
+Using Humidifier you can drastically reduce the amount of lines that you need to write to describe your infrastructure. The following is an example of a simple stack with a load balancer and auto-scaling group built with CFN's JSON structure.
 
 ```json
 {
