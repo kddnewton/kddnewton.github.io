@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 ## Posts
 
 * [Polyfill as needed](https://engineering.culturehq.com/posts/2019-05-23-polyfill-as-needed) - May 28, 2019

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 ## Projects
 
 I like to program - these days mostly in Ruby, TypeScript, and C. Most everything I do is open-sourced on GitHub. Below are the projects I'm most proud of/that I'm thinking about the most these days.

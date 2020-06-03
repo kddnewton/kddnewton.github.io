@@ -1,6 +1,8 @@
-## Speaking
+---
+layout: default
+---
 
-### Pre-evaluation in Ruby
+## Pre-evaluation in Ruby
 
 Ruby is historically difficult to optimize due to features that improve flexibility and productivity at the cost of performance. Techniques like Ruby's new JIT compiler and deoptimization code help, but still are limited by techniques like monkey-patching and binding inspection. Pre-evaluation is another optimization technique that works based on user-defined contracts and assumptions. Users can opt in to optimizations by limiting their use of Ruby's features and thereby allowing further compiler work. [[Code](https://github.com/kddeisz/preval)]
 [[Slides](https://speakerdeck.com/kddeisz/pre-evaluation-in-ruby)]
@@ -10,7 +12,7 @@ Ruby is historically difficult to optimize due to features that improve flexibil
 * [Ruby Kaigi 2019](https://rubykaigi.org/2019/presentations/kddeisz.html)
 * [RailsConf 2019](https://www.railsconf.com/program/sessions#session-748)
 
-### Grow a bonsai, not a shrub
+## Grow a bonsai, not a shrub
 
 Oftentimes we trade away code style for the sake of pushing new features. This often results in a tangled web of code that few understand and fewer can maintain. This talk explores Ruby’s tools and how to wield them to trim your application’s code into the shape it should eventually take.
 [[Code](https://github.com/kddeisz/bonsai)]
@@ -20,7 +22,7 @@ Oftentimes we trade away code style for the sake of pushing new features. This o
 
 * [Boston Ruby Group Oct 2018](https://bostonrb.org/)
 
-### Compiling Ruby
+## Compiling Ruby
 
 Since Ruby 2.3 and the introduction of `RubyVM::InstructionSequence::load_iseq`, we've been able to programmatically load ruby bytecode. By divorcing the process of running YARV byte code from the process of compiling ruby code, we can take advantage of the strengths of the ruby virtual machine while simultaneously reaping the benefits of a compiler such as macros, type checking, and instruction sequence optimizations. This can make our ruby faster and more readable! This talk demonstrates how to integrate this into your own workflows and the exciting possibilities this enables. [[Code](https://github.com/kddeisz/compiling-ruby)]
 [[Slides](https://speakerdeck.com/kddeisz/compiling-ruby)]
@@ -31,7 +33,7 @@ Since Ruby 2.3 and the introduction of `RubyVM::InstructionSequence::load_iseq`,
 * [RubyConf 2017](http://confreaks.tv/videos/rubyconf2017-compiling-ruby)
 * [Ruby On Ice 2018](https://rubyonice.com/2018/speakers/kevin_deisz)
 
-### Practical debugging
+## Practical debugging
 
 People give ruby a bad reputation for speed, efficiency, weak typing, etc. But one of the biggest benefits of an interpreted language is the ability to debug and introspect quickly without compilation. Oftentimes developers reach for heavy-handed libraries to debug their application when they could just as easily get the information they need by using tools they already have.
 
