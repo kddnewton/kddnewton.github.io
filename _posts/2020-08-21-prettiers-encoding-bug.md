@@ -111,4 +111,4 @@ Finally, it passed both locally and on CI.
 
 ## tl;dr
 
-Ruby infers the encoding in use by your system using the environment variables `LC_ALL`, `LC_CTYPE`, and `LANG`. If your system doesn't have `nl_langinfo`, it will replicate it for you. If you're going to spawn a Ruby process, make sure you have your encoding set correctly.
+Ruby infers the encoding in use by your system using the environment variables `LC_ALL`, `LC_CTYPE`, and `LANG`. If your system doesn't have `nl_langinfo`, it will replicate it for you. If you're going to spawn a Ruby process, make sure you have your encoding set correctly. The pull request that ended up fixing this is here: [prettier/plugin-ruby#617](https://github.com/prettier/plugin-ruby/pull/617/files).
