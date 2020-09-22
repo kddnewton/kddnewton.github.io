@@ -1,6 +1,6 @@
 # kevindeisz.com
 
-Repo backing my personal website.
+Repo backing my personal website. Run locally with `bundle exec jekyll serve`.
 
 ## Contributing
 
