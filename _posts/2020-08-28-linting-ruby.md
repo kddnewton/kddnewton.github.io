@@ -215,9 +215,7 @@ In the above we can selectively build a module at runtime that includes only the
 
 ## Wrapping up
 
-I regret to inform you that this blog post is not going to turn into the next linter you use in your day-to-day workflow. It's merely a thought experiment about ways that we could improve upon existing tooling, and also an interesting way to explore some syntax trees, metaprogramming, and new Ruby syntax.
-
-That being said, I've bundled the code that this post references into its own [project on GitHub](https://github.com/kddeisz/rblint) that you can feel free to peruse. It's only got three rules in it, and it's definitely pretty nascient, but it's fun either way - _especially_ because you can run it like this:
+I've bundled the code that this post references into its own [project on GitHub](https://github.com/kddeisz/rblint) that you can feel free to peruse. It's only got three rules in it, and it's definitely pretty nascient, but it's fun either way - _especially_ because you can run it like this:
 
 ```bash
 $ ruby --disable-gems bin/rblint 'path/to/files/**/*.rb'
