@@ -1,12 +1,12 @@
 name: Main
 on:
 - push
-- pull_request
+- pull_request_target
 jobs:
   automerge:
     name: AutoMerge
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && (github.actor == github.repository_owner || github.actor == 'dependabot[bot]')
+    if: github.event_name == 'pull_request_target' && (github.actor == github.repository_owner || github.actor == 'dependabot[bot]')
     steps:
     - uses: actions/github-script@v3
       with:
