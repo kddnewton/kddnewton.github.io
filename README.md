@@ -1,10 +1,6 @@
-# kevindeisz.com
+# kddnewton.com
 
 Repo backing my personal website. Run locally with `bundle exec jekyll serve`.
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/kddeisz/kevindeisz.com.
 
 ## License
 
