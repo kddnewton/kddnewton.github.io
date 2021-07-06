@@ -1,7 +1,6 @@
 exclude:
   - .github
   - .gitignore
-  - .mergify.yml
   - CNAME
   - CODE_OF_CONDUCT.md
   - Gemfile
