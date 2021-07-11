@@ -137,7 +137,7 @@ end
 
 If you're using the `blank?` or `present?` method heavily in your code (and are therefore seeing it in your profile) you can use the `fast_blank` gem to drastically improve the perform of these methods. You should see a significant drop off in the amount of time spent in these methods just by adding this gem to your `Gemfile`.
 
-## [`fast_underscore`](https://github.com/kddeisz/fast_underscore)
+## [`fast_underscore`](https://github.com/kddnewton/fast_underscore)
 
 `fast_underscore` is a small gem that overwrites one method from Rails: `ActiveSupport::Inflector#underscore`. It's used a lot internally in Rails (determining table names, determining inverse associations, etc.) and can end up eating up a large percentage of the execution time of the test suite. Follow the instructions in the README to get an automatic speed boost, especially to the startup time of the test suite.
 
