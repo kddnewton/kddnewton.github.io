@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Speaking
 ---
 
 ## Prettier for Ruby
