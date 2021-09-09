@@ -3,7 +3,9 @@ layout: post
 title: Ruby type conversion
 ---
 
-Let's talk about type conversion in Ruby. First, we're going to need some definitions:
+Let's talk about type conversion in Ruby.
+
+First, we're going to need some definitions:
 
 * `type`  
 the kind of object the program is currently dealing with. In Ruby this _usually_ breaks down to the class of the object (e.g., `String` or `Integer`).
