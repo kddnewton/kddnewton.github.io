@@ -3,11 +3,21 @@ layout: default
 title: Speaking
 ---
 
+## Parsing Ruby
+
+Since Ruby's inception, there have been many different projects that parse Ruby code. This includes everything from development tools to Ruby implementations themselves. This talk dives into the technical details and tradeoffs of how each of these tools parses and subsequently understands your applications. After, we'll discuss how you can do the same with your own projects using the Ripper standard library. You'll see just how far we can take this library toward building useful development tools. [[Code](https://github.com/kddnewton/parsing-ruby)] [[Slides](https://speakerdeck.com/kddnewton/parsing-ruby-rubyconf)]
+
+<iframe src="https://www.youtube.com/embed/ijPE7k7iW8I" title="Parsing Ruby" frameborder="0" allowfullscreen></iframe>
+
+* [Ruby Kaigi (2021)](https://rubykaigi.org/2021-takeout/presentations/kddnewton.html)
+* [Boston Ruby Group (Nov 2021)](https://bostonrb.org)
+* [RubyConf (2021)](https://rubyconf.org/program/sessions#session-1183)
+
 ## Prettier for Ruby
 
 Prettier was created in 2017 and has since seen a meteoric rise within the JavaScript community. It differentiated itself from other code formatters and linters by supporting minimal configuration, eliminating the need for long discussions and arguments by enforcing an opinionated style on its users. That enforcement ended up resonating well, as it allowed developers to get back to work on the more important aspects of their job.
 
-Since then, it has expanded to support other languages and markup, including Ruby. The Ruby plugin is now in use in dozens of applications around the world, and better formatting is being worked on daily. This talk will give you a high-level overview of prettier and how to wield it in your project. It will also dive into the nitty gritty, showing how the plugin was made and how you can help contribute to its growth. You’ll come away with a better understanding of Ruby syntax, knowledge of a new tool and how it can be used to help your team.
+Since then, it has expanded to support other languages and markup, including Ruby. The Ruby plugin is now in use in dozens of applications around the world, and better formatting is being worked on daily. This talk will give you a high-level overview of prettier and how to wield it in your project. It will also dive into the nitty gritty, showing how the plugin was made and how you can help contribute to its growth. You’ll come away with a better understanding of Ruby syntax, knowledge of a new tool and how it can be used to help your team. [[Code](https://github.com/prettier/plugin-ruby)] [[Slides](https://speakerdeck.com/kddnewton/prettier-for-ruby-2020)]
 
 <iframe src="https://www.youtube.com/embed/3945FmGGHhw" title="Prettier for Ruby" frameborder="0" allowfullscreen></iframe>
 
@@ -22,7 +32,7 @@ Ruby is historically difficult to optimize due to features that improve flexibil
 <iframe src="https://www.youtube.com/embed/7GqhHmfjemY" title="Pre-evaluation in Ruby" frameborder="0" allowfullscreen></iframe>
 
 * [Ruby Kaigi (2019)](https://rubykaigi.org/2019/presentations/kddeisz.html)
-* [RailsConf (2019)](https://www.railsconf.com/program/sessions#session-748)
+* [RailsConf (2019)](https://www.railsconf.com/2019/program/sessions#session-748)
 
 ## Grow a bonsai, not a shrub
 
