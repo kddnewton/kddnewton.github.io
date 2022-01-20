@@ -21,9 +21,9 @@ Progress for each bullet is detailed below.
 
 ### `ripper` subclass
 
-I've created an additional `ripper` subclass here: https://github.com/kddnewton/syntax_tree/blob/main/lib/syntax_tree.rb. This file lives within the published `syntax_tree` gem. Each node contains an instance of a `SyntaxTree::Location` object that can be used to get definitive information about where it existed in the source. Each node also provides `attr_reader` methods for each of the child nodes, which are all documented.
+I've created an additional `ripper` subclass here: <https://github.com/kddnewton/syntax_tree/blob/main/lib/syntax_tree.rb>. This file lives within the published `syntax_tree` gem. Each node contains an instance of a `SyntaxTree::Location` object that can be used to get definitive information about where it existed in the source. Each node also provides `attr_reader` methods for each of the child nodes, which are all documented.
 
-As a part of this work, I've also added documentation to all of the various node types that ship with `ripper` here: https://kddnewton.com/ripper-docs/. Ideally, I'd like to upstream both the `syntax_tree` AST builder and the `ripper` documentation to make it easier for others to contribute and maintain it as a part of CRuby.
+As a part of this work, I've also added documentation to all of the various node types that ship with `ripper` here: <https://kddnewton.com/ripper-docs/>. Ideally, I'd like to upstream both the `syntax_tree` AST builder and the `ripper` documentation to make it easier for others to contribute and maintain it as a part of CRuby.
 
 ### `prettyprint` updates
 
@@ -37,7 +37,7 @@ As of the latest commit on the `main` branch of the `syntax_tree` repository, `s
 
 ### `stree` CLI
 
-The `syntax_tree` gem now ships with an `stree` executable that functions as a CLI for formatting files. It provides a lot of additional functionality is well (like displaying the syntax tree or the doc node print tree). One additional nicety that it provides is the ability to run `stree check **/*` which will exit `1` if any files are no formatted as expected (which allows running this in a continuous integration environment).
+The `syntax_tree` gem now ships with an `stree` executable that functions as a CLI for formatting files. It provides a lot of additional functionality is well (like displaying the syntax tree or the doc node print tree). One additional nicety that it provides is the ability to run `stree check **/*` which will exit `1` if any files are not formatted as expected (which allows running this in a continuous integration environment).
 
 ### Language server
 
