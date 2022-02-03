@@ -180,6 +180,13 @@ h3 {
   margin-top: 3em;
 }
 
+blockquote {
+  border-left: solid 0.5em lightgray;
+  font-style: italic;
+  margin-left: 0;
+  padding-left: 2em;
+}
+
 /****************/
 /*** speaking ***/
 /****************/
