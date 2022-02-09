@@ -12,8 +12,8 @@
 
 html {
   background-size: 100% auto;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 20px;
   height: 100%;
 }
 
@@ -38,22 +38,25 @@ a:hover {
   text-decoration: underline;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   color: var(--primary);
-  font-weight: 500;
+}
+
+h1, h2 {
+  border-bottom: 1px solid var(--border-color);
 }
 
 .content {
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 60%;
 }
 
-@media (max-width: 1400px) { .content { width: 50%; } }
-@media (max-width: 1200px) { .content { width: 60%; } }
-@media (max-width: 1000px) { .content { width: 70%; } }
-@media (max-width: 800px) { .content { width: 80%; } }
-@media (max-width: 600px) { .content { width: 90%; } }
+@media (max-width: 1400px) { .content { width: 60%; } }
+@media (max-width: 1200px) { .content { width: 70%; } }
+@media (max-width: 1000px) { .content { width: 80%; } }
+@media (max-width: 800px) { .content { width: 90%; } }
+@media (max-width: 600px) { .content { width: 95%; } }
 
 /***********/
 /*** nav ***/
@@ -65,6 +68,7 @@ nav {
 }
 
 nav h1 {
+  border-bottom: 0;
   display: inline-block;
   font-weight: 700;
   margin: 0;
@@ -185,6 +189,11 @@ blockquote {
   font-style: italic;
   margin-left: 0;
   padding-left: 2em;
+}
+
+.highlight {
+  font-size: 0.9em;
+  line-height: 1.3em;
 }
 
 /****************/
