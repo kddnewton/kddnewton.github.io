@@ -7,7 +7,7 @@ title: Projects
 
 I like to program - these days mostly in Ruby, TypeScript, and C. Most everything I do is open-sourced on GitHub. Below are the projects that I'm currently working on/thinking about the most these days.
 
-* [kddnewton/regular_expression](https://github.com/kddnewton/regular_expression) - A regular expression engine written in Ruby that compiles down to X86 assembly.
+* [kddnewton/regular_expression](https://github.com/kddnewton/regular_expression) - A regular expression engine in Ruby that compiles down to X86 assembly.
 * [kddnewton/syntax_tree](https://github.com/kddnewton/syntax_tree) - An AST builder, formatter, and language server for Ruby.
 * [prettier/plugin-ruby](https://github.com/prettier/plugin-ruby) - A prettier plugin for the Ruby language.
 * [prettier/plugin-xml](https://github.com/prettier/plugin-xml) - A prettier plugin for the XML specification.
