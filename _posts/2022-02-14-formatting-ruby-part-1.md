@@ -4,9 +4,10 @@ title: Formatting Ruby
 subtitle: Part 1 - How ripper works
 meta:
   "twitter:card": summary
-  "twitter:title": "Formatting Ruby: Part 1 - How ripper works"
-  "twitter:site": kddnewton
-  "twitter:image": https://raw.githubusercontent.com/ruby-syntax-tree/syntax_tree/main/doc/logo.svg
+  "twitter:title": "Formatting Ruby: Part 1"
+  "twitter:description": "This post is part of a series about how ruby-syntax-tree/syntax_tree works under the hood."
+  "twitter:site": "@kddnewton"
+  "twitter:image": https://raw.githubusercontent.com/ruby-syntax-tree/vscode-syntax-tree/main/doc/logo.png
 ---
 
 This post is part of a series about how [ruby-syntax-tree/syntax_tree](https://github.com/ruby-syntax-tree/syntax_tree) works under the hood. It's part of an ongoing effort to spread the word about this project, document how it works, and explain some of the internals for anyone interested. This post specifically focuses on ripper, the Ruby standard library used to parse Ruby files.
