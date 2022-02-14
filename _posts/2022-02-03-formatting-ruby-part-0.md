@@ -12,7 +12,7 @@ Work on this project is well underway; you can check out the current state of af
 
 As a part of this work, and an introduction to the Ruby community, I've planned out a series of blog posts on the formatter that will show how I made it, why I made it, and how you can use it. The planned posts are the following:
 
-* Formatting Ruby: Part 1 - How ripper works
+* [Formatting Ruby: Part 1](/2022/02/14/formatting-ruby-part-1) - How ripper works
 * Formatting Ruby: Part 2 - Building the syntax tree
 * Formatting Ruby: Part 3 - How prettyprint works
 * Formatting Ruby: Part 4 - Formatting the syntax tree

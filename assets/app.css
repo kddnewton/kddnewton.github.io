@@ -196,6 +196,23 @@ blockquote {
   line-height: 1.3em;
 }
 
+h1, h2, h3, h4 {
+  position: relative;
+}
+
+h1 .link, h2 .link, h3 .link, h4 .link {
+  display: none;
+  font-size: 0.6em;
+  left: -1.2em;
+  position: absolute;
+  text-decoration: none;
+  width: 100%;
+}
+
+h1:hover .link, h2:hover .link, h3:hover .link, h4:hover .link {
+  display: block;
+}
+
 /****************/
 /*** speaking ***/
 /****************/

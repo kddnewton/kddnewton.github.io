@@ -7,7 +7,7 @@ title: Speaking
 
 Since Ruby's inception, there have been many different projects that parse Ruby code. This includes everything from development tools to Ruby implementations themselves. This talk dives into the technical details and tradeoffs of how each of these tools parses and subsequently understands your applications. After, we'll discuss how you can do the same with your own projects using the Ripper standard library. You'll see just how far we can take this library toward building useful development tools. [[Code](https://github.com/kddnewton/parsing-ruby)] [[Slides](https://speakerdeck.com/kddnewton/parsing-ruby-rubyconf)]
 
-<iframe src="https://www.youtube.com/embed/ijPE7k7iW8I" title="Parsing Ruby" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/lUIt2UWXW-I" title="Parsing Ruby" frameborder="0" allowfullscreen></iframe>
 
 * [Ruby Kaigi (2021)](https://rubykaigi.org/2021-takeout/presentations/kddnewton.html)
 * [Boston Ruby Group (Nov 2021)](https://bostonrb.org)
