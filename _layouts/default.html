@@ -13,6 +13,12 @@
       frame-src https://www.youtube.com;
     " />
 
+    {% if page.meta %}
+      {% for item in page.meta %}
+        <meta name="{{ item[0] }}" content="{{ item[1] }}" />
+      {% endfor %}
+    {% endif %}
+
     <link rel="prefetch" href="/assets/app.css" />
     <link rel="prefetch" href="/assets/highlight.css" />
 
