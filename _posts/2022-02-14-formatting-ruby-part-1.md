@@ -106,9 +106,9 @@ These first two scripts are the same scripts that are run to generate the main `
 
 #### ext/ripper/tools/preproc.rb
 
-[preproc.rb](https://github.com/ruby/ruby/blob/v3_0_0/ext/ripper/tools/preproc.rb) is responsible for transforming the default `parse.y` file that bison uses to generate the Ruby parse into a different `parse.y` file that bison will use to generate the ripper parser. It does 3 things while its parsing the file.
+[preproc.rb](https://github.com/ruby/ruby/blob/v3_0_0/ext/ripper/tools/preproc.rb) is responsible for transforming the default `parse.y` file that bison uses into a different `parse.y` file that bison will use to generate the ripper parser. It does 3 things while it's parsing the file.
 
-1. First, it copies over the entire prelude of the file before the grammar. While it's copying, it also makes a list of each of the lexer states and their associated descriptions.
+1. First, it copies over the entire prelude of the file before the grammar. The prelude contains all of the required includes, struct definitions, and helper function forward declarations necessary to make parsing work. While it's copying, it also makes a list of each of the lexer states and their associated descriptions.
 2. Next, it copies over the entire grammar section of the file. While it's copying, it modifies the actions of each of the production rules. First, it finds the C comments within the action that match the pattern `%r</\*% *ripper(?:\[(.*?)\])?: *(.*?) *%\*/>`. Then, it grabs up the rest of the action and puts it behind an `#if 0 ... #endif` macro call so that you can still see the original action. Then, it runs each of the comments through the [ext/ripper/tools/dsl.rb](https://github.com/ruby/ruby/blob/v3_0_0/ext/ripper/tools/dsl.rb) file to get their C equivalent. We'll come back to this in a second.
 3. Finally, it copies over the user code section of the file. It runs `ERB` over that section in order to dump the lexer states into defined constants on the `Ripper` class so that they can be accessed in user code. These constants look something like the following code.
 
@@ -123,13 +123,13 @@ At this point, the file is ready to be fed into `bison` to generate the compiler
 
 It's worth discussing quickly how the DSL within the ripper comments work. Effectively, they're a quick way of describing the events that should be dispatched, as well as the values that should be passed up the tree. You can run the script yourself locally (`ruby -r./ext/ripper/tools/dsl -e 'p DSL.new("...", []).generate' `) to see how it works. Below are a couple of examples along with the code they generate (after macro expansion):
 
-* `$1` - In a production rule with a single element, this passes the value directly up to the parent without dispatching a single event.
+* `$1` - In a production rule with a single element, this passes the value directly up to the parent without dispatching a single event:
 
 ```c
 $$ = $1;
 ```
 
-* `foo!($1)` - In a production rule with a single element, this calls out to the `ripper_dispatch1` function, then passes the result of that value directly up to the parent.
+* `foo!($1)` - In a production rule with a single element, this calls out to the `ripper_dispatch1` function with the ID `ripper_id_foo` (coming from `foo!`), then passes the result of that value directly up to the parent:
 
 ```c
 {
@@ -153,7 +153,7 @@ ripper_dispatch1(struct parser_params *p, ID mid, VALUE a)
 
 That function call ends up calling out to `Ripper#_dispatch_1` on whatever parser object ripper is currently using. That will be important later.
 
-* `foo!($1, $2)` - In a production rule with two elements, this calls the `ripper_dispatch2` function, then passes the result of that value up to the parent.
+* `foo!($1, $2)` - In a production rule with two elements, this calls the `ripper_dispatch2` function, then passes the result of that value up to the parent:
 
 ```c
 {
@@ -175,7 +175,7 @@ Now that the parser is built, it can be used to parse Ruby source for whatever p
 Ripper.parse("1 + 2") # => nil
 ```
 
-As we discussed in the previous section, each of the nodes in the tree as they're being parsed are created through the `dispatchN` family of functions, which make it up to user-space through the `on_*` methods. So if you wanted to parse integers, you would define the `on_int` method. (Note this is because `on_int` is aliased to `_dispatch_1` [here](https://github.com/ruby/ruby/blob/v3_0_0/ext/ripper/lib/ripper/core.rb#L49).)
+As we discussed in the previous section, each of the nodes in the tree as they're being parsed are created through the `dispatchN` family of functions, which make it up to user-space through a set of `on_*` methods. So if you wanted to parse integers, you would define the `on_int` method. (Note this is because `on_int` is aliased to `_dispatch_1` [here](https://github.com/ruby/ruby/blob/v3_0_0/ext/ripper/lib/ripper/core.rb#L49).)
 
 ```ruby
 class Parser < Ripper
@@ -218,11 +218,9 @@ If you look at the tree that I drew above, you see how we arrive at this final p
 * `on_stmts_add` is called with the result of the `on_stmts_new` and `on_binary` calls. We push the result of the righthand operand (the `on_binary`) onto the value of the lefthand operand (the `on_stmts_new`). This results in an array of a single value containing the result of the `on_binary` call.
 * `on_program` is called with the result of the `on_stmts_add` call. We immediately return that value.
 
-While it may be difficult to fully see why things are happening in that order, fortunately ripper provides some nice APIs to make it easier to understand.
-
 ## API
 
-First, it's important to discuss a couple of helper APIs within ripper that represent a lot of important functionality. Then we'll discuss the bigger APIs represented by the two subclasses that ripper ships with.
+There are a number of APIs within ripper that you can use when processing dispatched events. First, it's important to discuss a couple of helper APIs within ripper that represent a lot of important functionality. Then we'll discuss the bigger APIs represented by the two subclasses that ripper ships with.
 
 ### `#lineno` and `#column`
 
@@ -242,7 +240,7 @@ Because the lexical grammar of the Ruby language is not regular, CRuby maintains
 
 ### `::sexp_raw`
 
-Finally, we get to the big APIs. `Ripper::sexp_raw` is the same thing is `::parse` except that it uses the `Ripper::SexpBuilder` subclass of `Ripper` instead of the main class. The main's classes implementation of every `dispatch*` method is to simply [return the first argument](https://github.com/ruby/ruby/blob/v3_0_0/ext/ripper/lib/ripper/core.rb#L34-L41). That doesn't work for most use cases, so instead `SexpBuilder` ships with a [default implementation](https://github.com/ruby/ruby/blob/v3_0_0/ext/ripper/lib/ripper/sexp.rb#L115-L131) for every node that returns an array representing an s-expression for each node. You can check this out yourself on the command line by running:
+Finally, we get to the big APIs. `Ripper::sexp_raw` is the same thing is `::parse` except that it uses the `Ripper::SexpBuilder` subclass of `Ripper` instead of the main class. The main's classes implementation of every `dispatch*` method is to simply [return the first argument](https://github.com/ruby/ruby/blob/v3_0_0/ext/ripper/lib/ripper/core.rb#L34-L41). That doesn't work for most use cases, so instead `SexpBuilder` ships with a [default implementation](https://github.com/ruby/ruby/blob/v3_0_0/ext/ripper/lib/ripper/sexp.rb#L115-L131) for every node that returns an array representing an [s-expression](https://en.wikipedia.org/wiki/S-expression) for each node. You can check this out yourself on the command line by running:
 
 ```ruby
 Ripper.sexp_raw("1 + 2")
@@ -266,7 +264,7 @@ You'll notice there aren't any `stmts_*` nodes contained in this output. That's 
 
 As a final note, let's build an example parser to put a more practical look on what we've been talking about. It's going to be relatively contrived in order to fit into a blog post, but it should give you a sense of what we're talking about here.
 
-We're going to build a small parser that will return to us the documentation for any module declarations within our code. When I say documentation I mean comments immediately preceeding the module. If there's a newline between them, then we don't want them. First, let's start by just trying to get a list of the module declared within the file.
+We're going to build a small parser that will return to us the documentation for any module declarations within our code. When I say documentation I mean comments immediately preceeding the module. If there's a newline between them, then we don't want them. First, let's start by just trying to get a list of the modules declared within the file.
 
 It'll be easiest to tell which kinds of event handlers we need to define by using the `::sexp_raw` method. Let's start by running that:
 
