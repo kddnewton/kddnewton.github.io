@@ -10,7 +10,7 @@ meta:
   "twitter:image": https://raw.githubusercontent.com/ruby-syntax-tree/vscode-syntax-tree/main/doc/logo.png
 ---
 
-This post is part of a series about how [ruby-syntax-tree/syntax_tree](https://github.com/ruby-syntax-tree/syntax_tree) works under the hood. It's part of an ongoing effort to spread the word about this project, document how it works, and explain some of the internals for anyone interested. This post specifically focuses on ripper, the Ruby standard library used to parse Ruby files.
+This post is part of a series about how [ruby-syntax-tree/syntax_tree](https://github.com/ruby-syntax-tree/syntax_tree) works under the hood. It's part of an ongoing effort to spread the word about this project, document how it works, and explain some of the internals for anyone interested. This post specifically focuses on ripper, the Ruby standard library used to parse Ruby files. For an overview of this series, see the [introduction post](/2022/02/03/formatting-ruby-part-0).
 
 ## History
 
