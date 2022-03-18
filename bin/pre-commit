@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+plugins = File.basename(File.expand_path(__dir__)) == "bin" ? "../_plugins" : "../../_plugins"
+require_relative File.expand_path("#{plugins}/flow_charts", __dir__)
+
+`git diff --cached --name-only --diff-filter=ACM`.each_line(chomp: true) do |filepath|
+  next unless filepath.start_with?("_posts")
+
+  source = File.read(filepath)
+
+  if FlowCharts.call(source)
+    File.write(filepath, source)
+    `git add #{filepath}`
+  end
+end
