@@ -1,3 +1,5 @@
+require "base64"
+
 Jekyll::Hooks.register(:posts, :pre_render) do |post|
   post.content.gsub!(/```dot\n(.+?)```/m) do |content|
     output =
@@ -8,6 +10,11 @@ Jekyll::Hooks.register(:posts, :pre_render) do |post|
       end
 
     3.times { output.shift }
-    "<div align='center'>#{output.join("\n")}</div>"
+
+    <<~TAG
+      <div align="center">
+        <img src="data:image/svg+xml;base64,#{Base64.encode64(output.join)}" />
+      </div>
+    TAG
   end
 end

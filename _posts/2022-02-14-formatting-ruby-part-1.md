@@ -191,9 +191,20 @@ Parser.new("1 + 2").parse # => nil
 
 Unfortunately, you still receive a `nil` for the result of the parse method. This is because by default the base `Ripper` class does not provide implementations of the various event handlers needed to produce a useful tree. Instead, it provides subclasses for that purpose. The actual abstract syntax tree that Ruby uses internally for `1 + 2` is akin to the following:
 
-<div align="center">
-  <img src="/assets/2022-02-14-1.svg" />
-</div>
+```dot
+digraph {
+  left [label="int (1)", shape="box"];
+  oper [label="+"];
+  right [label="int (2)", shape="box"];
+
+  program -> stmts_add;
+  stmts_add -> stmts_new;
+  stmts_add -> binary;
+  binary -> left;
+  binary -> oper;
+  binary -> right;
+}
+```
 
 So, in order to get a useful value out of your parser, you would need to implement `on_program`, `on_stmts_add`, `on_stmts_new`, `on_binary`, and `on_int`. If you do define those methods, you can get the parse tree out. Let's do that quickly below as an example:
 
