@@ -3,7 +3,7 @@ layout: post
 title: ruby-syntax-tree.github.io
 ---
 
-Over the weekend I cobbled together [ruby-syntax-tree.github.io](ruby-syntax-tree.github.io), and I thought I'd share a quick post about what it is, how it works, and what I learned while I built it.
+Over the weekend I cobbled together [ruby-syntax-tree.github.io](https://ruby-syntax-tree.github.io), and I thought I'd share a quick post about what it is, how it works, and what I learned while I built it.
 
 ## What is it?
 
@@ -11,7 +11,7 @@ A lot of good tools exist in the Ruby ecosystem that allow you to run some versi
 
 Usually getting Ruby to run in the browser entails using [emscripten](https://emscripten.org/) to compile C to [WebAssembly](https://webassembly.org/) or using [Opal](https://opalrb.com/) to compile Ruby to JavaScript. Recently, however, the [Ruby Association](https://www.ruby.or.jp/en/news/20211025) funded a project to compile Ruby to WebAssembly using the [WASI ABI](https://github.com/WebAssembly/WASI). Using this new functionality, you can compile Ruby itself or a Ruby application into a `.wasm` file that you can execute natively in the browser or through a polyfill. (You can actually execute it on any WebAssembly runtime, but for my purposes the browser will do.) For more information on the WASI Ruby project, check out the [final report](https://itnext.io/final-report-webassembly-wasi-support-in-ruby-4aface7d90c9).
 
-So, to get to the titular question of this section. [ruby-syntax-tree.github.io](ruby-syntax-tree.github.io) is a website that uses the new WASI ABI functionality of Ruby to compile a `.wasm` file containing both the Ruby runtime and the source for the [Syntax Tree](https://ruby-syntax-tree.github.com/syntax_tree) gem. It then boots a virtual machine within the browser and uses it to transpile your Ruby into equivalent s-expressions.
+So, to get to the titular question of this section. [ruby-syntax-tree.github.io](https://ruby-syntax-tree.github.io) is a website that uses the new WASI ABI functionality of Ruby to compile a `.wasm` file containing both the Ruby runtime and the source for the [Syntax Tree](https://ruby-syntax-tree.github.com/syntax_tree) gem. It then boots a virtual machine within the browser and uses it to transpile your Ruby into equivalent s-expressions.
 
 ## How it works
 
@@ -35,4 +35,4 @@ I learned a bunch of stuff with this experiment! Here are a couple of things tha
 * `esbuild` is really well documented and plugins are not too hard to write.
 * You can deploy directly to GitHub pages through GitHub actions even if you have to invoke something like rake. ([See here](https://github.com/ruby-syntax-tree/ruby-syntax-tree.github.io/blob/main/.github/workflows/main.yml))
 
-At some point I'd like to add the ability to format the source, add a better editor, and general improve the styling and UX. But for now, the current state is up at [ruby-syntax-tree.github.io](ruby-syntax-tree.github.io).
+At some point I'd like to add the ability to format the source, add a better editor, and general improve the styling and UX. But for now, the current state is up at [ruby-syntax-tree.github.io](https://ruby-syntax-tree.github.io).
