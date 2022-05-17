@@ -3,13 +3,13 @@ layout: post
 title: Syntax Tree and lambda-local variables
 ---
 
-I just released version `2.6.0` of Syntax Tree. Along with a couple of other changes, this includes support for lambda-local variable declarations. This was a bit of a journey, so I thought I'd write up how I discovered this syntax, how I added support for it to Syntax Tree, and go ahead and plugin Syntax Tree one more time as something that should be merged into Ruby core.
+I just released version `2.6.0` of Syntax Tree. Along with a couple of other changes, this includes support for lambda-local variable declarations. This was a bit of a journey, so I thought I'd write up how I discovered this syntax, how I added support for it to Syntax Tree, and go ahead and plug Syntax Tree one more time as something that should be merged into Ruby core.
 
 If you want to skip straight to the code, here's the [pull request](https://github.com/ruby-syntax-tree/syntax_tree/pull/84/files).
 
 ## lambda-local variables
 
-What are lambda-local variables? (Side note: I have no idea if that's the correct terminology. I might be making it up.) You _may_ be familiar with block-local variables. If you're not don't worry about it - you're certainly not the only one. I'll introduce both quickly. First, let's look at the syntax for block-local variables:
+What are lambda-local variables? (Side note: I have no idea if that's the correct terminology. I might be making it up.) You _may_ be familiar with block-local variables. If you're not don't worry about it — you're certainly not the only one. I'll introduce both quickly. First, let's look at the syntax for block-local variables:
 
 ```ruby
 double = 10
@@ -49,7 +49,7 @@ I've never actually seen someone use this feature. You probably haven't either. 
 
 Lately, I've been working on translating Syntax Tree's AST into other Ruby ASTs in my [ruby-syntax-tree/syntax_tree-translator](https://github.com/ruby-syntax-tree/syntax_tree-translator) project. This project has a lot of different uses, not all of which I'm ready to share just yet.
 
-In the translator project's test suite, I pull in the tests for [whitequark/parser](https://github.com/whitequark/parser) and [seattlerb/ruby_parser](https://github.com/seattlerb/ruby_parser). I do this so that I can assert that my translated tree when translated matches their expected tree when parsing. When doing this, I noticed a lot of interesting differences with the parsers. One of the things that stood out from this list was an entire class of failures involving lambda-local variables.
+In the translator project's test suite, I pull in the tests for [whitequark/parser](https://github.com/whitequark/parser) and [seattlerb/ruby_parser](https://github.com/seattlerb/ruby_parser). I do this so that I can assert that my translated tree when translated matches their expected tree when parsed. When doing this, I noticed a lot of interesting differences with the parsers. One of the things that stood out from this list was an entire class of failures involving lambda-local variables.
 
 Since Syntax Tree is based on ripper, I was surprised to find that there was syntax that it didn't handle. Only issue was, this was irrefutable evidence that it didn't. Both the `parser` and `ruby_parser` gems were showing me their ASTs, and they both had references to these locals (I also learned because of this that they're sometimes called shadow variables).
 
