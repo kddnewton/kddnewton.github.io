@@ -279,7 +279,7 @@ mov X0, 0xC3FFFFFFC3FFFFFF
 This is actually the following 32-bit pattern rotated twice to the right:
 
 ```
-0000001111111111111111111111111111
+00000011111111111111111111111111
 ```
 
 The components of our bitmask immediate will then be:
