@@ -3,15 +3,15 @@ layout: post
 title: AArch64 Bitmask Immediates
 ---
 
-In my day job I work at Shopify on the [YJIT project](https://github.com/Shopify/yjit), a just-in-time compiler for CRuby. Recently, I've been working mostly on adding support for ARM processors — specifically the AArch64 architecture. In practical terms, that means adding YJIT support for the new shiny Apple M1 CPUs.
+This post illustrates a small but fascinating piece of the [AArch64](https://en.wikipedia.org/wiki/AArch64) architecture called bitmask immediates. We'll briefly cover what AArch64 is, how it is different from other architectures, what a bitmask immediate is, and how all of this can be encoded in Rust.
 
-Encoding instructions for AArch64 has been quite an adventure over the last couple of months. You can see the fruits of that labor on the [working branch](https://github.com/Shopify/ruby/tree/yjit_backend_ir/yjit/src/asm/arm64) of our Ruby fork. The code is written in Rust, which allows for a couple of niceties that I'll go into momentarily. This post is specifically about a very small subset of that work which only applies to a couple of instructions: bitmask immediates.
+For context, I work at Shopify on [YJIT](https://github.com/Shopify/yjit), a just-in-time compiler for CRuby. Lately I've been working on adding support for the AArch64 (ARM) architecture; practically this means support for Apple M1s. Learning the ARM architecture and encoding it has been quite an adventure; you can check out our [working branch](https://github.com/Shopify/ruby/tree/yjit_backend_ir/yjit/src/asm/arm64) if you'd like to follow along.
 
 ## Fixed-width ISAs
 
-First, a bit of background. AArch64 is a fixed-width instruction set of 32-bits. That means every instruction, every time, is 32-bits. This is pretty different from, for example, X86-64, which allows variable-width instructions making encoding large values quite a bit easier.
+First, a bit of background. AArch64 is a fixed-width instruction set of 32-bits. That means every instruction, every time, is 32-bits. This is pretty different from, for example, x86_64, which allows variable-width instructions making encoding large values quite a bit easier.
 
-For example, if you're attempting to move a 64-bit value into a 64-bit register, it's 1 instruction on X86-64, and (at worst) 4 instructions on AArch64. Let's say the value is `0xC3FFFFFFC3FFFFFF`. On X86-64, you would run:
+For example, if you're attempting to move a 64-bit value into a 64-bit register, it's 1 instruction on x86_64, and (at worst) 4 instructions on AArch64. Let's say the value is `0xC3FFFFFFC3FFFFFF`. On x86_64, you would run:
 
 ```
 mov RAX, 0xC3FFFFFFC3FFFFFF
@@ -54,9 +54,13 @@ That's 16 bytes (4 for each 4-byte instruction). Because the width of the value 
 
 ## Bitmask immediates
 
-There is another encoding for this same operation that can be accomplished in one instruction, however. A very common use-case when you're writing assembly is to compare a value against a bitmask, as in `value & 0b1111` to pull out the lower 4 bits of a number. This was common enough that the designers of AArch64 came up with a way to encode the most common patterns of bitmasks all of the way up to 64-bits, while excluding the less common patterns.
+There is another encoding for this same operation that can be accomplished in one instruction, however. A very common use-case when you're writing assembly is to compare a value against a bitmask, as in `value & 0b1111` to pull out the lower 4 bits of a number. This was common enough that the designers of AArch64 came up with a way to encode the most common patterns of bitmasks all of the way up to 64-bits, while excluding the less common patterns: bitmask immediates.
 
-Most of the time when you're comparing against a bitmask, you've got one or more sequential 1s that you want to use in a logical comparison (e.g., `or`, `and`, `xor`, etc.). To encode this kind of pattern on AArch64, these instructions have allocated 13 bits within the 32-bit instruction. Those 13 bits are broken up into 3 parts:
+The official [documentation](https://developer.arm.com/documentation/dui0802/b/A64-General-Instructions/MOV--bitmask-immediate-#:~:text=Is%20the%20bitmask%20immediate%2e) for ARM explains bitmask immediates in the following way:
+
+> Such an immediate is a 32-bit or 64-bit pattern viewed as a vector of identical elements of size e = 2, 4, 8, 16, 32, or 64 bits. Each element contains the same sub-pattern: a single run of 1 to e-1 non-zero bits, rotated by 0 to e-1 bits. This mechanism can generate 5,334 unique 64-bit patterns (as 2,667 pairs of pattern and their bitwise inverse). Because the all-zeros and all-ones values cannot be described in this way, the assembler generates an error message.
+
+Like our example above, usually you've got one or more sequential 1s that you want to use in a logical comparison (e.g., `or`, `and`, `xor`, etc.). To encode this kind of pattern on AArch64, these instructions have allocated 13 bits within the 32-bit instruction. Those 13 bits are broken up into 3 parts:
 
 * `N` (1 bit) - whether or not the pattern we're encoding is 64-bits wide
 * `imms` (6 bits) - the size of the pattern, a 0, and then one less than the number of sequential 1s
