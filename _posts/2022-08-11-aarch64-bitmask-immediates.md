@@ -5,19 +5,19 @@ title: AArch64 Bitmask Immediates
 
 This post illustrates a small but fascinating piece of the [AArch64](https://en.wikipedia.org/wiki/AArch64) architecture called bitmask immediates. We'll briefly cover what AArch64 is, how it is different from other architectures, what a bitmask immediate is, and how all of this can be encoded in Rust.
 
-For context, I work at Shopify on [YJIT](https://github.com/Shopify/yjit), a just-in-time compiler for CRuby. Lately I've been working on adding support for the AArch64 (ARM) architecture; practically this means support for Apple M1s. Learning the ARM architecture and encoding it has been quite an adventure; you can check out our [working branch](https://github.com/Shopify/ruby/tree/yjit_backend_ir/yjit/src/asm/arm64) if you'd like to follow along.
+For context, I work at Shopify on [YJIT](https://github.com/Shopify/yjit), a just-in-time compiler for CRuby. Lately I've been working on adding support for the AArch64 architecture; practically this means support for Apple M1s. Learning the ARM architecture and encoding it has been quite an adventure; you can check out our [working branch](https://github.com/Shopify/ruby/tree/yjit_backend_ir/yjit/src/asm/arm64) if you'd like to follow along.
 
-## Fixed-width ISAs
+## Fixed-width instruction sets
 
-First, a bit of background. AArch64 is a fixed-width instruction set of 32-bits. That means every instruction, every time, is 32-bits. This is pretty different from, for example, x86_64, which allows variable-width instructions making encoding large values quite a bit easier.
+First, a bit of background. AArch64 is a fixed-width instruction set of 32-bits. That means every instruction, every time, is 32-bits. This is pretty different from, for example, [x86-64](https://en.wikipedia.org/wiki/X86-64), which allows variable-width instructions making encoding large values quite a bit easier.
 
-For example, if you're attempting to move a 64-bit value into a 64-bit register, it's 1 instruction on x86_64, and (at worst) 4 instructions on AArch64. Let's say the value is `0xC3FFFFFFC3FFFFFF`. On x86_64, you would run:
+For example, if you're attempting to move a 64-bit value into a 64-bit register, it's 1 instruction on x86-64, and (at worst) 4 instructions on AArch64. Let's say the value is `0xC3FFFFFFC3FFFFFF`. On x86-64, you would run:
 
 ```
-mov RAX, 0xC3FFFFFFC3FFFFFF
+mov %RAX, 0xC3FFFFFFC3FFFFFF
 ```
 
-This says to move the immediate 64-bit value into the RAX register, overwriting whatever was there previously. This encodes as:
+([Compiler Explorer](https://godbolt.org/z/MabvKPbsf)). This says to move the immediate 64-bit value into the RAX register, overwriting whatever was there previously. This encodes as:
 
 ```
 48 B8 FF FF FF C3 FF FF FF C3
@@ -30,13 +30,13 @@ mov RAX
 That's 10 bytes in total. On AArch64, you would instead run:
 
 ```
-movz X0, 0xC3FF
-movk X0, 0xFFFF, lsl 16
-movk X0, 0xC3FF, lsl 32
-movk X0, 0xFFFF, lsl 48
+movz X0, #0xC3FF
+movk X0, #0xFFFF, lsl 16
+movk X0, #0xC3FF, lsl 32
+movk X0, #0xFFFF, lsl 48
 ```
 
-This says to first, move the `0xC3FF` 16-bit value into the X0 register and clear out the rest of the register by setting all other bits to 0. Then move the `0xFFFF` 16-bit value into the X0 register shifted left (lsl means logical shift left) by 16 bits, and keep the other bits in the register the same (i.e., leave `0xC3FF` in place). Then do the same for the other two 16-bit values. This encodes as:
+([Compiler Explorer](https://godbolt.org/z/KdKTMP6zv)). This says to first, move the `0xC3FF` 16-bit value into the X0 register and clear out the rest of the register by setting all other bits to 0. Then move the `0xFFFF` 16-bit value into the X0 register shifted left (lsl means logical shift left) by 16 bits, and keep the other bits in the register the same (i.e., leave `0xC3FF` in place). Then do the same for the other two 16-bit values. This encodes as:
 
 ```
 E0 7F 98 D2 E0 FF BF D2 E0 7F D8 D2 E0 FF FF D2
@@ -236,7 +236,7 @@ Ok(BitmaskImmediate {
 
 That's it! We have successfully encoded a bitmask immediate for an unsigned integer.
 
-## Testing
+## Testing our encoding
 
 We can now write a couple of tests to verify the code is behaving as we expect. Writing a full test suite for this is outside the scope of this post, but below are a couple of the tests that made sense to write.
 
@@ -262,7 +262,7 @@ fn test_size_16_maximum() {
 
 These tests exercise the minimum and maximum values encodeable into a 16-bit pattern. Additionally it tests a random 16-bit pattern that has been rotated.
 
-## Back to the beginning
+## Putting it all together
 
 Now that we have this code available to us, we can actually use a more efficient version of the `mov` instruction that supports encoding bitmask immediates. Since we were trying to move `0xC3FFFFFFC3FFFFFF` into `X0`, we can actually directly do:
 
@@ -270,7 +270,7 @@ Now that we have this code available to us, we can actually use a more efficient
 mov X0, 0xC3FFFFFFC3FFFFFF
 ```
 
-We can do this because `0xC3FFFFFFC3FFFFFF` can be directly encoded into a bitmask immediate. Its binary representation is:
+([Compiler Explorer](https://godbolt.org/z/d1x3nsKqE)). We can do this because `0xC3FFFFFFC3FFFFFF` can be directly encoded into a bitmask immediate. Its binary representation is:
 
 ```
 1100001111111111111111111111111111000011111111111111111111111111
@@ -296,7 +296,7 @@ B2 02 6F E0
 
 Where before we had 16 bytes, we now only have 4! This is quite a reduction in size, and will result in a smaller binary size in the end.
 
-In YJIT we lower every one of our intermediate representation loads into a series of `mov` instructions. If `try_into()` results in an `Ok`, we use that representation first, since it's the most compact. Otherwise we fall back to the first approach we described with `movz`/`movk` instructions.
+In YJIT we lower every one of our intermediate representation instructions that load a value into a series of `mov` instructions. If `try_into()` results in an `Ok`, we use that representation first, since it's the most compact. Otherwise we fall back to the first approach we described with `movz`/`movk` instructions.
 
 ## Wrapping up
 
