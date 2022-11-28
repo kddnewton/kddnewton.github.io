@@ -8,7 +8,7 @@ Since I started working on the YJIT team at Shopify, I've been learning more and
 
 In theory, I'll post a new post every morning describing different aspects of the virtual machine. I've divided them up into sections such that each post builds on the foundation of the others, so if you're catching up, I encourage you to start from the beginning. We'll wrap up on Christmas just in time for Ruby 3.2.0 to be released, which is what this series is targeting.
 
-* Advent of YARV: Part 1 - Pushing onto the stack
+* [Advent of YARV: Part 1 - Pushing onto the stack](/2022/11/28/advent-of-yarv-part-1.html)
 * Advent of YARV: Part 2 - Manipulating the stack
 * Advent of YARV: Part 3 - Frames and events
 * Advent of YARV: Part 4 - Creating objects from the stack
