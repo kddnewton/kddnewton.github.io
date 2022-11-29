@@ -10,7 +10,7 @@ In theory, I'll post a new post every morning describing different aspects of th
 
 * [Advent of YARV: Part 1 - Pushing onto the stack](/2022/11/28/advent-of-yarv-part-1.html)
 * [Advent of YARV: Part 2 - Manipulating the stack](/2022/11/28/advent-of-yarv-part-2.html)
-* Advent of YARV: Part 3 - Frames and events
+* [Advent of YARV: Part 3 - Frames and events](/2022/11/28/advent-of-yarv-part-3.html)
 * Advent of YARV: Part 4 - Creating objects from the stack
 * Advent of YARV: Part 5 - Changing objects on the stack
 * Advent of YARV: Part 6 - Calling methods (1)
