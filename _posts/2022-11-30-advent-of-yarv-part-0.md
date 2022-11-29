@@ -8,9 +8,11 @@ Since I started working on the YJIT team at Shopify, I've been learning more and
 
 In theory, I'll post a new post every morning describing different aspects of the virtual machine. I've divided them up into sections such that each post builds on the foundation of the others, so if you're catching up, I encourage you to start from the beginning. We'll wrap up on Christmas just in time for Ruby 3.2.0 to be released, which is what this series is targeting.
 
-* [Advent of YARV: Part 1 - Pushing onto the stack](/2022/11/28/advent-of-yarv-part-1.html)
-* [Advent of YARV: Part 2 - Manipulating the stack](/2022/11/28/advent-of-yarv-part-2.html)
-* [Advent of YARV: Part 3 - Frames and events](/2022/11/28/advent-of-yarv-part-3.html)
+All of the information presented here is to the best of my knowledge. That being said, there are folks that are more knowledgeable, and if I've made a mistake or missed something I would very much appreciate feedback!
+
+* Advent of YARV: Part 1 - Pushing onto the stack
+* Advent of YARV: Part 2 - Manipulating the stack
+* Advent of YARV: Part 3 - Frames and events
 * Advent of YARV: Part 4 - Creating objects from the stack
 * Advent of YARV: Part 5 - Changing objects on the stack
 * Advent of YARV: Part 6 - Calling methods (1)
@@ -22,14 +24,14 @@ In theory, I'll post a new post every morning describing different aspects of th
 * Advent of YARV: Part 12 - Class variables
 * Advent of YARV: Part 13 - Global variables
 * Advent of YARV: Part 14 - Constants
-* Advent of YARV: Part 15 - Branching
+* Advent of YARV: Part 15 - Branching instructions
 * Advent of YARV: Part 16 - Defining classes
 * Advent of YARV: Part 17 - Defining methods
-* Advent of YARV: Part 18 - Arguments
-* Advent of YARV: Part 19 - Super
-* Advent of YARV: Part 20 - Defined
+* Advent of YARV: Part 18 - Method and block arguments
+* Advent of YARV: Part 19 - Calling super methods
+* Advent of YARV: Part 20 - The defined instruction
 * Advent of YARV: Part 21 - Catch tables
-* Advent of YARV: Part 22 - Once
+* Advent of YARV: Part 22 - The once instruction
 * Advent of YARV: Part 23 - Pattern matching
-* Advent of YARV: Part 24 - Primitive
-* Advent of YARV: Part 25 - Wrapping up
+* Advent of YARV: Part 24 - Primitive and invokebuiltin
+* Advent of YARV: Part 25 - Remaining instructions and wrap up
