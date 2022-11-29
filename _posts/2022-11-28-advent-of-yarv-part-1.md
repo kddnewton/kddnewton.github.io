@@ -222,3 +222,7 @@ There you have it! In this post we talked about the first five instructions (alo
 * YARV is a stack-based virtual machine. This means instructions push and pop values from the stack to communicate with each other.
 * Some instructions require operands. Operands are values known at compile-time that are passed into the instruction when it is first created. These operands are used to determine what the instruction does. The combination of an instruction and its operands effectively comprise a curried function.
 * Some instructions exist as specializations of other instructions, typically to optimize for common cases. One such optimization is to remove the need for certain operands to save on memory (as with saw with `putobject_INT2FIX_0_`).
+* The virtual machine has a contract such that it expects a frame to clean up after itself. If a value is going to be pushed, there should be an equivalent pop for it to be removed from the stack.
+* You can always disassemble Ruby source using CRuby by running `ruby --dump=insns`. This outputs disassembled instruction sequences that represent how the virtual machine will function internally. Over the course of this blog series, we'll explain each part of that disassembly so you'll understand what you're looking at in more depth. For now, focus mostly on the names of the instructions in the left-most column.
+
+In the next post we'll talk about manipulating the values of the stack and why that's useful.
