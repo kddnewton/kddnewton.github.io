@@ -2,6 +2,12 @@
 layout: post
 title: Advent of YARV
 subtitle: Part 0 - Introduction
+meta:
+  "twitter:card": summary
+  "twitter:title": "Advent of YARV: Part 0"
+  "twitter:description": "This post is part of a series about how the YARV virtual machine works."
+  "twitter:site": "@kddnewton"
+  "twitter:image": https://raw.githubusercontent.com/kddnewton/parsing-ruby/main/docs/favicon.svg
 ---
 
 Since I started working on the YJIT team at Shopify, I've been learning more and more about the CRuby virtual machine known as YARV. A lot of the details of how YARV works are not well documented or the documentation is difficult to find. As such, I decided to write a series of blog posts about how YARV works internally as a Christmas present to both the Ruby community and myself. I hope that this series will help others understand how YARV works and provide a better understanding of CRuby internals. This is the blog series I wish I had had access to when I first started working on CRuby.
