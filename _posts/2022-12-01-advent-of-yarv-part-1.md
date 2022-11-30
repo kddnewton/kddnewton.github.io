@@ -44,7 +44,7 @@ To see this instruction in context, you can disassemble `nil` by running `ruby -
 
 ## `putobject`
 
-This instruction is similar to `putnil`, but it pushes an arbitrary value onto the stack. The instruction itself will hold onto the value (which means its the responsible of the instruction sequence to go and mark it for GC). The value that it holds is a value that can be known at compile-time. You'll see this instruction typically used when booleans, numbers, symbols, or frozen strings appear in your source.
+This instruction is similar to `putnil`, but it pushes an arbitrary value onto the stack. The instruction itself will hold onto the value (which means it is the responsibity of the instruction sequence to go and mark it for GC). The value that it holds is a value that can be known at compile-time. You'll see this instruction typically used when booleans, numbers, symbols, or frozen strings appear in your source.
 
 ![putobject](/assets/aoy/part1-putobject.svg)
 
@@ -127,7 +127,7 @@ To see this instruction in context, you can disassemble `1` by running `ruby --d
 
 ## `putstring`
 
-This is yet another instruction that pushes an object onto the stack. This time, it pushes an unfrozen string. This is an important attribute: if the string is frozen this instruction will be replaced by `putobject` instructions instead. This is because if you have a frozen string, you can push the same object onto the stack multiple times without having to worry about it being mutated. For the instruction, that also means that when the instruction is executed the string must be duplicated.
+This is yet another instruction that pushes an object onto the stack. This time, it pushes an unfrozen string. This is an important attribute: if the string is frozen this instruction will be replaced by a `putobject` instruction instead. This is because if you have a frozen string, you can push the same object onto the stack multiple times without having to worry about it being mutated. That also means that when the instruction is executed the string must be duplicated.
 
 ![putstring](/assets/aoy/part1-putstring.svg)
 
@@ -223,6 +223,5 @@ There you have it! In this post we talked about the first five instructions (alo
 * Some instructions require operands. Operands are values known at compile-time that are passed into the instruction when it is first created. These operands are used to determine what the instruction does. The combination of an instruction and its operands effectively comprise a curried function.
 * Some instructions exist as specializations of other instructions, typically to optimize for common cases. One such optimization is to remove the need for certain operands to save on memory (as with saw with `putobject_INT2FIX_0_`).
 * The virtual machine has a contract such that it expects a frame to clean up after itself. If a value is going to be pushed, there should be an equivalent pop for it to be removed from the stack.
-* You can always disassemble Ruby source using CRuby by running `ruby --dump=insns`. This outputs disassembled instruction sequences that represent how the virtual machine will function internally. Over the course of this blog series, we'll explain each part of that disassembly so you'll understand what you're looking at in more depth. For now, focus mostly on the names of the instructions in the left-most column.
 
 In the next post we'll talk about manipulating the values of the stack and why that's useful.

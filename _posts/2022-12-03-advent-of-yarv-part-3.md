@@ -8,13 +8,13 @@ This blog series is about how the CRuby virtual machine works. If you're new to 
 
 ## Frames
 
-Whenever YARV is executing instructions, it is executing in the context of a frame. A frame holds all of the information and context necessary to execute those instructions. That includes:
+Whenever YARV is executing instructions, it is executing in the context of a frame. A frame holds all of the information necessary to execute those instructions. That includes:
 
 * the current instruction sequence that is being executed
 * a pointer to the parent frame if there is one
 * a pointer to the stack
 * the current value of `self`
-* the constant nesting (impacts how constants are looked up)
+* the constant nesting (which impacts how constants are looked up)
 * special local variables
 
 YARV keeps a stack of frames around. When a frame is created, it is pushed onto the stack. When a frame is finished executing, it is popped off the stack. The frame that is on the top of the stack is the current frame. The frame at the bottom of the stack is always a `top` frame.
@@ -32,17 +32,30 @@ sum = 0
 end
 ```
 
-The frame is executed for each of the elements in the array. Notice that some frames (like the `block`) can interact with their parent frames to look up things like local variables (in this example, the `sum` variable). Other frames (like a `method` frame, pushed any time a method is defined) cannot.
+The frame is executed for each of the elements in the array. Notice that some frame types (like the `block` frame type) can interact with their parent frames to look up things like local variables (in this example, the `sum` variable). Other frame types (like the `method` frame type, pushed any time a method is defined) cannot.
 
-Notice also that frames can have their own set of local variables that do not impact the parent frame. In this example, a space will be allocated on the stack for `double` when the block first starts executing, but it will not impact the parent frame's stack pointer. Then, when the block exits, it will go back to pointing at the stack before the block started executing (with the addition of the return value).
+Notice also that frames can have their own set of local variables that do not impact the parent frame. In this example, a space will be allocated on the stack for `double` when the block first starts executing, but it will not impact the parent frame's stack pointer. When the block exits, the parent frame's stack pointer will still be below the locals that were allocated, effectively making those values invisible to the parent frame.
 
 ### Backtraces
 
 Rubyists also interact with the frame stack whenever an error is raised. If you fire up an `irb` session and raise an error, you'll see:
 
 ```
-irb(main):001:0> raise "an error"
-(irb):1:in `<main>': an error (RuntimeError)
+irb(main):001:1* class Foo
+irb(main):002:2*   def bar
+irb(main):003:2*     tap { tap { tap { raise "an error" } } }
+irb(main):004:1*   end
+irb(main):005:0> end
+=> :bar
+irb(main):006:0> Foo.new.bar
+(irb):3:in `block (3 levels) in bar': an error (RuntimeError)
+        from <internal:kernel>:90:in `tap'
+        from (irb):3:in `block (2 levels) in bar'
+        from <internal:kernel>:90:in `tap'
+        from (irb):3:in `block in bar'
+        from <internal:kernel>:90:in `tap'
+        from (irb):3:in `bar'
+        from (irb):6:in `<main>'
         from /.../ruby/lib/ruby/gems/3.2.0+3/gems/irb-1.4.2/exe/irb:11:in `<top (required)>'
         from /.../ruby/bin/irb:25:in `load'
         from /.../ruby/bin/irb:25:in `<main>'
@@ -129,9 +142,9 @@ For a more complex example, disassemble `1 + \n  2`:
 0005 leave
 ```
 
-Here you'll see that each of the first three instructions has its own line number, and that they can go backward. Because the operator for the plus instruction is on the first line, the `opt_plus` instruction is considered to be on line `1`. Also notice that only one `line` event is being dispatched in this instruction sequence. `line` events are only dispatched between statements, not between individual expressions (I'm very purposefully vague here because there are unfortunately numerous exceptions).
+Here you'll see that each of the first three instructions has its own line number. Because the operator for the plus instruction is on the first line, the `opt_plus` instruction is considered to be on line `1` even though the argument to the `+` method is on line `2`. Also notice that only one `line` event is being dispatched in this instruction sequence. `line` events are only dispatched between statements, not between individual expressions (I'm very purposefully vague here because there are numerous exceptions).
 
-In our previous example you also see the `Cc` and `Cr` flags. Those correspond to the `c_call` and `c_return` events, which indicate when a C function is called and returned from. These flags are attached as information on the instruction itself stored in the instruction sequence. In the disassembly, they will appear after the name of the instruction and its operands. In the `RubyVM::InstructionSequence#to_a` output, they will show up as symbols in the list of instructions.
+In our previous example you can also see the `Cc` and `Cr` flags. Those correspond to the `c_call` and `c_return` events, which indicate when a C function is called and returned from. These flags are attached as information on the instruction itself stored in the instruction sequence. In the disassembly, they will appear after the name of the instruction and its operands. In the `RubyVM::InstructionSequence#to_a` output, they will show up as symbols in the list of instructions.
 
 The total list of events that you'll see in an instruction sequence are:
 
@@ -163,4 +176,4 @@ In this post we talked about two very important concepts: the frame stack and ev
 * Frames exist in a stack and are pushed on by various instructions. They are always popped by the `leave` instruction (slight caveat that the `throw` instruction can also pop frames, but we'll get there later).
 * Ruby dispatches events whenever certain actions are taken by the virtual machine. These events can be used to implement tooling that hooks into the execution of a Ruby program. These events can be attached to instructions to dispatch when the instruction is executed.
 
-In the next post we'll go back to introducing a whole set of instructions. This time we'll be looking at instructions that combine multiple values on the top of the stack into one new value.
+In the next post we'll go back to introducing more instructions. We will focus on instructions that combine multiple values on the top of the stack into one new value.

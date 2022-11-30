@@ -213,6 +213,19 @@ h1:hover .link, h2:hover .link, h3:hover .link, h4:hover .link {
   display: block;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+table td:first-child {
+  white-space: nowrap;
+}
+
+th, td {
+  padding: 0.2em 0.8em;
+  vertical-align: top;
+}
+
 /****************/
 /*** speaking ***/
 /****************/

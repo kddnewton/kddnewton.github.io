@@ -6,7 +6,7 @@ subtitle: Part 2 - Manipulating the stack
 
 This blog series is about how the CRuby virtual machine works. If you're new to the series, I recommend starting from [the beginning](/2022/11/28/advent-of-yarv-part-0). This post is about manipulating the virtual machine stack.
 
-Now that we're a little more familiar with the virtual machine and how to push values onto it, we'll show a couple of instructions to do manipulations such as popping, duplicating, and swapping values.
+Now that we're a little more familiar with the virtual machine stack and how to push values onto it, we'll show a couple of instructions to do manipulations such as popping, duplicating, and swapping values.
 
 - [pop](#pop)
 - [adjuststack](#adjuststack)
@@ -284,6 +284,6 @@ In `defined?([[]])` disassembly:
 Our second post in the blog series has come to a close. In this post we talked about seven more instructions in the YARV instruction set. Here are some things to remember from this post:
 
 * The order of the stack matters quite a bit. It determines the order of arguments, which value is going to be returned from blocks and methods, and which values will be used by subsequent instructions.
-* Various instructions exist the manipulate the stack. Most of these could be modeled with multiple `putobject` and `pop` instructions, but it's much more efficient to have dedicated instructions.
+* Various instructions exist to manipulate the stack. Most of these could be modeled with multiple `putobject` and `pop` instructions, but it's much more efficient to have dedicated instructions.
 
 In the next post we'll take a quick break from introducing instructions and instead introduce the concept of frames and events.
