@@ -12,31 +12,31 @@ All of the information presented here is to the best of my knowledge. That being
 
 Below are links to the individual posts. They'll become actual links once I've published them.
 
-* Advent of YARV: Part 1 - Pushing onto the stack
-* Advent of YARV: Part 2 - Manipulating the stack
-* Advent of YARV: Part 3 - Frames and events
-* Advent of YARV: Part 4 - Creating objects from the stack
-* Advent of YARV: Part 5 - Changing objects on the stack
-* Advent of YARV: Part 6 - Calling methods (1)
-* Advent of YARV: Part 7 - Calling methods (2)
-* Advent of YARV: Part 8 - Local variables (1)
-* Advent of YARV: Part 9 - Local variables (2)
-* Advent of YARV: Part 10 - Local variables (3)
-* Advent of YARV: Part 11 - Instance variables
-* Advent of YARV: Part 12 - Class variables
-* Advent of YARV: Part 13 - Global variables
-* Advent of YARV: Part 14 - Constants
-* Advent of YARV: Part 15 - Branching instructions
-* Advent of YARV: Part 16 - Defining classes
-* Advent of YARV: Part 17 - Defining methods
-* Advent of YARV: Part 18 - Method and block arguments
-* Advent of YARV: Part 19 - Calling super methods
-* Advent of YARV: Part 20 - The defined instruction
-* Advent of YARV: Part 21 - Catch tables
-* Advent of YARV: Part 22 - The once instruction
-* Advent of YARV: Part 23 - Pattern matching
-* Advent of YARV: Part 24 - Primitive and invokebuiltin
-* Advent of YARV: Part 25 - Remaining instructions and wrap up
+* Part 1 - Pushing onto the stack
+* Part 2 - Manipulating the stack
+* Part 3 - Frames and events
+* Part 4 - Creating objects from the stack
+* Part 5 - Changing objects on the stack
+* Part 6 - Calling methods (1)
+* Part 7 - Calling methods (2)
+* Part 8 - Local variables (1)
+* Part 9 - Local variables (2)
+* Part 10 - Local variables (3)
+* Part 11 - Instance variables
+* Part 12 - Class variables
+* Part 13 - Global variables
+* Part 14 - Constants
+* Part 15 - Branching instructions
+* Part 16 - Defining classes
+* Part 17 - Defining methods
+* Part 18 - Method and block arguments
+* Part 19 - Calling super methods
+* Part 20 - The defined instruction
+* Part 21 - Catch tables
+* Part 22 - The once instruction
+* Part 23 - Pattern matching
+* Part 24 - Primitive and invokebuiltin
+* Part 25 - Remaining instructions and wrap up
 
 ## Exploring
 
