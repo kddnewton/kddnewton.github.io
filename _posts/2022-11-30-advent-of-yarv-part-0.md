@@ -122,5 +122,6 @@ This series explores a virtual machine, a non-trivial piece of technology. As su
 | [Program counter](https://en.wikipedia.org/wiki/Program_counter) | A pointer to the current instruction in an instruction sequence. This is also referred to as an instruction pointer. |
 | [Stack](https://en.wikipedia.org/wiki/Stack_machine) | A data structure that holds values that are being used by the virtual machine. This is also referred to as the value stack. Confusingly, this is both the name of the type of data structure and the data structure itself. |
 | Stack pointer | A pointer held by a frame that points to the top slot of the stack. This is often abbreviated as `sp`. |
+| Tracepoint | A publication/subscription system for virtual machine events. Users can create tracepoints to get notified when certain events occur. |
 | [Virtual machine](https://en.wikipedia.org/wiki/Virtual_machine) | A piece of software that emulates a computer. |
 | [YARV](https://en.wikipedia.org/wiki/YARV) | The virtual machine that is used by CRuby. It stands for "Yet Another Ruby Virtual Machine". |
