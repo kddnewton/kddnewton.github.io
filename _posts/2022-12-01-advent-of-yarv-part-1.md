@@ -14,9 +14,9 @@ This blog series is about how the CRuby virtual machine works. If you're new to 
 
 The first thing to understand about YARV is that it is a [stack-based virtual machine](https://en.wikipedia.org/wiki/Stack_machine). This means that all values are stored on a stack, and all operations are performed on the stack. This is in contrast to a [register-based virtual machine](https://en.wikipedia.org/wiki/Register_machine), where values are stored in registers and operations are performed on registers. The main advantage of a stack-based virtual machine is that it is easier to implement and easier to JIT compile. The main disadvantage is that it is slower than a register-based virtual machine because it requires more memory accesses.
 
-When we say stack, we mean a first-in, first-out data structure. In Ruby, it would be as if you had an array and you could only call the `Array#push` and `Array#pop` methods on it (this isn't strictly true, but we'll get into that later). The value stack is universal to the life of the program (if we ignore recent work on Ractors). This means there's a contract that when methods, blocks, or other structures are executed, they leave the stack as they found it (this will become important later).
+When we say stack, we mean a first-in, first-out data structure. In Ruby, it would be as if you had an array and you could only call the `Array#push` and `Array#pop` methods on it[^1]. The value stack is universal to the life of the program[^2]. This means there's a contract that when methods, blocks, or other structures are executed, they leave the stack as they found it (we'll talk more about this later).
 
-I could continue filling this entire page with caveats, but let's just go ahead and dive in to save ourselves the headache. Below are your very first couple of instructions in the YARV instruction set.
+I could fill this entire page with caveats, but let's just go ahead and dive in to save ourselves the headache. Below are your very first couple of instructions in the YARV instruction set.
 
 - [putnil](#putnil)
 - [putobject](#putobject)
@@ -28,7 +28,9 @@ I could continue filling this entire page with caveats, but let's just go ahead 
 
 This is one of the simplest instructions in YARV. It pushes the value of `nil` onto the stack. Below are a couple of illustrations to show how this works. The outer boxes show the overall stack. The arrow points to the next empty slot to write in. Inner boxes represent values.
 
-![putnil](/assets/aoy/part1-putnil.svg)
+<div align="center">
+  <img src="/assets/aoy/part1-putnil.svg" alt="putnil">
+</div>
 
 If this were translated into Ruby, it would look like:
 
@@ -50,9 +52,11 @@ To see this instruction in context, you can disassemble `nil` by running `ruby -
 
 ## `putobject`
 
-This instruction is similar to `putnil`, but it pushes an arbitrary value onto the stack. The instruction itself will hold onto the value (which means it is the responsibity of the instruction sequence to go and mark it for GC). The value that it holds is a value that can be known at compile-time. You'll see this instruction typically used when booleans, numbers, symbols, or frozen strings appear in your source.
+This instruction is similar to `putnil`, but it pushes an arbitrary value onto the stack. The instruction itself will hold onto the value[^3]. The value that it holds is a value that can be known at compile-time. Compile-time is the time when the Ruby program is being compiled into bytecode from source. This is as opposed to runtime, when the program is being executed. Oftentimes we will say something is "known at compile-time" if it is a value that does not depend on anything dynamic (e.g., an array that holds only integers, not references to local variables). You'll see this instruction typically used when booleans, numbers, symbols, or frozen strings appear in your source.
 
-![putobject](/assets/aoy/part1-putobject.svg)
+<div align="center">
+  <img src="/assets/aoy/part1-putobject.svg" alt="putobject">
+</div>
 
 If this were translated into Ruby, it would look like:
 
@@ -85,7 +89,9 @@ Notice that in the second column, the 5 can be seen. In the disassembled output 
 
 This instruction is a specialization of the `putobject` instruction. It gets created if you have the `operands_unification` compiler option turned on (which is on by default). It is used to push the number `0` onto the stack. It turns out that this is common enough to warrant its own instruction. YARV isn't saving anything in speed by doing this (you still have to write the value to the stack) but it saves on memory by having this instruction not have to have an operand because the operand is always `0`.
 
-![putobject_INT2FIX_0_](/assets/aoy/part1-putobject_INT2FIX_0.svg)
+<div align="center">
+  <img src="/assets/aoy/part1-putobject_INT2FIX_0_.svg" alt="putobject_INT2FIX_0_">
+</div>
 
 If this were translated into Ruby, it would look like:
 
@@ -111,7 +117,9 @@ Notice that there is no operand in the second column, which is the point of this
 
 This is the exact same thing as `putobject_INT2FIX_0_`, except that it pushes the integer `1` onto the stack.
 
-![putobject_INT2FIX_1_](/assets/aoy/part1-putobject_INT2FIX_1.svg)
+<div align="center">
+  <img src="/assets/aoy/part1-putobject_INT2FIX_1_.svg" alt="putobject_INT2FIX_1_">
+</div>
 
 If this were translated into Ruby, it would look like:
 
@@ -135,7 +143,9 @@ To see this instruction in context, you can disassemble `1` by running `ruby --d
 
 This is yet another instruction that pushes an object onto the stack. This time, it pushes an unfrozen string. This is an important attribute: if the string is frozen this instruction will be replaced by a `putobject` instruction instead. This is because if you have a frozen string, you can push the same object onto the stack multiple times without having to worry about it being mutated. That also means that when the instruction is executed the string must be duplicated.
 
-![putstring](/assets/aoy/part1-putstring.svg)
+<div align="center">
+  <img src="/assets/aoy/part1-putstring.svg" alt="putstring">
+</div>
 
 If this were translated into Ruby, it would look like:
 
@@ -165,7 +175,9 @@ To see this instruction in context, you can disassemble `"foo"` by running `ruby
 
 This instruction dups and pushes an array onto the stack. This instruction is typically used when you have an array literal in your source code whose values are all known at compile-time.
 
-![duparray](/assets/aoy/part1-duparray.svg)
+<div align="center">
+  <img src="/assets/aoy/part1-duparray.svg" alt="duparray">
+</div>
 
 If this were translated into Ruby, it would look like:
 
@@ -195,7 +207,9 @@ To see this instruction in context, you can disassemble `[1, 2, 3]` by running `
 
 This instruction dups and pushes a hash onto the stack. This instruction is typically used when you have a hash literal in your source code whose values are all known at compile-time. In this way it is very similar to `duparray`.
 
-![duphash](/assets/aoy/part1-duphash.svg)
+<div align="center">
+  <img src="/assets/aoy/part1-duphash.svg" alt="duphash">
+</div>
 
 If this were translated into Ruby, it would look like:
 
@@ -231,3 +245,9 @@ There you have it! In this post we talked about the first five instructions (alo
 * The virtual machine has a contract such that it expects a frame to clean up after itself. If a value is going to be pushed, there should be an equivalent pop for it to be removed from the stack.
 
 In the next post we'll talk about manipulating the values of the stack and why that's useful.
+
+---
+
+[^1]: _Some_ instructions will access values lower in the stack, but for the most part everything is accessed from the top.
+[^2]: There has been work to make Ractors have their own value stack, but we're ignoring that work for now.
+[^3]: Having the instruction sequence hold onto actual Ruby values means that they are responsible for making those values for garbage collection. This can have an interesting impact on memory consumption as these values will live until the instruction sequence is collected. For more on how this can be bad, see here: [mikel/mail#1342](https://github.com/mikel/mail/issues/1342).

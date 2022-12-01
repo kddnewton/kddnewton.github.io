@@ -119,6 +119,7 @@ This series explores a virtual machine, a non-trivial piece of technology. As su
 
 | Term | Definition |
 | --- | --- |
+| Compile-time | The time when the Ruby program is being compiled into bytecode from source. This is as opposed to runtime, when the program is being executed. Oftentimes we will say something is "known at compile-time" if it is a value that does not depend on anything dynamic (e.g., an array that holds only integers, not references to local variables). |
 | [CRuby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) | The main Ruby implementation at [ruby/ruby](https://github.com/ruby/ruby) that is written in C. |
 | [Frame](https://en.wikipedia.org/wiki/Call_stack#STACK-FRAME) | A data structure that holds the state of the virtual machine at a given point in time. |
 | [Instruction](https://en.wikipedia.org/wiki/Instruction_set_architecture#Instructions) | A single operation that the virtual machine can perform. This is often abbreviated as `insn`. |

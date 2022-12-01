@@ -26,7 +26,9 @@ Now that we're a little more familiar with the virtual machine stack and how to 
 
 To keep all of the various stack pointers valid, it's important that frames that push values onto the stack also pop them. This instruction is the simplest version of that, in that it pops a single value off the stack and discards it.
 
-![pop](/assets/aoy/part2-pop.svg)
+<div align="center">
+  <img src="/assets/aoy/part2-pop.svg" alt="pop">
+</div>
 
 In Ruby:
 
@@ -58,7 +60,9 @@ local table (size: 1, argc: 0 [opts: 0, rest: -1, post: 0, block: -1, kw: -1@-1,
 
 There are some nodes in the syntax tree that get compiled into sets of instructions that push multiple values onto the stack that then need to be popped off. Instead of inserting multiple `pop` instructions in a row, there's a single `adjuststack` instruction that pops multiple values off the stack. The instruction has an operand that tells it the number of values to pop. For example, with `adjuststack 2`:
 
-![adjuststack](/assets/aoy/part2-adjuststack.svg)
+<div align="center">
+  <img src="/assets/aoy/part2-adjuststack.svg" alt="adjuststack">
+</div>
 
 In Ruby:
 
@@ -103,7 +107,9 @@ In `foo[0] ||= 1` disassembly:
 
 There are times when we need multiple copies of the same object on the top of the stack. For example, if you're going to assign a local variable and then use the value, you need to duplicate the value before assigning it. This instruction duplicates the top value on the stack and pushes the duplicate onto the stack.
 
-![dup](/assets/aoy/part2-dup.svg)
+<div align="center">
+  <img src="/assets/aoy/part2-dup.svg" alt="dup">
+</div>
 
 In Ruby:
 
@@ -129,7 +135,9 @@ In `$foo = 1` disassembly:
 
 This instruction is similar to `dup`, but it duplicates multiple values from the top of the stack. It's used when there are multiple stack values that you need copies of. For example, with `dupn 2`:
 
-![dupn](/assets/aoy/part2-dupn.svg)
+<div align="center">
+  <img src="/assets/aoy/part2-dupn.svg" alt="dupn">
+</div>
 
 In Ruby:
 
@@ -176,7 +184,9 @@ In `Foo::Bar ||= true` disassembly:
 
 We haven't gotten to method calls yet, but it's useful to get a quick understanding of them before discussing `setn`. The YARV calling convention is to have the receiver and all of the arguments pushed onto the stack, and then to call `send`. The order of arguments matters, as that's how they get assigned to parameters in the method's frame. As such, it's helpful to be able to set specific slots in the stack to specific values, which is the function of `setn`. `setn` takes a single number parameter and sets the value at that index from the top of the stack to the value at the top of the stack. For example, with `setn 2`:
 
-![setn](/assets/aoy/part2-setn.svg)
+<div align="center">
+  <img src="/assets/aoy/part2-setn.svg" alt="setn">
+</div>
 
 In Ruby:
 
@@ -214,7 +224,9 @@ In `{}[:key] = "value"` disassembly:
 
 As discussed with `setn`, the order of the stack is important for method calls. It can also be important when calling branching instructions. As a quick overview before the post comes out, branching instructions allow the virtual machine to skip executing sets of instructions under certain conditions. For most branching instructions, they involve testing a certain value against some predicate, where the value is always at the top of the stack. This is where `topn` comes in. It takes a single number parameter and pushes the value at that index from the top of the stack onto the top of the stack. For example, with `topn 2`:
 
-![topn](/assets/aoy/part2-topn.svg)
+<div align="center">
+  <img src="/assets/aoy/part2-topn.svg" alt="topn">
+</div>
 
 In Ruby:
 
@@ -253,7 +265,9 @@ In `Foo::Bar += 1` disassembly:
 
 As a final instruction for this post on manipulating the stack, we have `swap`. This instruction swaps the top two values on the stack. This is useful for reordering arguments for method calls or instructions.
 
-![swap](/assets/aoy/part2-swap.svg)
+<div align="center">
+  <img src="/assets/aoy/part2-swap.svg" alt="swap">
+</div>
 
 In Ruby:
 
