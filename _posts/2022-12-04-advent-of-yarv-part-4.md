@@ -10,7 +10,7 @@ meta:
   "twitter:image": https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png
 ---
 
-This blog series is about how the CRuby virtual machine works. If you're new to the series, I recommend starting from [the beginning](/2022/11/28/advent-of-yarv-part-0). This post is about creating objects from the stack.
+This blog series is about how the CRuby virtual machine works. If you're new to the series, I recommend starting from [the beginning](/2022/11/30/advent-of-yarv-part-0). This post is about creating objects from the stack.
 
 There are many instructions that take multiple values from the top of the stack and combine them in some way. This can be done to create various primitive objects such as arrays, hashes, ranges, regular expressions, and strings.
 

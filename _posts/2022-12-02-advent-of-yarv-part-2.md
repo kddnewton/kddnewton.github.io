@@ -10,7 +10,7 @@ meta:
   "twitter:image": https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png
 ---
 
-This blog series is about how the CRuby virtual machine works. If you're new to the series, I recommend starting from [the beginning](/2022/11/28/advent-of-yarv-part-0). This post is about manipulating the virtual machine stack.
+This blog series is about how the CRuby virtual machine works. If you're new to the series, I recommend starting from [the beginning](/2022/11/30/advent-of-yarv-part-0). This post is about manipulating the virtual machine stack.
 
 Now that we're a little more familiar with the virtual machine stack and how to push values onto it, we'll show a couple of instructions to do manipulations such as popping, duplicating, and swapping values.
 

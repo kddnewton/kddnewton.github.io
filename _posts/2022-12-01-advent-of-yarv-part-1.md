@@ -10,7 +10,7 @@ meta:
   "twitter:image": https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png
 ---
 
-This blog series is about how the CRuby virtual machine works. If you're new to the series, I recommend starting from [the beginning](/2022/11/28/advent-of-yarv-part-0). This post is about the virtual machine stack, and how to push values onto it.
+This blog series is about how the CRuby virtual machine works. If you're new to the series, I recommend starting from [the beginning](/2022/11/30/advent-of-yarv-part-0). This post is about the virtual machine stack, and how to push values onto it.
 
 The first thing to understand about YARV is that it is a [stack-based virtual machine](https://en.wikipedia.org/wiki/Stack_machine). This means that all values are stored on a stack, and all operations are performed on the stack. This is in contrast to a [register-based virtual machine](https://en.wikipedia.org/wiki/Register_machine), where values are stored in registers and operations are performed on registers. The main advantage of a stack-based virtual machine is that it is easier to implement and easier to JIT compile. The main disadvantage is that it is slower than a register-based virtual machine because it requires more memory accesses.
 
