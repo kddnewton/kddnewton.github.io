@@ -250,4 +250,4 @@ In the next post we'll talk about manipulating the values of the stack and why t
 
 [^1]: _Some_ instructions will access values lower in the stack, but for the most part everything is accessed from the top.
 [^2]: There has been work to make Ractors have their own value stack, but we're ignoring that work for now.
-[^3]: Having the instruction sequence hold onto actual Ruby values means that they are responsible for making those values for garbage collection. This can have an interesting impact on memory consumption as these values will live until the instruction sequence is collected. For more on how this can be bad, see here: [mikel/mail#1342](https://github.com/mikel/mail/issues/1342).
+[^3]: Having the instruction sequence hold onto actual Ruby values means that they are responsible for marking those values for garbage collection. This can have an interesting impact on memory consumption as these values will live until the instruction sequence is collected. For more on how this can be bad, see here: [mikel/mail#1342](https://github.com/mikel/mail/issues/1342).
