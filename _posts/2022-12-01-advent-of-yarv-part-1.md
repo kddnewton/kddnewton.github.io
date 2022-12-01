@@ -14,7 +14,7 @@ This blog series is about how the CRuby virtual machine works. If you're new to 
 
 The first thing to understand about YARV is that it is a [stack-based virtual machine](https://en.wikipedia.org/wiki/Stack_machine). This means that all values are stored on a stack, and all operations are performed on the stack. This is in contrast to a [register-based virtual machine](https://en.wikipedia.org/wiki/Register_machine), where values are stored in registers and operations are performed on registers. The main advantage of a stack-based virtual machine is that it is easier to implement and easier to JIT compile. The main disadvantage is that it is slower than a register-based virtual machine because it requires more memory accesses.
 
-When we say stack, we mean a first-in, first-out data structure. In Ruby, it would be as if you had an array and you could only call the `Array#push` and `Array#pop` methods on it[^1]. The value stack is universal to the life of the program[^2]. This means there's a contract that when methods, blocks, or other structures are executed, they leave the stack as they found it (we'll talk more about this later).
+When we say stack, we mean a last-in, first-out data structure. In Ruby, it would be as if you had an array and you could only call the `Array#push` and `Array#pop` methods on it[^1]. The value stack is universal to the life of the program[^2]. This means there's a contract that when methods, blocks, or other structures are executed, they leave the stack as they found it (we'll talk more about this later).
 
 I could fill this entire page with caveats, but let's just go ahead and dive in to save ourselves the headache. Below are your very first couple of instructions in the YARV instruction set.
 
