@@ -18,8 +18,8 @@ All of the information presented here is to the best of my knowledge. That being
 
 Below are links to the individual posts. They'll become actual links once I've published them.
 
-* Part 1 - Pushing onto the stack
-* Part 2 - Manipulating the stack
+* [Part 1 - Pushing onto the stack](/2022/12/01/advent-of-yarv-part-1)
+* [Part 2 - Manipulating the stack](/2022/12/02/advent-of-yarv-part-2)
 * Part 3 - Frames and events
 * Part 4 - Creating objects from the stack
 * Part 5 - Changing objects on the stack

@@ -306,4 +306,4 @@ Our second post in the blog series has come to a close. In this post we talked a
 * The order of the stack matters quite a bit. It determines the order of arguments, which value is going to be returned from blocks and methods, and which values will be used by subsequent instructions.
 * Various instructions exist to manipulate the stack. Most of these could be modeled with multiple `putobject` and `pop` instructions, but it's much more efficient to have dedicated instructions.
 
-In the next post we'll take a quick break from introducing instructions and instead introduce the concept of frames and events.
+In the next post we'll take a quick break from introducing instructions and instead introduce the concepts of frames and events.
