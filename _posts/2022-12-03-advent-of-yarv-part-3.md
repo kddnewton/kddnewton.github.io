@@ -18,14 +18,15 @@ Whenever YARV is executing instructions, it is executing in the context of a fra
 
 * the instruction sequence that is being executed
 * a pointer to an offset into the instruction sequence that indicates the next instruction to execute
-* a pointer to an offset into the stack that indicates where the next value should be written
+* a pointer to an offset into the stack where this frame was created (this is known as the `environment pointer`)
+* a pointer to an offset into the stack that indicates where the next value should be written (this is known as the `stack pointer`)
 * the current value of `self`
 * the current constant scope[^1]
 * any special local variables[^2]
 
-YARV keeps a stack of frames around. Frames push a new "child" frame onto the frame stack when a new instruction sequence should be executed. Child frames are popped off the stack when the instruction sequence has finished executing and the return value is returned to the "parent" frame. Every frame has a parent frame except for the top-level frame, which conveniently has a type of `top`.
+YARV keeps a stack of frames around. Frames push a new "child" frame onto the frame stack when a new instruction sequence should be executed. Child frames are popped off the frame stack when the instruction sequence has finished executing and the return value is returned to the "parent" frame. Every frame has a parent frame except for the top-level frame, which conveniently has a type of `top`.
 
-Note that this is a different stack from the value stack that we've discussed in the first two posts. The value stack is a stack of values that are used to pass values between instructions. The frame stack is a stack of frames that are used to keep track of the current execution context. It can get confusing since there are actually quite a few stacks in the virtual machine.
+Note that this is a different stack from the value stack that we've discussed in the first two posts. The value stack is a stack of values that are used to pass values between instructions. The frame stack is a stack of frames that are used to keep track of the current execution context. It can get confusing since there are actually quite a few stacks at play in the virtual machine.
 
 Rubyists interact with frames all of the time without necessarily realizing it. For example, in the following code snippet YARV will push a new frame for the block being passed to the `each` method:
 
@@ -40,11 +41,9 @@ sum = 0
 end
 ```
 
-The frame is executed for each of the elements in the array. Notice that some frame types (like the `block` frame type) can interact with their parent frames to look up things like local variables (in this example, the `sum` variable). Other frame types (like the `method` frame type, pushed any time a method is defined) cannot.
+The frame is executed for each of the elements in the array. Notice that some frame types (like the `block` frame type) can interact with their parent frames to look up things like local variables (in this example, the `sum` variable). Other frame types (like the `method` frame type, pushed any time a Ruby method is called) cannot.
 
-Notice also that frames can have their own set of local variables that do not impact the parent frame. In this example, a space will be allocated on the stack for `double` when the block first starts executing, but it will not impact the parent frame's stack pointer. When the block exits, the parent frame's stack pointer will still be below the locals that were allocated, effectively making those values invisible to the parent frame.
-
-That was a lot of information in just text. Let's look at some diagrams to help illustrate the concepts we just discussed.
+Notice also that frames can have their own set of local variables that do not impact the parent frame. In this example, a space will be allocated on the stack for `double` when the block first starts executing that will be above the parent frame's stack pointer. When the block exits, the parent frame's stack pointer will still be below the locals that were allocated, effectively making those values invisible to the parent frame.
 
 ### Backtraces
 
@@ -120,19 +119,9 @@ local table (size: 2, argc: 1 [opts: 0, rest: -1, post: 0, block: -1, kw: -1@-1,
 0021 leave                                                            (   8)[Br]
 ```
 
-Both the `top` frame and the `block` frame have a `leave` instruction at the end. The `top` frame's `leave` instruction is what finishes the execution of the program. The `block` frame's `leave` instruction is what finishes the execution of the block and returns the top value on the stack to the parent frame. It does this by writing to the parent frame's stack pointer instead of the current frame's stack pointer. Internally to CRuby, you'll find the lines that do this are:
+Both the `top` frame and the `block` frame have a `leave` instruction at the end. The `top` frame's `leave` instruction is what finishes the execution of the program. The `block` frame's `leave` instruction is what finishes the execution of the block and returns the top value on the stack to the parent frame. It does this by writing to the parent frame's stack pointer instead of the current frame's stack pointer.
 
-```c
-// leave in insns.def
-if (vm_pop_frame(ec, GET_CFP(), GET_EP())) {
-  return val;
-}
-
-// vm_pop_frame in vm_insnhelper.c
-ec->cfp = RUBY_VM_PREVIOUS_CONTROL_FRAME(cfp);
-```
-
-As you can imagine, `leave` is going to show up quite a bit in this blog series, as it is arguably the most important instruction.
+As you can imagine, `leave` is going to show up quite a bit in this blog series, as it is arguably the most important instruction. If some details that we just discussed went a little over your head, don't worry. We'll be revisiting them many times throughout this series.
 
 ## Events
 
@@ -189,7 +178,7 @@ To be complete though, there are some additional events that will get fired inte
 In this post we talked about two very important concepts: the frame stack and events. We also talked about the `leave` instruction and how that interacts with the frame stack. Here are a couple of things to remember from this post:
 
 * A frame is an object that executes the instructions in an instruction sequence and stores all of the information necessary to do so.
-* Frames exist in a stack and are pushed on by various instructions. They are always popped by the `leave` instruction (slight caveat that the `throw` instruction can also pop frames, but we'll get there later).
+* Frames exist in a stack and are pushed on by various instructions. They are always popped by the `leave` instruction.[^4]
 * Ruby dispatches events whenever certain actions are taken by the virtual machine. These events can be used to implement tooling that hooks into the execution of a Ruby program. These events can be attached to instructions to dispatch when the instruction is executed.
 
 In the next post we'll go back to introducing more instructions. We will focus on instructions that combine multiple values on the top of the stack into one new value.
@@ -198,3 +187,5 @@ In the next post we'll go back to introducing more instructions. We will focus o
 
 [^1]: The constant scope that is held by the frame is similar to but not quite the same as the values returned by [Module::nesting](https://docs.ruby-lang.org/en/master/Module.html#method-c-nesting).
 [^2]: We'll talk more about special local variables when we get to the `getspecial` and `setspecial` instructions. It refers to local variables that are more akin to global variables in that they are not stored on the stack.
+[^3]: We will cover this much more in a few days, because there are a lot of different arguments types.
+[^4]: The `throw` instruction can pop frames as well, but we'll get to that later.
