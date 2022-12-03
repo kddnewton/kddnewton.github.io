@@ -14,35 +14,11 @@ Since I started working on the YJIT team at Shopify, I've been learning more and
 
 In theory, I'll post a new post every morning describing different aspects of the virtual machine. I've divided them up into sections such that each post builds on the foundation of the others, so if you're catching up, I encourage you to start from the beginning. We'll wrap up on Christmas just in time for Ruby 3.2.0 to be released, which is what this series is targeting.
 
-All of the information presented here is to the best of my knowledge. That being said, there are folks that are more knowledgeable, and if I've made a mistake or missed something I would very much appreciate feedback!
-
-Below are links to the individual posts. They'll become actual links once I've published them.
+All of the information presented here is to the best of my knowledge. That being said, there are folks that are more knowledgeable, and if I've made a mistake or missed something I would very much appreciate feedback! Below are links to the individual posts.
 
 * [Part 1 - Pushing onto the stack](/2022/12/01/advent-of-yarv-part-1)
 * [Part 2 - Manipulating the stack](/2022/12/02/advent-of-yarv-part-2)
-* Part 3 - Frames and events
-* Part 4 - Creating objects from the stack
-* Part 5 - Changing objects on the stack
-* Part 6 - Calling methods (1)
-* Part 7 - Calling methods (2)
-* Part 8 - Local variables (1)
-* Part 9 - Local variables (2)
-* Part 10 - Local variables (3)
-* Part 11 - Instance variables
-* Part 12 - Class variables
-* Part 13 - Global variables
-* Part 14 - Constants
-* Part 15 - Branching instructions
-* Part 16 - Defining classes
-* Part 17 - Defining methods
-* Part 18 - Method and block arguments
-* Part 19 - Calling super methods
-* Part 20 - The defined instruction
-* Part 21 - Catch tables
-* Part 22 - The once instruction
-* Part 23 - Pattern matching
-* Part 24 - Primitive and invokebuiltin
-* Part 25 - Remaining instructions and wrap up
+* [Part 3 - Frames and events](/2022/12/03/advent-of-yarv-part-3)
 
 ## Exploring
 
@@ -121,6 +97,7 @@ This series explores a virtual machine, a non-trivial piece of technology. As su
 | --- | --- |
 | Compile-time | The time when the Ruby program is being compiled into bytecode from source. This is as opposed to runtime, when the program is being executed. Oftentimes we will say something is "known at compile-time" if it is a value that does not depend on anything dynamic (e.g., an array that holds only integers, not references to local variables). |
 | [CRuby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) | The main Ruby implementation at [ruby/ruby](https://github.com/ruby/ruby) that is written in C. |
+| Environment pointer | A pointer held by a frame that points to the bottom of the stack used by the frame. Importantly this pointer is found after the arguments to the frame and the local variables declared within the frame. |
 | [Frame](https://en.wikipedia.org/wiki/Call_stack#STACK-FRAME) | A data structure that holds the state of the virtual machine at a given point in time. |
 | [Instruction](https://en.wikipedia.org/wiki/Instruction_set_architecture#Instructions) | A single operation that the virtual machine can perform. This is often abbreviated as `insn`. |
 | Instruction sequence | A list of instructions that the virtual machine can perform. This is often abbreviated as `iseq`. |
@@ -128,7 +105,7 @@ This series explores a virtual machine, a non-trivial piece of technology. As su
 | [Operand](https://en.wikipedia.org/wiki/Operand#Computer_science) | A value that is used by an instruction. These values are known at compile-time and are built into the instruction sequences. |
 | [Program counter](https://en.wikipedia.org/wiki/Program_counter) | A pointer to the current instruction in an instruction sequence. This is also referred to as an instruction pointer. |
 | [Stack](https://en.wikipedia.org/wiki/Stack_machine) | A data structure that holds values that are being used by the virtual machine. This is also referred to as the value stack. Confusingly, this is both the name of the type of data structure and the data structure itself. |
-| Stack pointer | A pointer held by a frame that points to the top slot of the stack. This is often abbreviated as `sp`. |
+| Stack pointer | A pointer held by a frame that points to the next slot in the stack to be written to. This is often abbreviated as `sp`. |
 | Tracepoint | A publication/subscription system for virtual machine events. Users can create tracepoints to get notified when certain events occur. |
 | [Virtual machine](https://en.wikipedia.org/wiki/Virtual_machine) | A piece of software that emulates a computer. |
 | [YARV](https://en.wikipedia.org/wiki/YARV) | The virtual machine that is used by CRuby. It stands for "Yet Another Ruby Virtual Machine". |
