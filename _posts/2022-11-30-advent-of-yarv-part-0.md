@@ -21,6 +21,7 @@ All of the information presented here is to the best of my knowledge. That being
 * [Part 3 - Frames and events](/2022/12/03/advent-of-yarv-part-3)
 * [Part 4 - Creating objects from the stack](/2022/12/04/advent-of-yarv-part-4)
 * [Part 5 - Changing object types on the stack](/2022/12/05/advent-of-yarv-part-5)
+* [Part 6 - Calling methods (1)](/2022/12/06/advent-of-yarv-part-6)
 
 ## Exploring
 
@@ -95,23 +96,59 @@ Finally, to really explore how YARV works, it helps to actually emulate its exec
 
 This series explores a virtual machine, a non-trivial piece of technology. As such, there are many terms that are used to describe different aspects of its execution and structure. I'll try to define them here as I reference them in various posts here so that you can come back here to look them up if you're not familiar with them or if you forget.
 
-| Term | Definition |
-| --- | --- |
-| Call data | Information about a specific call site in Ruby that is retained by instructions that perform method calls. |
-| Call site | A location in the source code where a method is called. |
-| Callee | The method that is being called by another method. |
-| Caller | The method that is calling another method. |
-| Compile-time | The time when the Ruby program is being compiled into bytecode from source. This is as opposed to runtime, when the program is being executed. Oftentimes we will say something is "known at compile-time" if it is a value that does not depend on anything dynamic (e.g., an array that holds only integers, not references to local variables). |
-| [CRuby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) | The main Ruby implementation at [ruby/ruby](https://github.com/ruby/ruby) that is written in C. |
-| Environment pointer | A pointer held by a frame that points to the bottom of the stack used by the frame. Importantly this pointer is found after the arguments to the frame and the local variables declared within the frame. |
-| [Frame](https://en.wikipedia.org/wiki/Call_stack#STACK-FRAME) | A data structure that holds the state of the virtual machine at a given point in time. |
-| [Instruction](https://en.wikipedia.org/wiki/Instruction_set_architecture#Instructions) | A single operation that the virtual machine can perform. This is often abbreviated as `insn`. |
-| Instruction sequence | A list of instructions that the virtual machine can perform. This is often abbreviated as `iseq`. |
-| [Instruction set](https://en.wikipedia.org/wiki/Instruction_set_architecture) | The set of instructions that the virtual machine can perform. |
-| [Operand](https://en.wikipedia.org/wiki/Operand#Computer_science) | A value that is used by an instruction. These values are known at compile-time and are built into the instruction sequences. |
-| [Program counter](https://en.wikipedia.org/wiki/Program_counter) | A pointer to the current instruction in an instruction sequence. This is also referred to as an instruction pointer. |
-| [Stack](https://en.wikipedia.org/wiki/Stack_machine) | A data structure that holds values that are being used by the virtual machine. This is also referred to as the value stack. Confusingly, this is both the name of the type of data structure and the data structure itself. |
-| Stack pointer | A pointer held by a frame that points to the next slot in the stack to be written to. This is often abbreviated as `sp`. |
-| Tracepoint | A publication/subscription system for virtual machine events. Users can create tracepoints to get notified when certain events occur. |
-| [Virtual machine](https://en.wikipedia.org/wiki/Virtual_machine) | A piece of software that emulates a computer. |
-| [YARV](https://en.wikipedia.org/wiki/YARV) | The virtual machine that is used by CRuby. It stands for "Yet Another Ruby Virtual Machine". |
+Call data
+: Information about a specific call site in Ruby that is retained by instructions that perform method calls.
+
+Call site
+: A location in the source code where a method is called.
+
+Callee
+: The method that is being called by another method.
+
+Caller
+: The method that is calling another method.
+
+Compile-time
+: The time when the Ruby program is being compiled into bytecode from source. This is as opposed to runtime, when the program is being executed. Oftentimes we will say something is "known at compile-time" if it is a value that does not depend on anything dynamic (e.g., an array that holds only integers, not references to local variables).
+
+CRuby
+: The main Ruby implementation at [ruby/ruby](https://github.com/by/ruby) that is written in C.
+
+Environment pointer
+: A pointer held by a frame that points to the bottom of the stack used by the frame. Importantly this pointer is found after the arguments to the frame and the local variables declared within the frame.
+
+Frame
+: A data structure that holds the state of the virtual machine at a given point in time.
+
+Instruction
+: A single operation that the virtual machine can perform. This is often abbreviated as `insn`.
+
+Instruction sequence
+: A list of instructions that the virtual machine can perform. This is often abbreviated as `iseq`.
+
+Instruction set
+: The set of instructions that the virtual machine can perform.
+
+Operand
+: A value that is used by an instruction. These values are known at compile-time and are built into the instruction sequences.
+
+Program counter
+: A pointer to the current instruction in an instruction sequence. This is also referred to as an instruction pointer.
+
+Receiver
+: The object that a method is being called on.
+
+Stack
+: A data structure that holds values that are being used by the virtual machine. This is also referred to as the value stack. Confusingly, this is both the name of the type of data structure and the data structure itself.
+
+Stack pointer
+: A pointer held by a frame that points to the next slot in the stack to be written to. This is often abbreviated as `sp`.
+
+Tracepoint
+: A publication/subscription system for virtual machine events. Users can create tracepoints to get notified when certain events occur.
+
+Virtual machine
+: A piece of software that emulates a computer.
+
+YARV
+: The virtual machine that is used by CRuby. It stands for "Yet Another Ruby Virtual Machine".
