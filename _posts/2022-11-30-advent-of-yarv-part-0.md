@@ -20,6 +20,7 @@ All of the information presented here is to the best of my knowledge. That being
 * [Part 2 - Manipulating the stack](/2022/12/02/advent-of-yarv-part-2)
 * [Part 3 - Frames and events](/2022/12/03/advent-of-yarv-part-3)
 * [Part 4 - Creating objects from the stack](/2022/12/04/advent-of-yarv-part-4)
+* [Part 5 - Changing object types on the stack](/2022/12/05/advent-of-yarv-part-5)
 
 ## Exploring
 
