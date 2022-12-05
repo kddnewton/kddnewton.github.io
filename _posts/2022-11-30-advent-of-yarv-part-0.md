@@ -96,6 +96,10 @@ This series explores a virtual machine, a non-trivial piece of technology. As su
 
 | Term | Definition |
 | --- | --- |
+| Call data | Information about a specific call site in Ruby that is retained by instructions that perform method calls. |
+| Call site | A location in the source code where a method is called. |
+| Callee | The method that is being called by another method. |
+| Caller | The method that is calling another method. |
 | Compile-time | The time when the Ruby program is being compiled into bytecode from source. This is as opposed to runtime, when the program is being executed. Oftentimes we will say something is "known at compile-time" if it is a value that does not depend on anything dynamic (e.g., an array that holds only integers, not references to local variables). |
 | [CRuby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) | The main Ruby implementation at [ruby/ruby](https://github.com/ruby/ruby) that is written in C. |
 | Environment pointer | A pointer held by a frame that points to the bottom of the stack used by the frame. Importantly this pointer is found after the arguments to the frame and the local variables declared within the frame. |
