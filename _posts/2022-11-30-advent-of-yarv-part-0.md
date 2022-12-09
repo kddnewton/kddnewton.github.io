@@ -23,6 +23,8 @@ All of the information presented here is to the best of my knowledge. That being
 * [Part 5 - Changing object types on the stack](/2022/12/05/advent-of-yarv-part-5)
 * [Part 6 - Calling methods (1)](/2022/12/06/advent-of-yarv-part-6)
 * [Part 7 - Calling methods (2)](/2022/12/07/advent-of-yarv-part-7)
+* [Part 8 - Local variables (1)](/2022/12/08/advent-of-yarv-part-8)
+* [Part 9 - Local variables (2)](/2022/12/09/advent-of-yarv-part-9)
 
 ## Exploring
 
@@ -138,6 +140,9 @@ Program counter
 
 Receiver
 : The object that a method is being called on.
+
+Reify
+: To make concrete. In the context of lazy evaluation, it means to evaluate a value that was previously deferred.
 
 Stack
 : A data structure that holds values that are being used by the virtual machine. This is also referred to as the value stack. Confusingly, this is both the name of the type of data structure and the data structure itself.
