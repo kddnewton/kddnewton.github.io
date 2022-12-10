@@ -25,6 +25,7 @@ All of the information presented here is to the best of my knowledge. That being
 * [Part 7 - Calling methods (2)](/2022/12/07/advent-of-yarv-part-7)
 * [Part 8 - Local variables (1)](/2022/12/08/advent-of-yarv-part-8)
 * [Part 9 - Local variables (2)](/2022/12/09/advent-of-yarv-part-9)
+* [Part 10 - Local variables (3)](/2022/12/10/advent-of-yarv-part-10)
 
 ## Exploring
 
