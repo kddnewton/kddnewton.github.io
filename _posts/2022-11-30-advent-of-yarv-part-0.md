@@ -27,6 +27,7 @@ All of the information presented here is to the best of my knowledge. That being
 * [Part 9 - Local variables (2)](/2022/12/09/advent-of-yarv-part-9)
 * [Part 10 - Local variables (3)](/2022/12/10/advent-of-yarv-part-10)
 * [Part 11 - Class and instance variables](/2022/12/11/advent-of-yarv-part-11)
+* [Part 12 - Global variables](/2022/12/12/advent-of-yarv-part-12)
 
 ## Exploring
 
