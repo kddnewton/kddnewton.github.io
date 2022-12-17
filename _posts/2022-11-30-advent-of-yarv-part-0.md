@@ -32,6 +32,7 @@ All of the information presented here is to the best of my knowledge. That being
 * [Part 14 - Branching](/2022/12/14/advent-of-yarv-part-14)
 * [Part 15 - Defining classes and modules](/2022/12/15/advent-of-yarv-part-15)
 * [Part 16 - Defining methods](/2022/12/16/advent-of-yarv-part-16)
+* [Part 17 - Method parameters](/2022/12/17/advent-of-yarv-part-17)
 
 ## Exploring
 
