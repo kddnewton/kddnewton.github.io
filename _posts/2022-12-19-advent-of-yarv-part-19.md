@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Advent of YARV
-subtitle: Part 19 - Defined?
+subtitle: Part 19 - Defined
 meta:
   "twitter:card": summary
   "twitter:title": "Advent of YARV: Part 19"
