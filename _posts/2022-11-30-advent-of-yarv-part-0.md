@@ -35,6 +35,7 @@ All of the information presented here is to the best of my knowledge. That being
 * [Part 17 - Method parameters](/2022/12/17/advent-of-yarv-part-17)
 * [Part 18 - Super methods](/2022/12/18/advent-of-yarv-part-18)
 * [Part 19 - Defined](/2022/12/19/advent-of-yarv-part-19)
+* [Part 20 - Catch tables](/2022/12/20/advent-of-yarv-part-20)
 
 ## Exploring
 
