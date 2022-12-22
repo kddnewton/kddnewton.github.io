@@ -37,6 +37,7 @@ All of the information presented here is to the best of my knowledge. That being
 * [Part 19 - Defined](/2022/12/19/advent-of-yarv-part-19)
 * [Part 20 - Catch tables](/2022/12/20/advent-of-yarv-part-20)
 * [Part 21 - Once](/2022/12/21/advent-of-yarv-part-21)
+* [Part 22 - Pattern matching](/2022/12/22/advent-of-yarv-part-22)
 
 ## Exploring
 
