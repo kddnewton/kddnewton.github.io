@@ -39,6 +39,7 @@ All of the information presented here is to the best of my knowledge. That being
 * [Part 21 - Once](/2022/12/21/advent-of-yarv-part-21)
 * [Part 22 - Pattern matching](/2022/12/22/advent-of-yarv-part-22)
 * [Part 23 - Primitive](/2022/12/23/advent-of-yarv-part-23)
+* [Part 24 - Wrap up](/2022/12/24/advent-of-yarv-part-24)
 
 ## Exploring
 

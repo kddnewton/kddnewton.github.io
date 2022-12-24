@@ -27,7 +27,11 @@ This instruction can do literally anything it wants to the state of the virtual 
 
 ## `reput`
 
-The `reput` instruction is used when `OPT_STACK_CACHING` is defined. The usage of stack caching is entirely out of scope of this blog series, but the `reput` instruction itself is very simple: it does nothing.
+The `reput` instruction is used when `OPT_STACK_CACHING` is defined. The usage of stack caching is entirely out of scope of this blog series, but the `reput` instruction itself at the moment does nothing. If you want to read more about stack caching or see it in action, here are a couple of links:
+
+* [Compile reput instruction](https://github.com/ruby/ruby/blob/d20bd06a/compile.c#L4031)
+* [Create stack caching instructions](https://github.com/ruby/ruby/blob/d20bd06a/tool/ruby_vm/views/opt_sc.inc.erb)
+* [Stack caching for interpreters](https://dl.acm.org/doi/10.1145/223428.207165)
 
 ## `answer`
 
@@ -49,7 +53,7 @@ Now here are a couple of things that we _didn't_ cover in this series. I think i
 
 * We briefly touched on how instruction sequences get compiled, but never looked at how the syntax tree gets translated into instruction sequences. For that matter we never looked at how the syntax tree gets created in the first place.
 * We never looked at how garbage collection pertains to instruction sequences, but they can in fact be reclaimed. This is an important aspect of the virtual machine because various actions need to be taken when an instruction sequence is reclaimed.
-* We never talked about JIT compilers. Over the past 5 years, this has become a massive piece of research in the Ruby community, namely with YJIT and MJIT. If you've read this far into the series, you'll have quite a good basis for understanding how both of these JIT compilers work.
+* We never talked about JIT compilers. Over the past 5 years, this has become a massive place of research in the Ruby community, namely with YJIT and MJIT. If you've read this far into the series, you'll have quite a good basis for understanding how both of these JIT compilers work.
 * We only briefly talked about tracepoint. Tracepoint is a very powerful tool for debugging and profiling Ruby code. It does things like rewriting instruction sequences with trace variants of their instructions, which can be pretty invasive. I skipped this because it could probably be its own blog series.
 
 Thank you so very much for reading. I was very excited to share this information with you. I hope you have a very happy holiday season and new year. If you have any feedback or just want to say hi, feel free to drop me a line on [Twitter](https://twitter.com/kddnewton).
