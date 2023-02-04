@@ -3,6 +3,15 @@ layout: default
 title: Speaking
 ---
 
+## Syntax Tree
+
+Syntax Tree is a new toolkit for interacting with the Ruby parse tree. It can be used to analyze, inspect, debug, and format your Ruby code. In this talk we'll walk through how it works, how to use it in your own applications, and the exciting future possibilities enabled by Syntax Tree. [[Slides](https://speakerdeck.com/kddnewton/syntax-tree-rubyconf-mini)]
+
+<iframe src="https://www.youtube.com/embed/VN72YBy8KsY" title="Syntax Tree" frameborder="0" allowfullscreen></iframe>
+
+* [RubyConf Mini (2022)](https://www.rubyconfmini.com/program)
+* [RubyKaigi (2022)](https://rubykaigi.org/2022/presentations/kddnewton.html)
+
 ## Parsing Ruby
 
 Since Ruby's inception, there have been many different projects that parse Ruby code. This includes everything from development tools to Ruby implementations themselves. This talk dives into the technical details and tradeoffs of how each of these tools parses and subsequently understands your applications. After, we'll discuss how you can do the same with your own projects using the Ripper standard library. You'll see just how far we can take this library toward building useful development tools. [[Code](https://github.com/kddnewton/parsing-ruby)] [[Slides](https://speakerdeck.com/kddnewton/parsing-ruby-rubyconf)]
