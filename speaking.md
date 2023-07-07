@@ -3,6 +3,18 @@ layout: default
 title: Speaking
 ---
 
+## Yet Another Ruby Parser
+
+Building good Ruby tooling is dependent on having a good parser. Today, it is difficult to use the CRuby parser to build tooling because of its lack of public interface and documentation. This has led to people using external gems and generally fragmenting the community.
+
+The Yet Another Ruby Parser project is building a universal Ruby parser that can be used by all Ruby implementations and tools. It is documented, error tolerant, and performant. It can be used without linking against CRuby, which means it can be easily used by other projects.
+
+This talk is about the YARP project's motivation, design, implementation, and results. Come to learn about the future of parsing Ruby.
+
+<iframe src="https://www.youtube.com/embed/3vzpv9GZdLo" title="Yet Another Ruby Parser" frameborder="0" allowfullscreen></iframe>
+
+* [RubyKaigi (2023)](https://rubykaigi.org/2023/presentations/kddnewton.html#day2)
+
 ## Syntax Tree
 
 Syntax Tree is a new toolkit for interacting with the Ruby parse tree. It can be used to analyze, inspect, debug, and format your Ruby code. In this talk we'll walk through how it works, how to use it in your own applications, and the exciting future possibilities enabled by Syntax Tree. [[Slides](https://speakerdeck.com/kddnewton/syntax-tree-rubyconf-mini)]
