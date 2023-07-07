@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Humidifier - CloudFormation made easier
+source: https://eng.localytics.com/humidifier-cloudformation-made-easier/
 ---
 
 Today we are open-sourcing [Humidifier](https://github.com/localytics/humidifier/) - one of the tools that we use internally to manage infrastructure on Amazon Web Services (AWS) at Localytics. This Ruby gem allows you to programmatically generate domain objects that represent the AWS CloudFormation (CFN) resources you want, handling the details of JSON manipulation under the covers. We've found that Humidifier not only increases development speed, but also results in easy-to-understand, maintainable code that allows you to focus on building resources instead of programming in JSON.

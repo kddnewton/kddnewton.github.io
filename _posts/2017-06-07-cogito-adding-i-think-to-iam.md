@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Cogito - Adding "I think" to IAM
+source: https://eng.localytics.com/cogito/
 ---
 
 Today we are open-sourcing [Cogito](https://localytics.github.io/libcogito), an abstraction of [AWS IAM](https://aws.amazon.com/iam/) syntax. IAM (Identity and Access Management) is AWS's module that dictates the ability of various users and resources to mutate other resources within the AWS ecosystem. Permissions are described through a JSON-structured policy document that lives within the AWS console.

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Connecting to Snowflake with Ruby on Rails
+source: https://eng.localytics.com/connecting-to-snowflake-with-ruby-on-rails/
 ---
 
 At [Localytics](https://www.localytics.com/), one of the tools we use for data processing is the [Snowflake](https://www.snowflake.net/) data warehouse. We connect to Snowflake in a couple different ways, but our main data retrieval application is a [Ruby on Rails](http://rubyonrails.org/) API. To accomplish this we use a combination of [unixODBC](http://www.unixodbc.org/) (an open-source implementation of the [ODBC](https://docs.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc) standard), Snowflake's [ODBC driver](https://docs.snowflake.net/manuals/user-guide/odbc.html), and our own [ODBC ActiveRecord adapter](http://eng.localytics.com/odbc-and-writing-your-own-activerecord-adapter/) for Ruby on Rails. This sequence of tools allows us to take full advantage of ActiveRecord's query generation and general ease-of-use while still enjoying all the benefits of a fully cloud-enabled data warehouse such as Snowflake.

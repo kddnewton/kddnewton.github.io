@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Serverless Slackbots powered by AWS
+source: https://eng.localytics.com/serverless-slackbots-powered-by-aws/
 ---
 
 Today Localytics is open sourcing two tools that help you quickly scaffold custom Slack commands using AWS Lambda, AWS API Gateway, and the Serverless framework. These tools grew out of our continued investment in making ChatOps the primary way Localytics engineers manage our infrastructure. With Serverless and a small bit of scaffolding, we're now able to create custom Lambda functions that handle slash commands from Slack in about 10 minutes.

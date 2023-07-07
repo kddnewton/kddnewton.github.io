@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Weird Ruby
+source: https://engineering.culturehq.com/posts/2019-02-14-weird-ruby
 ---
 
 Recently, I wrote a [plugin for `prettier`](https://github.com/prettier/plugin-ruby) for the Ruby programming language. Over the course of that process, I discovered a lot of eccentricities of Ruby (by needing to account for each node type of, as well as each variant in structure of, the AST). I found some fun things, and so in the spirit of Gary Bernhardt's ["wat" talk](https://www.destroyallsoftware.com/talks/wat), I'm going to share them with you here.

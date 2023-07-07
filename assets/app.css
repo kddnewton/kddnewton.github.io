@@ -164,6 +164,16 @@ footer li + li {
   margin-bottom: 0.4em;
 }
 
+aside {
+  float: right;
+}
+
+aside::before {
+  content: "🔗";
+  font-size: 0.8em;
+  margin-right: 5px;
+}
+
 time {
   color: #666;
   display: block;

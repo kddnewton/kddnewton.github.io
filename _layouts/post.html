@@ -3,6 +3,7 @@ layout: default
 ---
 
 <h1>{{ page.title }}{% if page.subtitle %}<small>: {{ page.subtitle }}</small>{% endif %}</h1>
+{% if page.source %}<aside><a href="{{ page.source }}">{{ page.source | split: "//" | last | split: "/" | first }}</a></aside>{% endif %}
 <time>{{ page.date | date: "%b %d, %Y" }}</time>
 
 {{ content }}

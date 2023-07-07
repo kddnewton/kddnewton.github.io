@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Infrastructure as code with humidifier-reservoir
+source: https://eng.localytics.com/infrastructure-as-code-with-humidifier-reservoir/
 ---
 
 A little more than a year ago we made the [first commit](https://github.com/localytics/humidifier/commit/f051578) to the gem that eventually became [humidifier](https://github.com/localytics/humidifier). It's [evolved quite a bit](https://github.com/localytics/humidifier/releases) in the last year, including integrating AWS' [resource specification](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html) which had the side-effect of greatly stabilizing the API. Here at Localytics, we've been using `humidifier` in myriad ways, including managing our AWS infrastructure, launching and configuring new servers, and aiding in refactoring our network ACLs for better security (to name a few).

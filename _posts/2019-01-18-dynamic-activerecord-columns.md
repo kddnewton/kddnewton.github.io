@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dynamic ActiveRecord columns
+source: https://engineering.culturehq.com/posts/2019-01-18-dynamic-activerecord-columns
 ---
 
 When dealing with any kind of data transmission, the problem almost always boils down to the amount of data being sent. Engineers can optimize the speed of the wire and the compression of the data, but at the end of the day sending fewer things is almost always going to yield the biggest gains.

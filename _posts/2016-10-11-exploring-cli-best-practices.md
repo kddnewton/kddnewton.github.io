@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Exploring CLI best practices
+source: https://eng.localytics.com/exploring-cli-best-practices/
 ---
 
 Like at many software companies, we at Localytics build command-line interfaces (CLIs) that manage our internal infrastructure and processes. These tools cover a broad range of applications, including integrating with our background jobs server, creating and maintaining AWS resources, as well as handling deployment and continuous delivery. We've written all of our CLIs with ruby, using [thor](https://github.com/erikhuda/thor) to handle parsing and dispatching the commands.

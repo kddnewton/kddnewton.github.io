@@ -1,6 +1,7 @@
 ---
 layout: post
 title: ODBC and writing your own ActiveRecord adapter
+source: https://eng.localytics.com/odbc-and-writing-your-own-activerecord-adapter/
 ---
 
 Today we are open-sourcing our [ODBC adapter](https://github.com/localytics/odbc_adapter) for ActiveRecord, which allows Ruby on Rails applications to communicate with ODBC-compliant databases. The impetus for this work was an effort to update one of our APIs to run with the latest Rails and ruby. Along the way we released Rails 3.2.x, 4.2.x, and 5.0.x versions of the adapter, along with deploying incremental upgrades to our API as we went. Below is the story of how we made it happen.

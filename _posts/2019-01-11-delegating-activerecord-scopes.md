@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Delegating ActiveRecord scopes
+source: https://engineering.culturehq.com/posts/2019-01-11-delegating-activerecord-scopes
 ---
 
 In `Ruby on Rails`, access to the database is by default controlled through the `ActiveRecord` ORM. `ActiveRecord` operates on `Relation` objects that contain the configuration for an SQL query that will be executed at a later time. `Relation` objects have the ability to copy their internal configuration over to a new `Relation` object with new options in order to further customize those queries.

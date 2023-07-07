@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Polyfill as needed
+source: https://engineering.culturehq.com/posts/2019-05-23-polyfill-as-needed
 ---
 
 Because browsers implement their own versions of JavaScript, they don't all support the same functions. For example, `Array#includes` is supported in all of the major browsers except Internet Explorer. So, if you include that function in your application (or one of your dependencies does) your application will break in Internet Explorer only.

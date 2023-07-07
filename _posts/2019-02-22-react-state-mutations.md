@@ -1,6 +1,7 @@
 ---
 layout: post
 title: react-state-mutations
+source: https://engineering.culturehq.com/posts/2019-02-22-react-state-mutations
 ---
 
 There are two types of objects that you can pass to the first argument to `setState` within React components. The first is an object, which will update the state to be equal to that value, as in:
