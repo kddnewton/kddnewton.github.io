@@ -137,4 +137,6 @@ Notice that in the code above we call `#order` on the relation. This works becau
 
 ## Wrapping up
 
-I hope you found this post interesting. If I'm being totally honest, I probably wouldn't pull in an entire separate gem just to provide this functionality. At the end of the day the code boils down to about [100 lines](https://github.com/kddnewton/active_record-union_relation/blob/main/lib/active_record/union_relation.rb) with lots of comments so this is more in the realm of copy-paste-able code. However, I think it's a neat trick and I hope you do too. If you have any questions or comments, feel free to reach out to me on Twitter [@kddnewton](https://twitter.com/kddnewton) or GitHub [kddnewton](https://github.com/kddnewton).
+As a quick disclaimer: I probably wouldn't pull in an entire separate gem just to provide this functionality. At the end of the day the code boils down to about [100 lines](https://github.com/kddnewton/active_record-union_relation/blob/main/lib/active_record/union_relation.rb) with lots of comments so this is more in the realm of copy-paste-able code. However, I think it's a neat trick and I hope you do too. Mostly I like this because it mirrors Ruby's idea of duck-typing. Effectively we're treating each record as an object fulfilling a role rather than a nominal type. This feels very at home in a Ruby application.
+
+If you have any questions or comments, feel free to reach out to me on Twitter [@kddnewton](https://twitter.com/kddnewton) or GitHub [kddnewton](https://github.com/kddnewton).
