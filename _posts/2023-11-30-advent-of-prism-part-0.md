@@ -78,4 +78,4 @@ stree ast -e "1 + 2"
 This series explores a parser and its associated syntax tree. These can be somewhat difficult to understand. As such, there are many terms that are used to describe different aspects of the parser's execution and structure. I'll try to define them here as I reference them in various posts here so that you can come back here to look them up if you're not familiar with them or if you forget.
 
 Prism
-: A new portable, maintainable, and error-tolerance parser written for Ruby.
+: A new portable, maintainable, and error-tolerant parser written for Ruby.
