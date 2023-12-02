@@ -18,6 +18,8 @@ Before we get started, I want to say a couple of thank-yous. First and foremost,
 
 Links to the individual blog posts will appear here as they are published, so feel free to bookmark this particular page and come back to it as the series progresses, or really whenever you please.
 
+* [Part 1 - Literals](/2023/12/01/advent-of-prism-part-1)
+
 ## Exploring
 
 As the blog series progresses you'll see me exploring prism, but also other parsers and tools along the way. I encourage you to explore on your own as well, the best way to learn something like this is through your own experimentation. Below are a couple of ways to get started:
