@@ -19,6 +19,7 @@ Before we get started, I want to say a couple of thank-yous. First and foremost,
 Links to the individual blog posts will appear here as they are published, so feel free to bookmark this particular page and come back to it as the series progresses, or really whenever you please.
 
 * [Part 1 - Literals](/2023/12/01/advent-of-prism-part-1)
+* [Part 2 - Data structures](/2023/12/02/advent-of-prism-part-2)
 
 ## Exploring
 
