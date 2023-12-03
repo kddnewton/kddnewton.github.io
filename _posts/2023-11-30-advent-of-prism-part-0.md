@@ -20,6 +20,7 @@ Links to the individual blog posts will appear here as they are published, so fe
 
 * [Part 1 - Literals](/2023/12/01/advent-of-prism-part-1)
 * [Part 2 - Data structures](/2023/12/02/advent-of-prism-part-2)
+* [Part 3 - Reads](/2023/12/03/advent-of-prism-part-3)
 
 ## Exploring
 
