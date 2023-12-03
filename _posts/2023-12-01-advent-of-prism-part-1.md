@@ -87,7 +87,7 @@ By far the most common number is the integer. It comes in a couple of varieties.
 10   # base decimal, value 10
 0d10 # base decimal, value 10
 0b10 # base binary, value 2
-0o10 # base binary, value 8
+0o10 # base octal, value 8
 010  # base octal, value 8
 0x10 # base hexidecimal, value 16
 ```
@@ -119,7 +119,7 @@ The node itself looks like this in the syntax tree for `1`:
 
 ### `FloatNode`
 
-Floats are also relatively common in Ruby. These are numbers that contain a decimal point or use scientific notation. They can be signed (like integers) and have the same interesting proprieties as integers when it comes to negative numbers. They also support underscores in the same way integers do. Unlike integers, they cannot have other bases. Here are a couple of examples:
+Floats are also relatively common in Ruby. These are numbers that contain a decimal point or use scientific notation. They can be signed (like integers) and have the same interesting properties as integers when it comes to negative numbers. They also support underscores in the same way integers do. Unlike integers, they cannot have other bases. Here are a couple of examples:
 
 ```ruby
 1.0
