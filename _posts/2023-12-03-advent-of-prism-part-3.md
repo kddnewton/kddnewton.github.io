@@ -34,7 +34,7 @@ You'll notice that there is a `name` field on the node that goes beyond our norm
 
 ### Constant pool
 
-When prism is parsing, it maintains an internal hash table of all of the constant strings it has found so far. This is loosely analogous to the internal ID table that CRuby keeps around to intern strings. By maintaining a constant pool, prism allows its consumers to only have to serialize single these names once, and then reference them by a handle in the future. This is also used internally in prism to resolve local variables because it drastically lowers the number of string comparisons that end up needing to be performed.
+When prism is parsing, it maintains an internal hash table of all of the constant strings it has found so far. This is loosely analogous to the internal ID table that CRuby keeps around to intern strings. By maintaining a constant pool, prism allows its consumers to only have to serialize these names once, and then reference them by a handle in the future. This is also used internally in prism to resolve local variables because it drastically lowers the number of string comparisons that end up needing to be performed.
 
 The other large benefit comes in the serialization API. Normally when interacting with prism you would either interact with the Ruby API (which wraps the C API via a Ruby native extension) or the C API directly. However, prism also has a serialization API that allows you to serialize a syntax tree into a binary format. That binary format can then be deserialized through a templated deserializer in any language that supports it (we currently do this in `Java` and `JavaScript`). For more information, see the [doc](https://github.com/ruby/prism/blob/5691a6f4041db255568870221823c706f5ad006f/docs/serialization.md) in prism.
 
@@ -160,7 +160,7 @@ self::Foo
 foo.bar::Baz
 ```
 
-The first example includes a prefix of `::`, which indicates that the constant lookup should being at the root of the module nesting tree.
+The first example includes a prefix of `::`, which indicates that the constant lookup should be at the root of the module nesting tree.
 
 You'll notice that the first three examples only contain constant reads as a part of their path, where the last two include other kinds of expressions. Constant paths can be dynamic in this way, it's not required that they only contain constant reads. To represent these chains of nodes, prism uses a `ConstantPathNode`. These nodes contain an optional `parent` field (`nil` in the first example), a `child` field (almost always a constant read), and the location of the `::` delimiter. Here's what the syntax tree looks like for `Foo::Bar::Baz`:
 
