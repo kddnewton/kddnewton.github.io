@@ -31,7 +31,7 @@ All in, there are 11 types of operators that we treat this way: `+=`, `-=`, `*=`
 
 ### Syntax sugar
 
-In parsers, sometimes folks refer to these kinds of operators as syntax "sugar". The loose definition is syntax that can be used as a more terse version of other syntax that already exists. As an example, in the compiler the `@foo += 1` peration is almost exactly equivalent to the "desugared" version of:
+In parsers, sometimes folks refer to these kinds of operators as syntax "sugar". The loose definition is syntax that can be used as a more terse version of other syntax that already exists. As an example, in the compiler the `@foo += 1` operation is almost exactly equivalent to the "desugared" version of:
 
 ```ruby
 @foo = @foo + 1
@@ -41,7 +41,7 @@ As such, prism provides a `Prism::DesugarCompiler` that can be used to convert a
 
 ### Design
 
-Other designs were considered for this node. In fact this node was originally implemented as a single operator write node that could be used for all operators and possible left-hand sides. This design was ultimately rejected because it ended up violating one of our key tenets: compilers should not have to look at child nodes to understand the type of node they are compiling. Furthermore, sharing a single operator write node hides some additional complexity, which is that not all of the operator writes can be desugared as we have with the instance variables. We'll see why moementarily.
+Other designs were considered for this node. In fact this node was originally implemented as a single operator write node that could be used for all operators and possible left-hand sides. This design was ultimately rejected because it ended up violating one of our key tenets: compilers should not have to look at child nodes to understand the type of node they are compiling. Furthermore, sharing a single operator write node hides some additional complexity; not all of the operator writes can be desugared as we have with the instance variables. We'll see why momentarily.
 
 ## `ClassVariableOperatorWriteNode`
 
@@ -75,7 +75,7 @@ $foo += 1
 $foo -= 2
 ```
 
-Note that same things that look like global variables are not allowed to be written at all, such as `$&`. With direct or indirect writes like operator writes, you will get the `Can't set variable` compile error in CRuby, or an equivalent parse error in prism. Here is what the syntax tree looks like for `$foo += 1`:
+Note that some things that look like global variables are not allowed to be written at all, such as `$&`. With direct or indirect writes like operator writes, you will get the `Can't set variable` compile error in CRuby, or an equivalent parse error in prism. Here is what the syntax tree looks like for `$foo += 1`:
 
 <div align="center">
   <img src="/assets/aop/part5-global-variable-operator-write-node.svg" alt="global variable operator write node">
