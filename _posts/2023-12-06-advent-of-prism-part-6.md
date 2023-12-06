@@ -28,7 +28,7 @@ else
 end
 ```
 
-you know that the value of `foo` is either `2` or `3`, depending on the result of the `bar` method call. The control-flow in this case is said to "branch" because the program can take one of two paths. If `bar` returns a truthy value, the program will execute the `foo = 2` branch. If `bar` returns `false`, the program will execute the `foo = 3` branch. We'll see how this relates to the `&&=` and `||=` operators in a moment.
+you know that the value of `foo` is either `2` or `3`, depending on the result of the `bar` method call. The control-flow in this case is said to "branch" because the program can take one of two paths. If `bar` returns a truthy value, the program will execute the `foo = 2` branch. If `bar` returns a falsy value, the program will execute the `foo = 3` branch. We'll see how this relates to the `&&=` and `||=` operators in a moment.
 
 ## Instance variables
 
@@ -46,13 +46,13 @@ This is effectively equivalent to:
 @foo && @foo = 1
 ```
 
-Notice that this is quite a bit different from the operators we looked at in the last post. This can be a very large source of confusion. For operators like `+=`, they instead break down to `@foo = @foo + 1`, where the assignment happens regardless of the result of the operation. This is not the case with control-flow write operators. With `&&=`, the write only happens in the case that the instance variable is truthy. Put another way, the code above is almost exactly equivalent to:
+Notice that this is quite a bit different from the operators we looked at in the last post. This can be a very large source of confusion. For operators like `+=`, they instead break down to `@foo = @foo + 1`, where the assignment happens regardless of the result of the operation. This is not the case with control-flow write operators. With `&&=`, the write only happens in the case that the instance variable is truthy. Put another way, the code above is _almost_ exactly equivalent to:
 
 ```ruby
 if @foo
   @foo = 1
 else
-  nil
+  @foo
 end
 ```
 
@@ -62,7 +62,7 @@ Here is what the syntax tree looks like for `@foo &&= 1`:
   <img src="/assets/aop/part6-instance-variable-and-write-node.svg" alt="instance variable and write node">
 </div>
 
-Notice that the good side of splitting all of the writes up into their own nodes plays in our favor in this case. `InstanceVariableAndWriteNode` is a very compact representation of the syntax tree for `@foo &&= 1`. Most other Ruby syntax trees represent this as at least 3 nodes: a node for the target instance variable, a node for the expression being written, and a third node joining the two named something like `opassign`. This requires consumers to find the `opassign` node, then look at the target to understand how to process it. Prism instead goes the route of providing that information in the type itself to same consumers some processing time.
+Notice that the good side of splitting all of the writes up into their own nodes plays in our favor in this case. `InstanceVariableAndWriteNode` is a very compact representation of the syntax tree for `@foo &&= 1`. Most other Ruby syntax trees represent this as at least 3 nodes: a node for the target instance variable, a node for the expression being written, and a third node joining the two named something like `opassign`. This requires consumers to find the `opassign` node, then look at the target to understand how to process it. Prism instead goes the route of providing that information in the type itself to save consumers some processing time.
 
 ## `InstanceVariableOrWriteNode`
 
@@ -84,7 +84,7 @@ This is the opposite of the `&&=` operator in that the write only happens in the
 if !@foo
   @foo = 1
 else
-  nil
+  @foo
 end
 ```
 
@@ -229,7 +229,7 @@ else
 end
 ```
 
-The `||=` operator therefore means something quite different than you might expect in this context.[^1] Here is what the syntax tree looks like for `Foo ||= 1`:
+The `||=` operator therefore means something quite different from you might expect in this context.[^1] Here is what the syntax tree looks like for `Foo ||= 1`:
 
 <div align="center">
   <img src="/assets/aop/part6-constant-or-write-node.svg" alt="constant or write node">
@@ -255,7 +255,7 @@ tmp = Foo
 if tmp::Bar
   tmp::Bar = 1
 else
-  nil
+  tmp::Bar
 end
 ```
 
