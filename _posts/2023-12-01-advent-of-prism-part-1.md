@@ -53,7 +53,8 @@ There are lots of nodes in the syntax tree, but the core ones that you can see a
 (program
   (class :Foo
     (def :foo
-      (call :bar
+      (call :+
+        (call :bar)
         (arguments (call :baz))
       )
     )
