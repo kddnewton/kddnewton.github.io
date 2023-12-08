@@ -25,6 +25,7 @@ Links to the individual blog posts will appear here as they are published, so fe
 * [Part 5 - Operator writes](/2023/12/05/advent-of-prism-part-5)
 * [Part 6 - Control-flow writes](/2023/12/06/advent-of-prism-part-6)
 * [Part 7 - Control-flow](/2023/12/07/advent-of-prism-part-7)
+* [Part 8 - Target writes](/2023/12/07/advent-of-prism-part-8)
 
 ## Exploring
 
