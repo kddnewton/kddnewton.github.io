@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Advent of Prism
-subtitle: Part 21 - Error tolerance
+subtitle: Part 24 - Error tolerance
 meta:
   "twitter:card": summary
   "twitter:title": "Advent of Prism: Part 24"

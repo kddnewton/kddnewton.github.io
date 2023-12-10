@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Advent of Prism
-subtitle: Part 9 - Program structure
+subtitle: Part 12 - Program structure
 meta:
   "twitter:card": summary
   "twitter:title": "Advent of Prism: Part 12"
