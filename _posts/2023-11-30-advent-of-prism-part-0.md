@@ -27,7 +27,8 @@ Links to the individual blog posts will appear here as they are published, so fe
 * [Part 7 - Control-flow](/2023/12/07/advent-of-prism-part-7)
 * [Part 8 - Target writes](/2023/12/08/advent-of-prism-part-8)
 * [Part 9 - Strings](/2023/12/09/advent-of-prism-part-9)
-* [Part 10 - Regular expressions](/2023/12/010/advent-of-prism-part-10)
+* [Part 10 - Regular expressions](/2023/12/10/advent-of-prism-part-10)
+* [Part 11 - Defined](/2023/12/11/advent-of-prism-part-11)
 
 ## Exploring
 
