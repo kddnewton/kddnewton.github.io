@@ -7,8 +7,6 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
-plugins:
-  - jekyll-feed
 title: Kevin Newton
 author: Kevin Newton
 url: https://kddnewton.com
