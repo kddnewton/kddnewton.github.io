@@ -30,6 +30,8 @@ Links to the individual blog posts will appear here as they are published, so fe
 * [Part 10 - Regular expressions](/2023/12/10/advent-of-prism-part-10)
 * [Part 11 - Defined](/2023/12/11/advent-of-prism-part-11)
 * [Part 12 - Program structure](/2023/12/12/advent-of-prism-part-12)
+* [Part 13 - Calls (part 1)](/2023/12/13/advent-of-prism-part-13)
+* [Part 14 - Calls (part 2)](/2023/12/14/advent-of-prism-part-14)
 
 ## Exploring
 
