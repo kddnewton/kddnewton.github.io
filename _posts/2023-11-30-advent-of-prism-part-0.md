@@ -32,6 +32,7 @@ Links to the individual blog posts will appear here as they are published, so fe
 * [Part 12 - Program structure](/2023/12/12/advent-of-prism-part-12)
 * [Part 13 - Calls (part 1)](/2023/12/13/advent-of-prism-part-13)
 * [Part 14 - Calls (part 2)](/2023/12/14/advent-of-prism-part-14)
+* [Part 15 - Call arguments](/2023/12/15/advent-of-prism-part-15)
 
 ## Exploring
 
