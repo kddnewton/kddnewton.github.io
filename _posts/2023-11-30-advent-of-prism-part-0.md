@@ -34,6 +34,7 @@ Links to the individual blog posts will appear here as they are published, so fe
 * [Part 14 - Calls (part 2)](/2023/12/14/advent-of-prism-part-14)
 * [Part 15 - Call arguments](/2023/12/15/advent-of-prism-part-15)
 * [Part 16 - Control-flow calls](/2023/12/16/advent-of-prism-part-16)
+* [Part 17 - Scopes](/2023/12/17/advent-of-prism-part-17)
 
 ## Exploring
 
