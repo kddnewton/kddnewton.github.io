@@ -59,8 +59,7 @@ This code is represented by the following AST:
 In either of these two places, it's also possible for the required parameter to be automatically destructured. (We saw this in [Part 8 - Target writes](/2023/12/08/advent-of-prism-part-8)). Here's an example:
 
 ```ruby
-def foo((bar,))
-end
+foo { |(bar,)| }
 ```
 
 This makes use of the `MultiTargetNode` that we've already seen. The AST for this example looks like:
@@ -76,8 +75,7 @@ When Ruby executes this code, it first accepts the argument in its normal positi
 If you look at the AST in the above diagram, you'll see a reference to an `ImplicitRestNode`. This is triggered when there is a trailing comma in a destructure list, as in the example above. It implies that the values should be spread and that the rest of the parameters should be ignored. That means the above is _almost_ equivalent to:
 
 ```ruby
-def foo((bar, *))
-end
+foo { |(bar, *)| }
 ```
 
 The difference comes in blocks and lambdas, where it changes the arity. For example:
