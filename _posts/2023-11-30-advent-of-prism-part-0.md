@@ -36,6 +36,7 @@ Links to the individual blog posts will appear here as they are published, so fe
 * [Part 16 - Control-flow calls](/2023/12/16/advent-of-prism-part-16)
 * [Part 17 - Scopes](/2023/12/17/advent-of-prism-part-17)
 * [Part 18 - Parameters](/2023/12/18/advent-of-prism-part-18)
+* [Part 19 - Blocks](/2023/12/19/advent-of-prism-part-19)
 
 ## Exploring
 
