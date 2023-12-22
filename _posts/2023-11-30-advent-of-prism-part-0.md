@@ -39,6 +39,7 @@ Links to the individual blog posts will appear here as they are published, so fe
 * [Part 19 - Blocks](/2023/12/19/advent-of-prism-part-19)
 * [Part 20 - Alias and undef](/2023/12/20/advent-of-prism-part-20)
 * [Part 21 - Throws and jumps](/2023/12/21/advent-of-prism-part-21)
+* [Part 22 - Pattern matching (part 1)](/2023/12/22/advent-of-prism-part-22)
 
 ## Exploring
 
