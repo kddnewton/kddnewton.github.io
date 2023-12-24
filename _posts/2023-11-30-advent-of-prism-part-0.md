@@ -41,6 +41,7 @@ Links to the individual blog posts will appear here as they are published, so fe
 * [Part 21 - Throws and jumps](/2023/12/21/advent-of-prism-part-21)
 * [Part 22 - Pattern matching (part 1)](/2023/12/22/advent-of-prism-part-22)
 * [Part 23 - Pattern matching (part 2)](/2023/12/23/advent-of-prism-part-23)
+* [Part 24 - Error tolerance](/2023/12/24/advent-of-prism-part-24)
 
 ## Exploring
 
