@@ -177,7 +177,7 @@ This instruction has a single operand which does a lot of heavy-lifting. It is a
 
 When the cache is first compiled, it is registered with the virtual machine for every symbol in the array. The VM contains a cache-busting mechanism where any time something changes in the VM that corresponds to a constant, it invalidates any cache that contains a segment corresponding to that name. For example, if you were to run `Foo = 1`, then any inline cache used by a `opt_getconstant_path` instruction that had `:Foo` in its list would be invalidated.
 
-The instruction performs the same lookup (actually using the same path through the code) as `getconstant`. Once the final value has been found, it is pushed onto the stack. For example, in `Foo::Bar::Baz` disassembly:
+The instruction performs the same lookup (actually using the same path through the code) as `getconstant`. As its name suggests, this only works for absolute constant paths (`::Foo`) or paths relative to the current nesting (`Foo`); it will not be used for paths relative to a variable (`foo::Bar`). Since each part is known at compilation time, the constant base does not need to be on the stack as would be the case for `getconstant`. Once the final value has been found, it is pushed onto the stack. For example, in `Foo::Bar::Baz` disassembly:
 
 ```
 == disasm: #<ISeq:<main>@-e:1 (1,0)-(1,13)> (catch: false)
