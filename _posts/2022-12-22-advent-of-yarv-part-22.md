@@ -101,7 +101,7 @@ block 19
 : This block is a failure case. For some reason the `#===` method that was called on the pattern returned an unexpected value. This block sets up the error message that will be used when the `NoMatchingPatternError` error is raised.
 
 block 49
-: This block sets up the `NoMatchingPatternError`'s message and then actually raises it by calling `core#raise` on the frozen core object. It then jumps to a final exit block.
+: This block sets up the `NoMatchingPatternError` using the message built by block 19 and then actually raises it by calling `core#raise` on the frozen core object. It then jumps to a final exit block.
 
 block 85
 : This block cleans up the cached values on the stack, pushes `nil`, and then exits.
