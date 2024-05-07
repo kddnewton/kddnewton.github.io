@@ -123,7 +123,7 @@ In `foo::Bar::Baz = 1` disassembly:
 
 Because the constant base is expected to be on the stack, there are occasions where it needs to be pushed on from a value relative to the current context. This is done with the `putspecialobject` instruction.
 
-`putspecialobject` has a single operand which is an entry in the `vm_special_object_type` enum. Each value in that enum corresponds to a special object that can be pushed onto the stack for the purpose of maintaining the expectations of other instructions. As we saw with the `getcontant` instruction, it expects the constant base to be on the stack. As we saw in the previous post on calling methods, it expects the receiver to be on the stack. This instruction fills those expectations.
+`putspecialobject` has a single operand which is an entry in the `vm_special_object_type` enum. Each value in that enum corresponds to a special object that can be pushed onto the stack for the purpose of maintaining the expectations of other instructions. As we saw with the `setconstant` instruction, it expects the constant base to be on the stack. As we saw in the previous post on calling methods, it expects the receiver to be on the stack. This instruction fills those expectations.
 
 There are three entries in total, and we'll look at them in turn.
 
