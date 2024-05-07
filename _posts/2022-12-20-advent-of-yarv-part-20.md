@@ -146,7 +146,7 @@ In YARV:
 0011 leave                                                            (   3)
 ```
 
-This is the same example as above with the addition of the `ensure` clause. The catch table has a `rescue` entry that applies to the `putself` instruction up to the `nop` instruction. When an exception is caught it will execute the nested instruction sequence. That instruction sequence will check if the exception is a `StandardError` and if so, push `false` onto the stack and return. Otherwise, it will rethrow the exception.
+This is the same example as above with the addition of the `ensure` clause. The catch table has a `rescue` entry that applies to the `putself` instruction at offset 0 up to the `nop` instruction at offset 6. When an exception is caught it will execute the nested instruction sequence. That instruction sequence will check if the exception is a `StandardError` and if so, push `false` onto the stack and return. Otherwise, it will rethrow the exception.
 
 ### `retry`
 
@@ -154,7 +154,7 @@ You can see in the example that the catch table also has an entry for `retry`. T
 
 ### `ensure`
 
-There is also a catch table entry in the example above of the `ensure` type. It indicates that it applies from the `putself` up to the subsequent `putself`. This code will be executed even if an exception is raised.
+There is also a catch table entry in the example above of the `ensure` type. It indicates that it applies from the `putself` at offset 0 up to the subsequent `putself` at offset 7. This code will be executed even if an exception is raised.
 
 ### `break`
 
