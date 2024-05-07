@@ -35,7 +35,7 @@ The instruction that performs the constant lookup is called `getconstant`. It ha
 
 Let's start with the first two cases, an absolute path or a path relative to a variable. In these cases you either start from the top level (which means the `Object` class will be pushed onto the stack) or you start at a given constant (which means the class or module will already be on the stack as a result of a different instruction). In either case, the constant base is on the stack in the correct place.
 
-In the last case, the constant base is pushed onto the stack by pushing on `nil` with `putnil`. The second operand is a boolean that indicates whether or not the constant base is allowed to be `nil`. If it is, then it will search the current lexical scope. If it is not, then it will instead call the `#const_missing` method.[^1]
+In the last case, the constant base is pushed onto the stack by pushing on `nil` with `putnil`. The second popped value is a boolean that indicates whether or not the constant base is allowed to be `nil`. If it is, then it will search the current lexical scope. If it is not, then it will instead call the `#const_missing` method.[^1]
 
 If the value is successfully found, it is pushed onto the stack, otherwise `nil` is pushed. For example, with `getconstant :Foo`:
 
