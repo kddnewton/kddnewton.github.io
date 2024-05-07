@@ -197,6 +197,6 @@ This concludes our look at variables in Ruby. Tomorrow we'll look at instruction
 ---
 
 [^1]: You may be asking yourself why a value is pushed onto the stack to indicate that the constant is allowed to be `nil`, if that boolean flag is known at compile-time. This as opposed to making it an operand to the `getconstant` instruction. It turns out that's a [good question](https://github.com/ruby/ruby/pull/5709).
-[^2]: I'm purposefully compiling this without optimizations turned on in order to demonstrate the `getconstant` instruction. Under regalar circumstances, the compiler will optimize this to use `opt_getconstant_path` instead.
+[^2]: I'm purposefully compiling this without optimizations turned on in order to demonstrate the `getconstant` instruction. Under regular circumstances, the compiler will optimize this to use `opt_getconstant_path` instead.
 [^3]: Technically, it also contains the class reference in order to be sure that doesn't change as well, but don't worry about that for now. You can think of it as just the value of the constant.
 [^4]: In order to avoid having to hold the size of the array as well, the array is null-terminated.

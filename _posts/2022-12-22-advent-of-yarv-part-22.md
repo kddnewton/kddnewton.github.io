@@ -14,7 +14,7 @@ This blog series is about how the CRuby virtual machine works. If you're new to 
 
 Pattern matching was introduced as a syntax in Ruby 2.7. Since then it has grown to include a couple more variants like single-line matching with the `=>` or `in` operators and the find pattern for arrays. Originally, pattern matching was implemented as a library. When it was decided to be merged in to the language, it was rewritten to run as YARV instruction sequences.
 
-Because of this, it's seems very different from the rest of the language. In other features, the compiler generally generates fewer, more powerful instructions. In pattern matching, the compiler generates a lot more instructions. As a result, there weren't many instructions added for pattern matching. The instructions it does use though are pretty extensive.
+Because of this, it seems very different from the rest of the language. In other features, the compiler generally generates fewer, more powerful instructions. In pattern matching, the compiler generates a lot more instructions. As a result, there weren't many instructions added for pattern matching. The instructions it does use though are pretty extensive.
 
 Let's look at an example. In the following Ruby code we're asserting that the value of `foo` matches the string `"bar"`. If it does, it will return `nil`. If it doesn't, it will raise an error.
 

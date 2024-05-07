@@ -199,7 +199,7 @@ This example has a `break` entry in the catch table. This entry applies from the
 
 ### `redo`
 
-You can see that the nested instruction sequence used to pass to the `each` block also has its own catch table. This catch table has a `redo` entry that applies to the `getlocal` instruction up to the `leave` instruction. If a `redo` is executed, it will jump back to the `getlocal` instruction at offset 1.
+You can see that the nested instruction sequence used to pass to the `each` block also has its own catch table. This catch table has a `redo` entry that applies to the `getlocal_WC_0` instruction up to the `leave` instruction. If a `redo` is executed, it will jump back to the `getlocal_WC_0` instruction at offset 1.
 
 ### `next`
 

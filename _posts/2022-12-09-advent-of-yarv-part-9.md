@@ -142,7 +142,7 @@ Notice in the local table that it has `block: 0`. This means that the block para
 
 ## `getblockparamproxy`
 
-Going even further to avoid allocating a `Proc`, the `getblockparamproxy` instruction is used to push a static proxy object onto the stack that only responds to `#call`. The addresses the common case that when you're reifying a block parameter, the majority of the time you're just calling `#call` and not doing much else to it. For example:
+Going even further to avoid allocating a `Proc`, the `getblockparamproxy` instruction is used to push a static proxy object onto the stack that only responds to `#call`. This addresses the common case that when you're reifying a block parameter, the majority of the time you're just calling `#call` and not doing much else to it. For example:
 
 ```ruby
 def foo(&bar)

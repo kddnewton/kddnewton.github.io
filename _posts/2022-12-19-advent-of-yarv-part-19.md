@@ -12,7 +12,7 @@ meta:
 
 This blog series is about how the CRuby virtual machine works. If you're new to the series, I recommend starting from [the beginning](/2022/11/30/advent-of-yarv-part-0). This post is about the `defined?` keyword.
 
-The `defined?` keyword is a very interesting keyword that accepts absolutely any Ruby expression as an argument. It is responsible with returning a string that describes the type of the expression. For example, `defined?(1)` returns `"expression"` and `defined?(puts)` returns `"method"`. If the value is not defined, `nil` is returned.
+The `defined?` keyword is a very interesting keyword that accepts absolutely any Ruby expression as an argument. It is responsible for returning a string that describes the type of the expression. For example, `defined?(1)` returns `"expression"` and `defined?(puts)` returns `"method"`. If the value is not defined, `nil` is returned.
 
 The keyword itself corresponds to the `defined` instruction. This instruction has three operands: the type of expression to check, the object associated with the expression, and the string to push onto the stack if the value is defined. It pops a single value off the stack, and pushes a single value onto the stack.
 
