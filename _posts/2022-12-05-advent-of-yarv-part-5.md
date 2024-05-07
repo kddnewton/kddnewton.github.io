@@ -254,7 +254,10 @@ class SplatArray
   end
 
   def call(vm)
-    vm.stack.push(*vm.stack.pop)
+    top_of_stack = vm.stack.pop
+    value = top_of_stack.is_a?(Array) ? top_of_stack : top_of_stack.to_a
+
+    vm.stack.push(flag > 0 ? value.dup : value)
   end
 end
 ```
