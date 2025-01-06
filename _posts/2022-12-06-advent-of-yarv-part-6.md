@@ -201,7 +201,7 @@ Optional keyword (static value)
 : optional keyword parameters whose default value is the same every time (e.g., an integer) (e.g., `def foo(bar: 1)`)
 
 Optional keyword (dynamic value)
-: optional keyword parameters whose default value is can change (e.g., a method call) (e.g., `def foo(bar: baz)`)
+: optional keyword parameters whose default value can change (e.g., a method call) (e.g., `def foo(bar: baz)`)
 
 Keyword rest
 : keyword parameters that take the rest of the arguments using the `**` operator (e.g., `def foo(**bar)`)
