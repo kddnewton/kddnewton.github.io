@@ -285,7 +285,7 @@ This is actually the following 32-bit pattern rotated twice to the right:
 The components of our bitmask immediate will then be:
 
 * `N` = 0 since it's not a 64-bit pattern
-* `imms` = `011011` to indicate a 32-bit pattern with 28 zeroes
+* `imms` = `011011` to indicate a 32-bit pattern with 28 ones
 * `immr` = `000010` to indicate 2 right rotations of the pattern
 
 Which means that the overall instruction is encoded as:
