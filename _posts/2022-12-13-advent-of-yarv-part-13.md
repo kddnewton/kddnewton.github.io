@@ -35,7 +35,7 @@ The instruction that performs the constant lookup is called `getconstant`. It ha
 
 Let's start with the first two cases, an absolute path or a path relative to a variable. In these cases you either start from the top level (which means the `Object` class will be pushed onto the stack) or you start at a given constant (which means the class or module will already be on the stack as a result of a different instruction). In either case, the constant base is on the stack in the correct place.
 
-In the last case, the constant base is pushed onto the stack by pushing on `nil` with `putnil`. The second operand is a boolean that indicates whether or not the constant base is allowed to be `nil`. If it is, then it will search the current lexical scope. If it is not, then it will instead call the `#const_missing` method.[^1]
+In the last case, the constant base is pushed onto the stack by pushing on `nil` with `putnil`. The second popped value is a boolean that indicates whether or not the constant base is allowed to be `nil`. If it is, then it will search the current lexical scope. If it is not, then it will instead call the `#const_missing` method.[^1]
 
 If the value is successfully found, it is pushed onto the stack, otherwise `nil` is pushed. For example, with `getconstant :Foo`:
 
@@ -123,7 +123,7 @@ In `foo::Bar::Baz = 1` disassembly:
 
 Because the constant base is expected to be on the stack, there are occasions where it needs to be pushed on from a value relative to the current context. This is done with the `putspecialobject` instruction.
 
-`putspecialobject` has a single operand which is an entry in the `vm_special_object_type` enum. Each value in that enum corresponds to a special object that can be pushed onto the stack for the purpose of maintaining the expectations of other instructions. As we saw with the `getcontant` instruction, it expects the constant base to be on the stack. As we saw in the previous post on calling methods, it expects the receiver to be on the stack. This instruction fills those expectations.
+`putspecialobject` has a single operand which is an entry in the `vm_special_object_type` enum. Each value in that enum corresponds to a special object that can be pushed onto the stack for the purpose of maintaining the expectations of other instructions. As we saw with the `setconstant` instruction, it expects the constant base to be on the stack. As we saw in the previous post on calling methods, it expects the receiver to be on the stack. This instruction fills those expectations.
 
 There are three entries in total, and we'll look at them in turn.
 
@@ -177,7 +177,7 @@ This instruction has a single operand which does a lot of heavy-lifting. It is a
 
 When the cache is first compiled, it is registered with the virtual machine for every symbol in the array. The VM contains a cache-busting mechanism where any time something changes in the VM that corresponds to a constant, it invalidates any cache that contains a segment corresponding to that name. For example, if you were to run `Foo = 1`, then any inline cache used by a `opt_getconstant_path` instruction that had `:Foo` in its list would be invalidated.
 
-The instruction performs the same lookup (actually using the same path through the code) as `getconstant`. Once the final value has been found, it is pushed onto the stack. For example, in `Foo::Bar::Baz` disassembly:
+The instruction performs the same lookup (actually using the same path through the code) as `getconstant`. As its name suggests, this only works for absolute constant paths (`::Foo`) or paths relative to the current nesting (`Foo`); it will not be used for paths relative to a variable (`foo::Bar`). Since each part is known at compilation time, the constant base does not need to be on the stack as would be the case for `getconstant`. Once the final value has been found, it is pushed onto the stack. For example, in `Foo::Bar::Baz` disassembly:
 
 ```
 == disasm: #<ISeq:<main>@-e:1 (1,0)-(1,13)> (catch: false)
@@ -197,6 +197,6 @@ This concludes our look at variables in Ruby. Tomorrow we'll look at instruction
 ---
 
 [^1]: You may be asking yourself why a value is pushed onto the stack to indicate that the constant is allowed to be `nil`, if that boolean flag is known at compile-time. This as opposed to making it an operand to the `getconstant` instruction. It turns out that's a [good question](https://github.com/ruby/ruby/pull/5709).
-[^2]: I'm purposefully compiling this without optimizations turned on in order to demonstrate the `getconstant` instruction. Under regalar circumstances, the compiler will optimize this to use `opt_getconstant_path` instead.
+[^2]: I'm purposefully compiling this without optimizations turned on in order to demonstrate the `getconstant` instruction. Under regular circumstances, the compiler will optimize this to use `opt_getconstant_path` instead.
 [^3]: Technically, it also contains the class reference in order to be sure that doesn't change as well, but don't worry about that for now. You can think of it as just the value of the constant.
 [^4]: In order to avoid having to hold the size of the array as well, the array is null-terminated.
