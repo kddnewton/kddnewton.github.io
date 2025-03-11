@@ -19,7 +19,7 @@ Scope is the key word here. What does it mean for a local variable to be "in sco
 Recall that when a method is executed, a `method` frame is pushed onto the frame stack corresponding to the instruction sequence that describes the body of that method. Similarly, when a block is executed, a `block` frame is pushed onto the frame stack corresponding to the instruction sequence that describes the body of the block. How are these two frames different? In two ways:
 
 * The value of `self` will be different. `block` frames inherit their parent frame's `self` value, while `method` frames use the value of `self` that corresponds to the receiver of the method.
-* The scoping will be different. Generally, `block` frames are allowed to see their parent frame's local variables, while `method` frames do not.
+* The scoping will be different. Generally, `block` frames are allowed to see their parent frame's local variables, while `method` frames are not.
 
 We'll see how `block` frames (along with `rescue` and `ensure` frames) can access their parent frame's local variables in the instructions in this post.
 
@@ -60,7 +60,7 @@ end
 
 In this case, the value stack is set up slightly differently, with the bottom of the stack being the integer `5` corresponding to the `value` variable, then the value of `self` for the parent frame. The parent frame has its environment pointer pointing just above the `value` local. This time, the `block` frame only has the `factor` local because the `value` local belongs to the parent frame. The `block` frame will set its environment pointer to be just above the `factor` local. When it wants to access the `value` local, it will look for the value stack slot using the same formula as before but with the parent frame's environment pointer.
 
-The `getlocal` instruction therefore has two operands: the index of the local variable (the `local_index` from our formula above) and the level of the frame to look for the local variable in (i.e., how much parent frames to traverse to find the correct environment pointer). The instruction will get the value of the local at the given index and level and push the value onto the value stack. For example, with the previous code and `getlocal 0, 1`:
+The `getlocal` instruction therefore has two operands: the index of the local variable (the `local_index` from our formula above) and the level of the frame to look for the local variable in (i.e., how many parent frames to traverse to find the correct environment pointer). The instruction will get the value of the local at the given index and level and push the value onto the value stack. For example, with the previous code and `getlocal 0, 1`:
 
 <div align="center">
   <img src="/assets/aoy/part8-getlocal.svg" alt="getlocal">

@@ -88,7 +88,7 @@ def add(value, *others)
 end
 ```
 
-When rest positional parameters are present, the method call setup code will creating an array and push it onto the stack. The called instruction sequence will then use `getlocal` and its specializations to access the array. Here's the disassembly:
+When rest positional parameters are present, the method call setup code will create an array and push it onto the stack. The called instruction sequence will then use `getlocal` and its specializations to access the array. Here's the disassembly:
 
 ```
 == disasm: #<ISeq:<main>@test.rb:1 (1,0)-(3,3)> (catch: false)
@@ -299,11 +299,11 @@ There are two ways to invoke a block. We already saw the first way earlier in th
 
 ### `invokeblock`
 
-The `invokeblock` instruction takes one operand, which is a call data structure. This instruction is remarkably similar to `opt_send_without_block` in that it is effectively invoking a method without a block. `invokeblock` will walk up the frame stack until it finds a `method` frame and then execute the instruction sequence associated with the block that originally invoked that frame.
+The `invokeblock` instruction takes one operand, which is a call data structure. This instruction is remarkably similar to `opt_send_without_block` in that it is effectively invoking a method without a block. `invokeblock` will walk up the frame stack until it finds a `method` frame and then execute the instruction sequence associated with the block that originally invoked that frame. The result of the block invocation will be pushed onto the stack.
 
 ## Wrapping up
 
-Today we looked at all of the different kinds of parameters that can be present on method calls. These declarations can also be found on blocks and lambdas. We looked at how each parameter is encoded into the instruction sequence and how the method call set up code ensures that the parameters are set up properly. A couple of things to remember from this post:
+Today we looked at all of the different kinds of parameters that can be present on method calls. These declarations can also be found on blocks and lambdas. We looked at how each parameter is encoded into the instruction sequence and how the method call set up code ensures that the parameters are set up properly. A few things to remember from this post:
 
 * Called methods expect the stack to line up to their parameter declarations. The method call set up code is responsible for ensuring that this is the case.
 * When keyword arguments don't align with keyword parameters, the method call set up code will sort them in place and copy them back onto the stack.
