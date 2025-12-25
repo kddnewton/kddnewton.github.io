@@ -12,7 +12,7 @@ meta:
 
 This blog series is about how the CRuby virtual machine works. If you're new to the series, I recommend starting from [the beginning](/2022/11/30/advent-of-yarv-part-0). This post is about branching.
 
-Although this blog series isn't about how CRuby compiles into YARV instructions, we've touched on it briefly in a couple of posts. From our first post where we covered how literals are compiling into `putobject` instructions to our most recent post where we discussed the `alias` and `undef` methods, we've covered a lot of Ruby syntax without even knowing it. There is still one major piece of Ruby syntax that we haven't covered: branching.
+Although this blog series isn't about how CRuby compiles into YARV instructions, we've touched on it briefly in a couple of posts. From our first post where we covered how literals are compiled into `putobject` instructions to our most recent post where we discussed the `alias` and `undef` methods, we've covered a lot of Ruby syntax without even knowing it. There is still one major piece of Ruby syntax that we haven't covered: branching.
 
 Braching refers to the ability to execute different code paths based on a condition. You can think of it like railroad tracks diverging. The logic that controls the branching can be conditional or unconditional. In this post, we'll see how that maps back to both Ruby syntax and YARV instructions.
 

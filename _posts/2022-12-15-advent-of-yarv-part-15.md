@@ -16,7 +16,7 @@ So far in this blog series we have looked at instructions that all operate withi
 
 `defineclass` has three operands, pops two values off the stack, and pushes a single value back on, so it is the most complex instruction we've seen so far. The operands are:
 
-* `ID id`: This is the name of the class or module being defined. If we're defining a singleton class (e.g., using the `class << self` syntax) then it will be the symbol `:singleton_class`.
+* `ID id`: This is the name of the class or module being defined. If we're defining a singleton class (e.g., using the `class << self` syntax) then it will be the symbol `:singletonclass`.
 * `ISEQ class_iseq`: This is the instruction sequence that will be executed to define the class or module. It will be executed inside the context of a new `class` frame that `defineclass` pushes onto the frame stack.
 * `rb_num_t flags`: This is a bitfield that contains various flags about the instruction. For the most part this is basically an enum that tells the instruction if it's defining a class, singleton class, or module. It also includes a boolean flag that tells the instruction if the constant being defined is scoped and if there is a superclass in the case that this is defining a class.
 

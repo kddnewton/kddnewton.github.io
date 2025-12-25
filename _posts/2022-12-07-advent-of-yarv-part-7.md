@@ -241,7 +241,7 @@ The `send` instruction always has space for an instruction sequence operand corr
 
 In this post we looked at all of the specializations of the `send` instruction, of which there are quite a few. A couple of things to take away from this post:
 
-* The `send` instruction is one of the most common instruction in Ruby code, and so it's important to optimize it as much as possible.
+* The `send` instruction is one of the most common instructions in Ruby code, and so it's important to optimize it as much as possible.
 * Most specializations of `send` exist to provide fast implementations of common methods, such as `#+` and `#[]`.
 
 In the next post we'll start digging into local variable instructions, and as such will be digging even more into the frame stack.
